@@ -1,5 +1,7 @@
 # v1.1 有限源码审计
 
+本地代码交付补充：新增`run_main.m`、`run_smoke.m`与只读`verify_main_results.m`。源码检查覆盖包内绝对校准路径、实际九组/216/72行、CSV/MAT/日志/标识交叉核对、NaN及逻辑CSV处理，未发现阻断性问题。main新增导出前`payload_counts.mat`，其状态明确为待导出；新增入口和验收代码未在MATLAB执行。当前静态检查数量与代码清单以`validation/commands_and_scope.md`为准，以下原审计记录保留。
+
 ## 范围和证据等级
 
 - 实际项目：`/workspace/BitLoading/EESM5540_DMT_BitLoading`；入口：`run_dmt_experiment.m`。

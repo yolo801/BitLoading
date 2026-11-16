@@ -133,6 +133,12 @@ try
             end
         end
         dmt_post_checks(cfg,calibration,profiles,runs,outDir,'main');
+        % Preserve all expensive payload counts before any graphics/export call.
+        % This state is deliberately NOT a claim that final export completed.
+        payloadState = 'payload_complete_exports_pending';
+        save(fullfile(outDir,'payload_counts.mat'),'cfg','calibration','profiles', ...
+            'loadingDiagnostics','runs','smokeRuns','seedMapping','sourceManifest', ...
+            'integrity','calibrationProvenance','payloadState');
         fprintf('\nStage 6: pooled counts, Wilson intervals and reports.\n');
         [perCarrier,summary,pooled,nominal] = dmt_write_outputs( ...
             cfg,calibration,profiles,runs,outDir,'main');

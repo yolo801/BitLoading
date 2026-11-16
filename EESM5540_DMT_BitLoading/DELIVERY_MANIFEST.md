@@ -2,11 +2,16 @@
 
 项目 `/workspace/BitLoading/EESM5540_DMT_BitLoading/`，入口run_dmt_experiment.m。协议1.1、冻结物理规格1.0，不改原报告、abstract、ISAC和历史结果。
 
+本次按“你本地运行、我交付代码”整理。建议从`START_HERE.md`开始，在MATLAB输入`result = run_main;`。
+
 **本次云端 v1.1 未在 MATLAB 执行，未完成 main。** 区分源码、历史实测和未来正式输出：
 
 | 路径 | 用途及状态 |
 | --- | --- |
 | README.md | 参数、三策略、校准复用、Windows/批处理命令、统计及结果口径 |
+| START_HERE.md | 本地运行的最短步骤及结果位置 |
+| run_main.m、run_smoke.m | 一条命令运行main并自动核对；可选独立smoke |
+| verify_main_results.m | 独立核对实际九组、216/72行、MAT/CSV/日志/标识及输出完整性，不重跑实验 |
 | EXECUTION_STATUS.md | 云端未执行、历史本地smoke与未来main的边界 |
 | execution_attempts/20261116_192724_486203_main_launch/ | 本次真实batch启动记录：退出127、MATLAB未启动、正式0/9组，不是实验结果 |
 | report_notes_zh.md | 方法、历史观察、Fixed16意义及答辩问题，不是正式结果段 |
@@ -26,8 +31,8 @@
 | tools/audit_uploaded_smoke.py | 可选Python+NumPy+SciPy读取旧输出一致性，未执行MATLAB |
 | validation/uploaded_smoke_audit.md、.json | 上传字节哈希、MAT/CSV/profile、计数层级等复核 |
 | tools/verify_implementation.py、validation/ | 静态与独立公式检查、实际命令及输出，不产生MATLAB BER |
-| validation/source_manifest_v1_1.csv | 当前23个交付源码文件的真实SHA-256与字节数 |
-| validation/commands_and_scope.md | 实际工具探测、21文件静态检查、75项独立诊断与211项历史结果核对的命令及范围 |
+| validation/source_manifest_v1_1.csv | 当前交付源码文件的真实SHA-256与字节数 |
+| validation/commands_and_scope.md | 当前静态检查、独立诊断及历史结果核对的命令与范围 |
 | .gitignore | 生成结果和MATLAB自动保存文件的版本管理规则 |
 | .gitattributes | 原始历史证据保持字节、禁用换行转换；归档元数据仍按文本展示 |
 
@@ -46,7 +51,8 @@
 | nominal_vs_measured.csv | 72行design/nominal预测、真实计数/BER/CI |
 | summary.csv | 3行，均由pooled求得；状态、超标载波、能量和时长 |
 | per_subcarrier_results.csv | 如保留兼容混合CSV，含record_type，不能重复相加seed与pooled |
-| runs_partial.mat、final_results.mat | 计数、配置、冻结估计/profile和统计，main/smoke分开，无长期波形 |
+| runs_partial.mat、payload_counts.mat、final_results.mat | 逐组计数、完整载荷导出前快照、最终结果；main/smoke分开，无长期波形 |
+| main_completion_check.mat/.txt | run_main完成后的独立数据与输出核对报告及逐项日志 |
 | dmt_comparison.png/.pdf/.fig | 真实main白底论文图，PNG≥300dpi、PDF矢量、FIG可编辑 |
 | report_notes_zh.md、results_paragraph_en.txt、figure_caption_en.txt | 当次真实main观察和独立图注，英文正式段落仅完整main后生成 |
 | smoke_notes_en.txt | smoke-only说明，不是正式结果段 |

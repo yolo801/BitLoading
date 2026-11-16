@@ -4,7 +4,7 @@
 
 项目路径 `/workspace/BitLoading/EESM5540_DMT_BitLoading/`，入口 `run_dmt_experiment.m`。在项目目录直接运行，无须修改全局路径。使用现有源码增量修改，没有另建第二套算法，不改动 ISAC、原 report、abstract 或 Figure 1。
 
-**当前云端 v1.1 未在 MATLAB 执行，未完成 main。** 用户已上传真实的本地 MATLAB smoke 输出，保存于 `evidence/imported_smoke/`；它们不是 v1.1 正式结果。静态检查与 Python 诊断不能替代 MATLAB 执行。见 [执行状态](EXECUTION_STATUS.md)、[交付清单](DELIVERY_MANIFEST.md)及[方法与答辩说明](report_notes_zh.md)。
+**本次交付范围是代码，由你在本地 MATLAB 执行实验。** 从项目目录输入 `result = run_main;`，会自动完成主实验并核对实际九组计数。最短操作见 [START_HERE.md](START_HERE.md)。这份新增代码未在MATLAB执行；静态检查和Python诊断的范围见[执行状态](EXECUTION_STATUS.md)。历史本地smoke保存于 `evidence/imported_smoke/`，不会进入新main统计。
 
 ## 历史 smoke 的真实范围
 
@@ -64,9 +64,10 @@ Windows MATLAB命令窗口：
 
 ```matlab
 cd('C:\work\BitLoading\EESM5540_DMT_BitLoading')
-smoke = run_dmt_experiment('smoke');
-result = run_dmt_experiment('main');
+result = run_main;
 ```
+
+`run_main.m`固定使用包内已检查校准，调用原有main后运行`verify_main_results`交叉核对MAT、CSV和日志，并保存`main_completion_check.mat/.txt`。可选`run_smoke`仅做预检；main本身会先做完整预检，无需单独先调用smoke。核对已有结果时使用`verify_main_results('你的main结果目录')`，不会重新发送载荷或改动结果。
 
 入口默认优先查找项目内 `evidence/imported_smoke/` 并复用已验证匹配的冻结校准。明确指定旧目录时，该目录须含完整匹配的 `config_snapshot.mat` 和 `initialization.mat`：
 
@@ -168,7 +169,8 @@ B=sum(log2(M_k))只计24个独立载波；Tu=1us、TCP=0.125us、Ts=1.125us。R_
 | summary.csv | 每策略一行共3行，仅由pooled求得；状态、超标载波、计数、能量与时长 |
 | nominal_vs_measured.csv | 72行design/nominal近似预测与实际计数、BER、CI |
 | per_subcarrier_results.csv | 如保留兼容混合表，必须按record_type选seed或pooled，不能混加 |
-| runs_partial.mat、final_results.mat | 累计计数、配置/校准/profile与统计；main和smoke分开，不存长期波形 |
+| runs_partial.mat、payload_counts.mat、final_results.mat | 逐组检查点、九组完成后导出前的计数快照、完整正式结果；main和smoke分开，不存长期波形 |
+| main_completion_check.mat/.txt | run_main在独立完成核对后保存的报告与逐项日志；数据完整性与性能达标分开判断 |
 | dmt_comparison.png/.pdf/.fig | 白底三联图，PNG至少300dpi、PDF矢量、FIG可编辑 |
 | report_notes_zh.md、figure_caption_en.txt | 当次真实观察、模型限制与独立英文图注 |
 | results_paragraph_en.txt | 仅完整main后生成，约150–200词真实正式结果段 |
@@ -177,13 +179,15 @@ B=sum(log2(M_k))只计24个独立载波；Tu=1us、TCP=0.125us、Ts=1.125us。R_
 
 正式图只用main pooled数据。Figure/axes/legend显式白底，坐标、标题与标签黑字，浅灰网格、可区分线型和标记，图例避免遮挡。对数范围包括Fixed16不利结果与所有有意义上界，不裁去超标数据；宽约6.8英寸。图(b)表示比特而非功率。
 
+`payload_counts.mat`的状态为`payload_complete_exports_pending`：即使后续绘图失败，已完成的九组计数也不会丢失，但单有该文件不能算完整main。`verify_main_results`要求完整final MAT、正式表/图及结束日志；Fixed16统计超标不会导致完成核对失败。
+
 保留Figure1；真实main后用该次组合图替换解析Figure2，报告仍不超过四页、汇报四分钟。标注作者的简化数字基带仿真，不标成文献Figure6，不推广为真实数据中心光链路普遍有相同倍数收益。
 
 ## 检查证据与背景文献
 
 validation/记录实际静态与独立Python检查；它们不运行MATLAB、不测qammod BER。可选命令 `python3 tools/verify_implementation.py` 需要Python+NumPy，仅作公式/源码诊断。命令与范围以validation/commands_and_scope.md及EXECUTION_STATUS.md为准。
 
-本次21个`.m`文件的MISS_HIT静态检查、75项独立公式/源码诊断及211项历史上传结果一致性核对均通过，各命令退出码为0。可选历史证据复核命令`python3 tools/audit_uploaded_smoke.py`另需NumPy+SciPy；这些Python依赖不是MATLAB仿真依赖。当前23个源码文件的SHA-256见`validation/source_manifest_v1_1.csv`。
+静态检查、独立公式诊断及历史上传结果一致性核对的当前结果见`validation/commands_and_scope.md`。可选历史证据复核命令`python3 tools/audit_uploaded_smoke.py`另需NumPy+SciPy；这些Python依赖不是MATLAB仿真依赖。当前源码文件的SHA-256见`validation/source_manifest_v1_1.csv`。
 
 背景/方法参考，不代表本参数来自这些文献：
 

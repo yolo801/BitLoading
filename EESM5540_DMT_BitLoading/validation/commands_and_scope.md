@@ -1,14 +1,10 @@
-# v1.1 实际命令、结果与范围
+# 本地代码交付：实际检查命令与范围
 
-**当前云端未在 MATLAB 执行，未完成 main。** 用户上传的本地历史 smoke 是已有运行证据，不是本次新运行。
-
-## 工具探测
-
-`command -v matlab` 与 `command -v octave` 均未找到可执行文件；常见 /usr/local/MATLAB*、/opt/MATLAB*、/opt/matlab* 也未发现安装。未调用 MATLAB 执行入口；没有生成新的 MATLAB 运行时间、PASS 日志、正式 CSV 或图。
+本次提供代码文件，由用户本地运行MATLAB实验。没有执行新增MATLAB入口，也没有生成新的实验计数、正式结果图或结果段。
 
 ## 实际完成的检查
 
-在项目目录执行：
+在项目目录执行并逐一核对退出码：
 
 ```sh
 PYTHONPATH=/tmp/eesm5540_lint python3 -m miss_hit.mh_lint --input-encoding utf-8 --brief --single .
@@ -17,26 +13,33 @@ python3 tools/audit_uploaded_smoke.py
 git diff --check
 ```
 
-以上各命令单独捕获退出码，全部为 0。MISS_HIT 0.9.44 分析 21 个 MATLAB 文件；75 项独立数学/源码约定诊断通过；211 项上传历史 smoke 数据一致性检查通过。前两种检查不执行 MATLAB；第三种只读取用户上传的 MATLAB 数值结构和 CSV，不生成实验 BER。
+各命令退出码均为0：
 
-- `matlab_static_lint.txt`：语法/静态检查。
-- `python_diagnostics.txt`：独立 Python 恒等式、噪声 FFT 方差和解析诊断值，不是 MATLAB 结果。
-- `uploaded_smoke_audit.md/.json`：14 个原始文件的哈希、配置、profile、计数、区间、能量与随机流复核，不将 seed 与 pooled 重复计数。
-- `source_manifest_v1_1.csv`：本次交付源码的 SHA-256/字节数（用 Python 读取实际源码字节，非 MATLAB 执行）。真正运行时 MATLAB 还会生成当次的 source_manifest.csv 与 integrity.json。
+- MISS_HIT 0.9.44：24个MATLAB文件通过语法/静态检查。见`matlab_static_lint.txt`。
+- 75项独立公式与源码约定诊断通过。见`python_diagnostics.txt`。这些Python检查不调用MATLAB或qammod，不测本实验BER。
+- 211项用户上传历史smoke一致性检查通过，包括14个原文件SHA-256、配置、profile、计数与统计口径。见`uploaded_smoke_audit.md/.json`。这是读取原有结果，不是生成新的MATLAB实验结果。
+- 新增文本的尾随空格和结尾换行检查通过。原始历史证据按字节保留，.gitattributes防止Git换行转换；未更改原14文件内容。
 
-另外检查了新增文本换行和尾随空格；历史上传文件不参与文字格式修正，保持原字节。核心收发/校准/自检等未修改函数与原提交 ca26355 相同；本次变更范围见 docs/AUDIT_v1_1.md。
+`source_manifest_v1_1.csv`记录当前26个代码文件（24个MATLAB文件及2个可选Python诊断脚本）的SHA-256与字节数。真正本地运行时，MATLAB仍会为当次运行保存实际源码清单与初始化标识。
 
-提交前完整检查发现历史CSV的Windows CRLF和日志尾随空格会触发通用空白检查。未修改历史内容；`.gitattributes`将原始证据按字节保存并按二进制差异展示，避免Git换行转换。新建的两个清单CSV使用LF；最终暂存检查通过。历史14文件的SHA-256再次核对，不受展示属性影响。
+## 新增代码的核对范围
 
-## 尚未完成
+新增`run_main.m`、`run_smoke.m`和`verify_main_results.m`经过源码审查及静态检查。主入口使用包内校准并自动做独立验收；验收函数不改动结果或重跑载荷，并将实际计数、统计状态与文件完整性分开。
 
-v1.1 的 MATLAB 基础自检、三策略 smoke、9 次 main、Java SHA-256 MATLAB 调用、实际图导出和新结果段都未执行。当前检查不能证明这些运行时操作已成功。
+main新增导出前`payload_counts.mat`保护九组计数；状态为待导出，不能单独当作完成证明。只有实际完整main及全部结果文件、结束日志经核对，run_main才输出完成报告。
 
-有 MATLAB + Communications Toolbox 的机器上，从项目目录运行：
+本次未在MATLAB执行，因此Communications Toolbox调用、Java哈希的MATLAB运行时、图导出以及新验收函数的运行仍由本地实验验证。旧云端启动记录保存在execution_attempts/，不再是本次代码交付的前提。
+
+## 用户本地命令
 
 ```matlab
-run_dmt_experiment('smoke')
-run_dmt_experiment('main')
+result = run_main;
 ```
 
-默认核对并复用包内 historical smoke 的一次冻结校准。main 成功后才使用该次结果目录根部正式图及英文结果段；preflight_smoke/ 始终不参与正式计数。
+可选预检为`run_smoke`。复核已有正式目录而不重跑：
+
+```matlab
+check = verify_main_results('C:/work/your_main_result_directory');
+```
+
+详细操作见START_HERE.md。数据完整性核对成功不预设Uniform/Loaded必须达标，也不因Fixed16性能失败判定数据无效。
