@@ -1,0 +1,96 @@
+Author-created simplified digital-baseband DMT simulation.
+Command: run_dmt_experiment('smoke')
+Start time (machine local): 2026-11-16 17:12:34
+Results: C:\Users\Lenovo\Documents\MATLAB\BitLoading-ca2635512ec3ebbf56a0039564b7dc14fe637477\EESM5540_DMT_BitLoading\results\20261116_171234_152_smoke_tpd7c9d104_61b7_4cdc_8dd5_ec6456d95ae5
+
+Stage 0: environment and frozen specification.
+PASS | qammod and qamdemod available | observed=1 | expected=1 | tolerance=0
+PASS | Communications Toolbox installed | observed=1 | expected=1 | tolerance=0
+rho_ref = 29.000000 dB (electrical Es / receiver noise variance).
+Initialization: 3072 symbols, 0.003456 s; no payload counted.
+
+Stage 1: noiseless end-to-end and noise-scaling checks.
+PASS | FIR FFT versus analytic response | observed=1.986996825864056e-16 | expected=0 | tolerance=1e-13
+PASS | noiseless LS channel estimate | observed=2.165511283246685e-14 | expected=0 | tolerance=1e-12
+PASS | CP memory coverage (observed NCP >= expected FIR memory) | observed=8 | expected=2 | tolerance=0
+PASS | CP length (samples) | observed=8 | expected=8 | tolerance=0
+PASS | M=4 Hermitian full-matrix residual | observed=0 | expected=0 | tolerance=1e-13
+PASS | M=4 time waveform imaginary residual | observed=0 | expected=0 | tolerance=1e-12
+PASS | M=4 unitary Parseval maximum energy residual | observed=2.842170943040401e-14 | expected=0 | tolerance=1e-10
+PASS | M=4 linear FIR FFT relation residual | observed=5.23691153334427e-16 | expected=0 | tolerance=9.999999999999999e-12
+PASS | M=4 noiseless bit errors | observed=0 | expected=0 | tolerance=0
+PASS | M=4 tested bits | observed=48000 | expected=48000 | tolerance=0
+PASS | M=4 FIR chunk-state continuity residual | observed=6.206335383118183e-16 | expected=0 | tolerance=1e-13
+PASS | M=4 CP tail-copy residual | observed=0 | expected=0 | tolerance=0
+PASS | M=16 Hermitian full-matrix residual | observed=0 | expected=0 | tolerance=1e-13
+PASS | M=16 time waveform imaginary residual | observed=0 | expected=0 | tolerance=1e-12
+PASS | M=16 unitary Parseval maximum energy residual | observed=2.842170943040401e-14 | expected=0 | tolerance=1e-10
+PASS | M=16 linear FIR FFT relation residual | observed=5.900916318210353e-16 | expected=0 | tolerance=9.999999999999999e-12
+PASS | M=16 noiseless bit errors | observed=0 | expected=0 | tolerance=0
+PASS | M=16 tested bits | observed=96000 | expected=96000 | tolerance=0
+PASS | M=16 FIR chunk-state continuity residual | observed=8.881784197001252e-16 | expected=0 | tolerance=1e-13
+PASS | M=16 CP tail-copy residual | observed=0 | expected=0 | tolerance=0
+PASS | M=64 Hermitian full-matrix residual | observed=0 | expected=0 | tolerance=1e-13
+PASS | M=64 time waveform imaginary residual | observed=0 | expected=0 | tolerance=1e-12
+PASS | M=64 unitary Parseval maximum energy residual | observed=2.842170943040401e-14 | expected=0 | tolerance=1e-10
+PASS | M=64 linear FIR FFT relation residual | observed=6.684427777288335e-16 | expected=0 | tolerance=9.999999999999999e-12
+PASS | M=64 noiseless bit errors | observed=0 | expected=0 | tolerance=0
+PASS | M=64 tested bits | observed=144000 | expected=144000 | tolerance=0
+PASS | M=64 FIR chunk-state continuity residual | observed=7.108895957933346e-16 | expected=0 | tolerance=1e-13
+PASS | M=64 CP tail-copy residual | observed=0 | expected=0 | tolerance=0
+PASS | positive FFT complex-noise second moment: max relative error | observed=0.01164777413056317 | expected=0 | tolerance=0.04
+PASS | positive FFT real-noise component: max relative error | observed=0.01830572318089807 | expected=0 | tolerance=0.05
+PASS | positive FFT imag-noise component: max relative error | observed=0.03149952097016695 | expected=0 | tolerance=0.05
+PASS | time real-noise variance relative error | observed=0.001500892818201649 | expected=0 | tolerance=0.01
+PASS | zero-error Wilson lower limit | observed=0 | expected=0 | tolerance=1e-15
+PASS | zero-error Wilson upper limit formula | observed=0.0003840124777665412 | expected=0.0003840124777665412 | tolerance=1e-15
+
+Stage 2: noisy LS block A; independent residual-SNR probe B.
+Measured probe Es/N0 estimate range: 12.144204 to 28.962245 dB.
+
+Stage 3: freeze profiles using probe SNR and 1 dB margin.
+Uniform: B=48 bits/DMT symbol, R_payload=42666666.7 bit/s, M=[4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4]
+Loaded: B=120 bits/DMT symbol, R_payload=106666667 bit/s, M=[64 64 64 64 64 64 64 64 64 64 64 64 64 64 64 16 16 16 16 16 16 4 4 4]
+
+Stage 4: independent 2000-symbol smoke run per scheme.
+smoke Uniform seed=0: 2000/2000 DMT symbols
+smoke Loaded seed=0: 2000/2000 DMT symbols
+PASS | smoke | finite estimated SNR count | observed=24 | expected=24 | tolerance=0
+PASS | smoke | Uniform active independent carriers | observed=24 | expected=24 | tolerance=0
+PASS | smoke | Uniform profile order membership | observed=24 | expected=24 | tolerance=0
+PASS | smoke | Uniform max design BER <= target (approximation + margin) | observed=0.0001545617538261953 | expected=0.001 | tolerance=0
+PASS | smoke | Uniform bit accounting maximum error | observed=0 | expected=0 | tolerance=0
+PASS | smoke | Uniform rate time-accounting error | observed=48 | expected=48 | tolerance=1e-10
+PASS | smoke | Uniform useful energy relative difference (expected 48) | observed=2.220446049250313e-16 | expected=0 | tolerance=0.1
+PASS | smoke | Uniform CP energy relative difference (expected 6) | observed=0.0008963577326073224 | expected=0 | tolerance=0.1
+PASS | smoke | Uniform total energy relative difference (expected 54) | observed=9.959530362335656e-05 | expected=0 | tolerance=0.1
+PASS | smoke | Uniform sample-power relative difference (expected 0.75) | observed=9.959530362313451e-05 | expected=0 | tolerance=0.1
+PASS | smoke | Loaded active independent carriers | observed=24 | expected=24 | tolerance=0
+PASS | smoke | Loaded profile order membership | observed=24 | expected=24 | tolerance=0
+PASS | smoke | Loaded max design BER <= target (approximation + margin) | observed=0.0009860182502014951 | expected=0.001 | tolerance=0
+PASS | smoke | Loaded bit accounting maximum error | observed=0 | expected=0 | tolerance=0
+PASS | smoke | Loaded rate time-accounting error | observed=120 | expected=120 | tolerance=1e-10
+PASS | smoke | Loaded useful energy relative difference (expected 48) | observed=0.002322222222221892 | expected=0 | tolerance=0.1
+PASS | smoke | Loaded CP energy relative difference (expected 6) | observed=0.01069766039303222 | expected=0 | tolerance=0.1
+PASS | smoke | Loaded total energy relative difference (expected 54) | observed=0.003252826463423064 | expected=0 | tolerance=0.1
+PASS | smoke | Loaded sample-power relative difference (expected 0.75) | observed=0.003252826463423175 | expected=0 | tolerance=0.1
+PASS | smoke | common data subcarrier set count | observed=24 | expected=24 | tolerance=0
+PASS | smoke | common constellation-average Es | observed=1 | expected=1 | tolerance=0
+PASS | smoke | common receiver real-noise variance | observed=0.001258925411794167 | expected=0.001258925411794167 | tolerance=1e-17
+PASS | smoke | loaded minus uniform payload bit difference >= 0 | observed=72 | expected=0 | tolerance=0
+Observed loading gain in bits/symbol: 72 (strict gain: 1).
+PASS | smoke | nonempty artifact per_subcarrier_results.csv | observed=1 | expected=1 | tolerance=0
+PASS | smoke | nonempty artifact summary.csv | observed=1 | expected=1 | tolerance=0
+PASS | smoke | nonempty artifact dmt_comparison.png | observed=1 | expected=1 | tolerance=0
+PASS | smoke | nonempty artifact dmt_comparison.pdf | observed=1 | expected=1 | tolerance=0
+PASS | smoke | nonempty artifact dmt_comparison.fig | observed=1 | expected=1 | tolerance=0
+PASS | smoke | nonempty artifact report_notes_zh.md | observed=1 | expected=1 | tolerance=0
+PASS | smoke | nonempty artifact results_paragraph_en.txt | observed=1 | expected=1 | tolerance=0
+PASS | initialization and profiles unchanged after all payloads | observed=1 | expected=1 | tolerance=0
+Completed smoke at 2026-11-16 17:12:49.
+      scheme        B     R_payload     total_tested_bits    total_error_bits    total_BER     worst_subcarrier_BER            statistical_status            mean_useful_energy    mean_CP_energy    mean_including_CP_power    mean_including_CP_symbol_energy    test_symbols    test_duration_s    initialization_symbols    initialization_duration_s    maximum_CI_upper    minimum_CI_lower    more_bits_than_uniform    expected_useful_energy    expected_CP_energy    expected_including_CP_power    expected_including_CP_symbol_energy    useful_energy_relative_difference    CP_energy_relative_difference    total_energy_relative_difference
+    ___________    ___    __________    _________________    ________________    __________    ____________________    __________________________________    __________________    ______________    _______________________    _______________________________    ____________    _______________    ______________________    _________________________    ________________    ________________    ______________________    ______________________    __________________    ___________________________    ___________________________________    _________________________________    _____________________________    ________________________________
+
+    {'Uniform'}     48    4.2667e+07           96000                 0                    0                  0         {'smoke_only_not_formal_evidence'}              48              6.0054                0.75007                        54.005                     2000            0.00225                 3072                     0.003456                0.00095948              0                      0                         48                      6                        0.75                                54                                2.9606e-16                         0.00089636                         9.9595e-05           
+    {'Loaded' }    120    1.0667e+08         2.4e+05                10           4.1667e-05         0.00041667         {'smoke_only_not_formal_evidence'}          47.889              5.9358                0.74756                        53.824                     2000            0.00225                 3072                     0.003456                0.00097511              0                      1                         48                      6                        0.75                                54                                -0.0023222                          -0.010698                         -0.0032528           
+

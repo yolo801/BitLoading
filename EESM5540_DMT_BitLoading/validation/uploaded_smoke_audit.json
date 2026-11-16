@@ -1,0 +1,1314 @@
+{
+  "scope": "Consistency audit of user-uploaded historical MATLAB smoke artifacts; not cloud MATLAB execution or a new simulation.",
+  "cloud_MATLAB_executed": false,
+  "formal_main_completed": false,
+  "original_files_preserved": 14,
+  "original_MATLAB_version": "26.1.0.3346908 (R2026a) Update 5",
+  "old_smoke_summaries": [
+    {
+      "scheme": "Uniform",
+      "scope": "uploaded historical smoke only",
+      "symbols": 2000,
+      "B": 48,
+      "R_payload_bit_s": 42666666.666666664,
+      "tested_bits": 96000,
+      "error_bits": 0,
+      "observed_BER": 0.0,
+      "maximum_Wilson_upper": 0.000959478516832434
+    },
+    {
+      "scheme": "Loaded",
+      "scope": "uploaded historical smoke only",
+      "symbols": 2000,
+      "B": 120,
+      "R_payload_bit_s": 106666666.66666666,
+      "tested_bits": 240000,
+      "error_bits": 10,
+      "observed_BER": 4.1666666666666665e-05,
+      "maximum_Wilson_upper": 0.0009751123360251667
+    }
+  ],
+  "loaded_profile": {
+    "k1_15": 64,
+    "k16_21": 16,
+    "k22_24": 4
+  },
+  "k21_estimated_SNR_dB": 17.55537327652862,
+  "k21_16QAM_BER_design_approximation": 0.0009860182502014951,
+  "fixed16_diagnostic": {
+    "scope": "Approximate predictions from imported gamma_hat, NOT measured BER or main data.",
+    "B": 96,
+    "R_payload_bit_s": 85333333.33333333,
+    "nominal_predicted_above_target_k": [
+      22,
+      23,
+      24
+    ],
+    "design_predicted_above_target_k": [
+      22,
+      23,
+      24
+    ],
+    "measured_BER": null
+  },
+  "mat_read_scope": "Selected numeric structs only; MATLAB table objects were not decoded. Seed mapping CSV lists planned main streams, not proof of main execution.",
+  "checks": [
+    {
+      "name": "fourteen original uploaded files retained",
+      "status": "PASS",
+      "observed": 14,
+      "expected": 14
+    },
+    {
+      "name": "import manifest has unique names",
+      "status": "PASS"
+    },
+    {
+      "name": "original SHA256: dmt_comparison.fig",
+      "status": "PASS"
+    },
+    {
+      "name": "original byte count: dmt_comparison.fig",
+      "status": "PASS"
+    },
+    {
+      "name": "original SHA256: config_snapshot.mat",
+      "status": "PASS"
+    },
+    {
+      "name": "original byte count: config_snapshot.mat",
+      "status": "PASS"
+    },
+    {
+      "name": "original SHA256: dmt_comparison.pdf",
+      "status": "PASS"
+    },
+    {
+      "name": "original byte count: dmt_comparison.pdf",
+      "status": "PASS"
+    },
+    {
+      "name": "original SHA256: environment.txt",
+      "status": "PASS"
+    },
+    {
+      "name": "original byte count: environment.txt",
+      "status": "PASS"
+    },
+    {
+      "name": "original SHA256: initialization.mat",
+      "status": "PASS"
+    },
+    {
+      "name": "original byte count: initialization.mat",
+      "status": "PASS"
+    },
+    {
+      "name": "original SHA256: per_subcarrier_results.csv",
+      "status": "PASS"
+    },
+    {
+      "name": "original byte count: per_subcarrier_results.csv",
+      "status": "PASS"
+    },
+    {
+      "name": "original SHA256: report_notes_zh.md",
+      "status": "PASS"
+    },
+    {
+      "name": "original byte count: report_notes_zh.md",
+      "status": "PASS"
+    },
+    {
+      "name": "original SHA256: results_paragraph_en.txt",
+      "status": "PASS"
+    },
+    {
+      "name": "original byte count: results_paragraph_en.txt",
+      "status": "PASS"
+    },
+    {
+      "name": "original SHA256: run.log",
+      "status": "PASS"
+    },
+    {
+      "name": "original byte count: run.log",
+      "status": "PASS"
+    },
+    {
+      "name": "original SHA256: seed_mapping.csv",
+      "status": "PASS"
+    },
+    {
+      "name": "original byte count: seed_mapping.csv",
+      "status": "PASS"
+    },
+    {
+      "name": "original SHA256: runs_partial.mat",
+      "status": "PASS"
+    },
+    {
+      "name": "original byte count: runs_partial.mat",
+      "status": "PASS"
+    },
+    {
+      "name": "original SHA256: summary.csv",
+      "status": "PASS"
+    },
+    {
+      "name": "original byte count: summary.csv",
+      "status": "PASS"
+    },
+    {
+      "name": "original SHA256: verification_checks.txt",
+      "status": "PASS"
+    },
+    {
+      "name": "original byte count: verification_checks.txt",
+      "status": "PASS"
+    },
+    {
+      "name": "original SHA256: final_results.mat",
+      "status": "PASS"
+    },
+    {
+      "name": "original byte count: final_results.mat",
+      "status": "PASS"
+    },
+    {
+      "name": "cfg key set identical in snapshot and final",
+      "status": "PASS"
+    },
+    {
+      "name": "cfg consistency: specVersion",
+      "status": "PASS"
+    },
+    {
+      "name": "cfg consistency: NFFT",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "cfg consistency: NCP",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "cfg consistency: Fs",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "cfg consistency: k",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "cfg consistency: Es",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "cfg consistency: Mset",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "cfg consistency: h",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "cfg consistency: sigma_w2",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "cfg consistency: rho_ref_dB",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "cfg consistency: targetBER",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "cfg consistency: margin_dB",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "cfg consistency: trainSymbols",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "cfg consistency: probeSymbols",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "cfg consistency: mainSymbols",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "cfg consistency: smokeSymbols",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "cfg consistency: chunkSize",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "cfg consistency: seeds",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "cfg consistency: trainDataSeed",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "cfg consistency: trainNoiseSeed",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "cfg consistency: probeDataSeed",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "cfg consistency: probeNoiseSeed",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "cfg consistency: selfTrainSeed",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "cfg consistency: selfPayloadSeeds",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "cfg consistency: selfNoiseSeed",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "cfg consistency: streamType",
+      "status": "PASS"
+    },
+    {
+      "name": "cfg consistency: mainSeedBase",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "cfg consistency: smokeSeedBase",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "cfg consistency: Tu",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "cfg consistency: TCP",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "cfg consistency: Ts",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "cfg consistency: expectedUsefulEnergy",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "cfg consistency: expectedPower",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "cfg consistency: expectedCPEnergy",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "cfg consistency: expectedTotalEnergy",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "cfg consistency: runMode",
+      "status": "PASS"
+    },
+    {
+      "name": "cfg consistency: command",
+      "status": "PASS"
+    },
+    {
+      "name": "cfg consistency: startedAt",
+      "status": "PASS"
+    },
+    {
+      "name": "cfg consistency: MATLABVersion",
+      "status": "PASS"
+    },
+    {
+      "name": "cfg consistency: MATLABRelease",
+      "status": "PASS"
+    },
+    {
+      "name": "cfg consistency: computer",
+      "status": "PASS"
+    },
+    {
+      "name": "uploaded run mode is smoke, not main",
+      "status": "PASS",
+      "observed": "smoke",
+      "expected": "smoke"
+    },
+    {
+      "name": "command is smoke",
+      "status": "PASS"
+    },
+    {
+      "name": "frozen physical/config field: NFFT",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "frozen physical/config field: NCP",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "frozen physical/config field: Fs",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "frozen physical/config field: Es",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "frozen physical/config field: sigma_w2",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "frozen physical/config field: targetBER",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "frozen physical/config field: margin_dB",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "frozen physical/config field: trainSymbols",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "frozen physical/config field: probeSymbols",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "frozen physical/config field: mainSymbols",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "frozen physical/config field: smokeSymbols",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "frozen physical/config field: chunkSize",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "independent active carriers",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 0
+    },
+    {
+      "name": "FIR coefficients",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 0
+    },
+    {
+      "name": "formal seed labels are only a schedule",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 0
+    },
+    {
+      "name": "QAM set",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 0
+    },
+    {
+      "name": "calibration shape/finite: H_hat",
+      "status": "PASS"
+    },
+    {
+      "name": "unchanged calibration in final: H_hat",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 0
+    },
+    {
+      "name": "calibration shape/finite: gamma_hat",
+      "status": "PASS"
+    },
+    {
+      "name": "unchanged calibration in final: gamma_hat",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 0
+    },
+    {
+      "name": "calibration shape/finite: gamma_hat_dB",
+      "status": "PASS"
+    },
+    {
+      "name": "unchanged calibration in final: gamma_hat_dB",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 0
+    },
+    {
+      "name": "calibration shape/finite: probeSignalSum",
+      "status": "PASS"
+    },
+    {
+      "name": "unchanged calibration in final: probeSignalSum",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 0
+    },
+    {
+      "name": "calibration shape/finite: probeResidualSum",
+      "status": "PASS"
+    },
+    {
+      "name": "unchanged calibration in final: probeResidualSum",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 0
+    },
+    {
+      "name": "calibration shape/finite: trainingDenominator",
+      "status": "PASS"
+    },
+    {
+      "name": "unchanged calibration in final: trainingDenominator",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 0
+    },
+    {
+      "name": "calibration shape/finite: H_true",
+      "status": "PASS"
+    },
+    {
+      "name": "unchanged calibration in final: H_true",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 0
+    },
+    {
+      "name": "calibration shape/finite: gamma_true_dB",
+      "status": "PASS"
+    },
+    {
+      "name": "unchanged calibration in final: gamma_true_dB",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 0
+    },
+    {
+      "name": "residual SNR reconstructed from independent probe sums",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-10
+    },
+    {
+      "name": "SNR dB reconstructed",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "probe QPSK signal counts",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 0
+    },
+    {
+      "name": "LS QPSK denominators",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 0
+    },
+    {
+      "name": "saved diagnostic H_true vs FIR FFT",
+      "status": "PASS",
+      "observed": 1.1443916996305594e-16,
+      "expected": 0,
+      "tolerance": 1e-14
+    },
+    {
+      "name": "saved diagnostic SNR vs FIR",
+      "status": "PASS",
+      "observed": 3.552713678800501e-15,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "every carrier feasible at QPSK",
+      "status": "PASS"
+    },
+    {
+      "name": "stored conservative gamma_eff",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-10
+    },
+    {
+      "name": "stored conservative BER approximation",
+      "status": "PASS",
+      "observed": 3.469446951953614e-18,
+      "expected": 0,
+      "tolerance": 1e-14
+    },
+    {
+      "name": "only original Uniform and Loaded profiles",
+      "status": "PASS"
+    },
+    {
+      "name": "Uniform regenerated from saved estimated SNR",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 0
+    },
+    {
+      "name": "Uniform B from independent carriers",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 0
+    },
+    {
+      "name": "Uniform bit grouping per carrier",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 0
+    },
+    {
+      "name": "Uniform rate from B/Ts",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-07
+    },
+    {
+      "name": "Uniform profile frozen in final: name",
+      "status": "PASS"
+    },
+    {
+      "name": "Uniform profile frozen in final: M",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 0
+    },
+    {
+      "name": "Uniform profile frozen in final: bits_per_symbol",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 0
+    },
+    {
+      "name": "Uniform profile frozen in final: B",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 0
+    },
+    {
+      "name": "Uniform profile frozen in final: R_payload",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 0
+    },
+    {
+      "name": "Loaded regenerated from saved estimated SNR",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 0
+    },
+    {
+      "name": "Loaded B from independent carriers",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 0
+    },
+    {
+      "name": "Loaded bit grouping per carrier",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 0
+    },
+    {
+      "name": "Loaded rate from B/Ts",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-07
+    },
+    {
+      "name": "Loaded profile frozen in final: name",
+      "status": "PASS"
+    },
+    {
+      "name": "Loaded profile frozen in final: M",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 0
+    },
+    {
+      "name": "Loaded profile frozen in final: bits_per_symbol",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 0
+    },
+    {
+      "name": "Loaded profile frozen in final: B",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 0
+    },
+    {
+      "name": "Loaded profile frozen in final: R_payload",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 0
+    },
+    {
+      "name": "old mixed CSV has 96 rows",
+      "status": "PASS",
+      "observed": 96,
+      "expected": 96
+    },
+    {
+      "name": "old CSV contains only seed0 and pooled",
+      "status": "PASS"
+    },
+    {
+      "name": "Uniform has 24 unique carriers per layer",
+      "status": "PASS"
+    },
+    {
+      "name": "Uniform seed and pooled represent same data, never summed together",
+      "status": "PASS"
+    },
+    {
+      "name": "Uniform tested bits from symbols x modulation",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 0
+    },
+    {
+      "name": "Uniform CSV estimated SNR",
+      "status": "PASS",
+      "observed": 4.973799150320701e-14,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "Uniform CSV modulation",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 0
+    },
+    {
+      "name": "Uniform CSV BER from counts",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-15
+    },
+    {
+      "name": "Uniform CSV Wilson lower bounds",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-15
+    },
+    {
+      "name": "Uniform CSV Wilson upper bounds",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-15
+    },
+    {
+      "name": "Uniform runs is a 2000-symbol smoke run",
+      "status": "PASS"
+    },
+    {
+      "name": "Uniform runs bit counts",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 0
+    },
+    {
+      "name": "Uniform runs errors",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 0
+    },
+    {
+      "name": "Uniform smokeRuns is a 2000-symbol smoke run",
+      "status": "PASS"
+    },
+    {
+      "name": "Uniform smokeRuns bit counts",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 0
+    },
+    {
+      "name": "Uniform smokeRuns errors",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 0
+    },
+    {
+      "name": "Uniform checkpoint is a 2000-symbol smoke run",
+      "status": "PASS"
+    },
+    {
+      "name": "Uniform checkpoint bit counts",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 0
+    },
+    {
+      "name": "Uniform checkpoint errors",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 0
+    },
+    {
+      "name": "Uniform summary bits (one layer only)",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 0
+    },
+    {
+      "name": "Uniform summary errors",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 0
+    },
+    {
+      "name": "Uniform weighted total BER",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-15
+    },
+    {
+      "name": "Uniform summary worst carrier BER",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-15
+    },
+    {
+      "name": "Uniform summary maximum upper bound",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-15
+    },
+    {
+      "name": "Uniform summary remains smoke-only evidence",
+      "status": "PASS"
+    },
+    {
+      "name": "Uniform summary consistency: B",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "Uniform summary consistency: R_payload",
+      "status": "PASS",
+      "observed": 3.725290298461914e-08,
+      "expected": 0,
+      "tolerance": 4.266666666666666e-07
+    },
+    {
+      "name": "Uniform summary consistency: test_symbols",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 2e-11
+    },
+    {
+      "name": "Uniform summary consistency: test_duration_s",
+      "status": "PASS",
+      "observed": 4.336808689942018e-19,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "Uniform summary consistency: initialization_symbols",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 3.072e-11
+    },
+    {
+      "name": "Uniform summary consistency: initialization_duration_s",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "Uniform summary consistency: mean_useful_energy",
+      "status": "PASS",
+      "observed": 1.4210854715202004e-14,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "Uniform summary consistency: mean_CP_energy",
+      "status": "PASS",
+      "observed": 3.552713678800501e-15,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "Uniform summary consistency: mean_including_CP_power",
+      "status": "PASS",
+      "observed": 4.440892098500626e-16,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "Uniform summary consistency: mean_including_CP_symbol_energy",
+      "status": "PASS",
+      "observed": 4.263256414560601e-14,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "Loaded has 24 unique carriers per layer",
+      "status": "PASS"
+    },
+    {
+      "name": "Loaded seed and pooled represent same data, never summed together",
+      "status": "PASS"
+    },
+    {
+      "name": "Loaded tested bits from symbols x modulation",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 0
+    },
+    {
+      "name": "Loaded CSV estimated SNR",
+      "status": "PASS",
+      "observed": 4.973799150320701e-14,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "Loaded CSV modulation",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 0
+    },
+    {
+      "name": "Loaded CSV BER from counts",
+      "status": "PASS",
+      "observed": 3.5236570605778894e-19,
+      "expected": 0,
+      "tolerance": 1e-15
+    },
+    {
+      "name": "Loaded CSV Wilson lower bounds",
+      "status": "PASS",
+      "observed": 4.0657581468206416e-19,
+      "expected": 0,
+      "tolerance": 1e-15
+    },
+    {
+      "name": "Loaded CSV Wilson upper bounds",
+      "status": "PASS",
+      "observed": 4.336808689942018e-19,
+      "expected": 0,
+      "tolerance": 1e-15
+    },
+    {
+      "name": "Loaded runs is a 2000-symbol smoke run",
+      "status": "PASS"
+    },
+    {
+      "name": "Loaded runs bit counts",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 0
+    },
+    {
+      "name": "Loaded runs errors",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 0
+    },
+    {
+      "name": "Loaded smokeRuns is a 2000-symbol smoke run",
+      "status": "PASS"
+    },
+    {
+      "name": "Loaded smokeRuns bit counts",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 0
+    },
+    {
+      "name": "Loaded smokeRuns errors",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 0
+    },
+    {
+      "name": "Loaded checkpoint is a 2000-symbol smoke run",
+      "status": "PASS"
+    },
+    {
+      "name": "Loaded checkpoint bit counts",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 0
+    },
+    {
+      "name": "Loaded checkpoint errors",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 0
+    },
+    {
+      "name": "Loaded summary bits (one layer only)",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 0
+    },
+    {
+      "name": "Loaded summary errors",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 0
+    },
+    {
+      "name": "Loaded weighted total BER",
+      "status": "PASS",
+      "observed": 3.3881317890172014e-20,
+      "expected": 0,
+      "tolerance": 1e-15
+    },
+    {
+      "name": "Loaded summary worst carrier BER",
+      "status": "PASS",
+      "observed": 3.2526065174565133e-19,
+      "expected": 0,
+      "tolerance": 1e-15
+    },
+    {
+      "name": "Loaded summary maximum upper bound",
+      "status": "PASS",
+      "observed": 3.2526065174565133e-19,
+      "expected": 0,
+      "tolerance": 1e-15
+    },
+    {
+      "name": "Loaded summary remains smoke-only evidence",
+      "status": "PASS"
+    },
+    {
+      "name": "Loaded summary consistency: B",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1.2e-12
+    },
+    {
+      "name": "Loaded summary consistency: R_payload",
+      "status": "PASS",
+      "observed": 3.427267074584961e-07,
+      "expected": 0,
+      "tolerance": 1.0666666666666665e-06
+    },
+    {
+      "name": "Loaded summary consistency: test_symbols",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 2e-11
+    },
+    {
+      "name": "Loaded summary consistency: test_duration_s",
+      "status": "PASS",
+      "observed": 4.336808689942018e-19,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "Loaded summary consistency: initialization_symbols",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 3.072e-11
+    },
+    {
+      "name": "Loaded summary consistency: initialization_duration_s",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "Loaded summary consistency: mean_useful_energy",
+      "status": "PASS",
+      "observed": 4.973799150320701e-14,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "Loaded summary consistency: mean_CP_energy",
+      "status": "PASS",
+      "observed": 3.552713678800501e-15,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "Loaded summary consistency: mean_including_CP_power",
+      "status": "PASS",
+      "observed": 3.3306690738754696e-16,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "Loaded summary consistency: mean_including_CP_symbol_energy",
+      "status": "PASS",
+      "observed": 4.263256414560601e-14,
+      "expected": 0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "preserved stream mapping smoke Uniform 0",
+      "status": "PASS"
+    },
+    {
+      "name": "preserved stream mapping smoke Loaded 0",
+      "status": "PASS"
+    },
+    {
+      "name": "preserved stream mapping main Uniform 11",
+      "status": "PASS"
+    },
+    {
+      "name": "preserved stream mapping main Uniform 22",
+      "status": "PASS"
+    },
+    {
+      "name": "preserved stream mapping main Uniform 33",
+      "status": "PASS"
+    },
+    {
+      "name": "preserved stream mapping main Loaded 11",
+      "status": "PASS"
+    },
+    {
+      "name": "preserved stream mapping main Loaded 22",
+      "status": "PASS"
+    },
+    {
+      "name": "preserved stream mapping main Loaded 33",
+      "status": "PASS"
+    },
+    {
+      "name": "all recorded streams unique",
+      "status": "PASS"
+    }
+  ],
+  "passed_checks": 211,
+  "failed_checks": 0
+}

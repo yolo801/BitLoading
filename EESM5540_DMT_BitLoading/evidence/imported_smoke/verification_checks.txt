@@ -1,0 +1,67 @@
+PASS | qammod and qamdemod available | observed=1 | expected=1 | tolerance=0
+PASS | Communications Toolbox installed | observed=1 | expected=1 | tolerance=0
+PASS | FIR FFT versus analytic response | observed=1.986996825864056e-16 | expected=0 | tolerance=1e-13
+PASS | noiseless LS channel estimate | observed=2.165511283246685e-14 | expected=0 | tolerance=1e-12
+PASS | CP memory coverage (observed NCP >= expected FIR memory) | observed=8 | expected=2 | tolerance=0
+PASS | CP length (samples) | observed=8 | expected=8 | tolerance=0
+PASS | M=4 Hermitian full-matrix residual | observed=0 | expected=0 | tolerance=1e-13
+PASS | M=4 time waveform imaginary residual | observed=0 | expected=0 | tolerance=1e-12
+PASS | M=4 unitary Parseval maximum energy residual | observed=2.842170943040401e-14 | expected=0 | tolerance=1e-10
+PASS | M=4 linear FIR FFT relation residual | observed=5.23691153334427e-16 | expected=0 | tolerance=9.999999999999999e-12
+PASS | M=4 noiseless bit errors | observed=0 | expected=0 | tolerance=0
+PASS | M=4 tested bits | observed=48000 | expected=48000 | tolerance=0
+PASS | M=4 FIR chunk-state continuity residual | observed=6.206335383118183e-16 | expected=0 | tolerance=1e-13
+PASS | M=4 CP tail-copy residual | observed=0 | expected=0 | tolerance=0
+PASS | M=16 Hermitian full-matrix residual | observed=0 | expected=0 | tolerance=1e-13
+PASS | M=16 time waveform imaginary residual | observed=0 | expected=0 | tolerance=1e-12
+PASS | M=16 unitary Parseval maximum energy residual | observed=2.842170943040401e-14 | expected=0 | tolerance=1e-10
+PASS | M=16 linear FIR FFT relation residual | observed=5.900916318210353e-16 | expected=0 | tolerance=9.999999999999999e-12
+PASS | M=16 noiseless bit errors | observed=0 | expected=0 | tolerance=0
+PASS | M=16 tested bits | observed=96000 | expected=96000 | tolerance=0
+PASS | M=16 FIR chunk-state continuity residual | observed=8.881784197001252e-16 | expected=0 | tolerance=1e-13
+PASS | M=16 CP tail-copy residual | observed=0 | expected=0 | tolerance=0
+PASS | M=64 Hermitian full-matrix residual | observed=0 | expected=0 | tolerance=1e-13
+PASS | M=64 time waveform imaginary residual | observed=0 | expected=0 | tolerance=1e-12
+PASS | M=64 unitary Parseval maximum energy residual | observed=2.842170943040401e-14 | expected=0 | tolerance=1e-10
+PASS | M=64 linear FIR FFT relation residual | observed=6.684427777288335e-16 | expected=0 | tolerance=9.999999999999999e-12
+PASS | M=64 noiseless bit errors | observed=0 | expected=0 | tolerance=0
+PASS | M=64 tested bits | observed=144000 | expected=144000 | tolerance=0
+PASS | M=64 FIR chunk-state continuity residual | observed=7.108895957933346e-16 | expected=0 | tolerance=1e-13
+PASS | M=64 CP tail-copy residual | observed=0 | expected=0 | tolerance=0
+PASS | positive FFT complex-noise second moment: max relative error | observed=0.01164777413056317 | expected=0 | tolerance=0.04
+PASS | positive FFT real-noise component: max relative error | observed=0.01830572318089807 | expected=0 | tolerance=0.05
+PASS | positive FFT imag-noise component: max relative error | observed=0.03149952097016695 | expected=0 | tolerance=0.05
+PASS | time real-noise variance relative error | observed=0.001500892818201649 | expected=0 | tolerance=0.01
+PASS | zero-error Wilson lower limit | observed=0 | expected=0 | tolerance=1e-15
+PASS | zero-error Wilson upper limit formula | observed=0.0003840124777665412 | expected=0.0003840124777665412 | tolerance=1e-15
+PASS | smoke | finite estimated SNR count | observed=24 | expected=24 | tolerance=0
+PASS | smoke | Uniform active independent carriers | observed=24 | expected=24 | tolerance=0
+PASS | smoke | Uniform profile order membership | observed=24 | expected=24 | tolerance=0
+PASS | smoke | Uniform max design BER <= target (approximation + margin) | observed=0.0001545617538261953 | expected=0.001 | tolerance=0
+PASS | smoke | Uniform bit accounting maximum error | observed=0 | expected=0 | tolerance=0
+PASS | smoke | Uniform rate time-accounting error | observed=48 | expected=48 | tolerance=1e-10
+PASS | smoke | Uniform useful energy relative difference (expected 48) | observed=2.220446049250313e-16 | expected=0 | tolerance=0.1
+PASS | smoke | Uniform CP energy relative difference (expected 6) | observed=0.0008963577326073224 | expected=0 | tolerance=0.1
+PASS | smoke | Uniform total energy relative difference (expected 54) | observed=9.959530362335656e-05 | expected=0 | tolerance=0.1
+PASS | smoke | Uniform sample-power relative difference (expected 0.75) | observed=9.959530362313451e-05 | expected=0 | tolerance=0.1
+PASS | smoke | Loaded active independent carriers | observed=24 | expected=24 | tolerance=0
+PASS | smoke | Loaded profile order membership | observed=24 | expected=24 | tolerance=0
+PASS | smoke | Loaded max design BER <= target (approximation + margin) | observed=0.0009860182502014951 | expected=0.001 | tolerance=0
+PASS | smoke | Loaded bit accounting maximum error | observed=0 | expected=0 | tolerance=0
+PASS | smoke | Loaded rate time-accounting error | observed=120 | expected=120 | tolerance=1e-10
+PASS | smoke | Loaded useful energy relative difference (expected 48) | observed=0.002322222222221892 | expected=0 | tolerance=0.1
+PASS | smoke | Loaded CP energy relative difference (expected 6) | observed=0.01069766039303222 | expected=0 | tolerance=0.1
+PASS | smoke | Loaded total energy relative difference (expected 54) | observed=0.003252826463423064 | expected=0 | tolerance=0.1
+PASS | smoke | Loaded sample-power relative difference (expected 0.75) | observed=0.003252826463423175 | expected=0 | tolerance=0.1
+PASS | smoke | common data subcarrier set count | observed=24 | expected=24 | tolerance=0
+PASS | smoke | common constellation-average Es | observed=1 | expected=1 | tolerance=0
+PASS | smoke | common receiver real-noise variance | observed=0.001258925411794167 | expected=0.001258925411794167 | tolerance=1e-17
+PASS | smoke | loaded minus uniform payload bit difference >= 0 | observed=72 | expected=0 | tolerance=0
+PASS | smoke | nonempty artifact per_subcarrier_results.csv | observed=1 | expected=1 | tolerance=0
+PASS | smoke | nonempty artifact summary.csv | observed=1 | expected=1 | tolerance=0
+PASS | smoke | nonempty artifact dmt_comparison.png | observed=1 | expected=1 | tolerance=0
+PASS | smoke | nonempty artifact dmt_comparison.pdf | observed=1 | expected=1 | tolerance=0
+PASS | smoke | nonempty artifact dmt_comparison.fig | observed=1 | expected=1 | tolerance=0
+PASS | smoke | nonempty artifact report_notes_zh.md | observed=1 | expected=1 | tolerance=0
+PASS | smoke | nonempty artifact results_paragraph_en.txt | observed=1 | expected=1 | tolerance=0
+PASS | initialization and profiles unchanged after all payloads | observed=1 | expected=1 | tolerance=0

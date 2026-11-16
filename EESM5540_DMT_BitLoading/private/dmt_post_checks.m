@@ -6,10 +6,25 @@ for s = 1:numel(profiles)
     record([p.name ' active independent carriers'],numel(p.M),24,0);
     record([p.name ' profile order membership'],sum(ismember(p.M,cfg.Mset)),24,0);
     predicted = dmt_qam_ber(p.M,calibration.gamma_hat/10^(cfg.margin_dB/10));
-    record([p.name ' max design BER <= target (approximation + margin)'], ...
-        max(predicted),cfg.targetBER,0,max(predicted)<=cfg.targetBER);
+    if strcmp(p.name,'Fixed16')
+        dmt_log_info(outDir,sprintf(['Fixed16 diagnostic max BER_design=%.16g; ' ...
+            'target=%.16g; target failure is NOT an implementation failure.'], ...
+            max(predicted),cfg.targetBER));
+    else
+        record([p.name ' max design BER <= target (approximation + margin)'], ...
+            max(predicted),cfg.targetBER,0,max(predicted)<=cfg.targetBER);
+    end
     selected = runs(strcmp({runs.scheme},p.name));
     symbols = sum([selected.symbols]);
+    expectedSymbols = cfg.smokeSymbols;
+    expectedLabels = 0;
+    if strcmp(phase,'main')
+        expectedSymbols = cfg.mainSymbols*numel(cfg.seeds);
+        expectedLabels = cfg.seeds;
+    end
+    record([p.name ' payload symbol count (no smoke/init)'],symbols,expectedSymbols,0);
+    record([p.name ' unique seed labels'], ...
+        double(isequal(sort([selected.seed]),sort(expectedLabels))),1,0);
     tested = sum(cat(2,selected.tested_bits),2);
     record([p.name ' bit accounting maximum error'], ...
         max(abs(tested-symbols*p.bits_per_symbol)),0,0);

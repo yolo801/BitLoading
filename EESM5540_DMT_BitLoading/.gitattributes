@@ -1,0 +1,5 @@
+# Historical MATLAB artifacts are byte-preserved, including CRLF/log spacing.
+evidence/imported_smoke/* -text -diff
+# These two files are new archive metadata, not historical outputs.
+evidence/imported_smoke/README.md text eol=lf diff
+evidence/imported_smoke/import_manifest.csv text eol=lf diff

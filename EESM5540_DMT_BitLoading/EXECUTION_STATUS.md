@@ -1,27 +1,37 @@
-# 执行状态
+# v1.1 执行状态
 
-**未在 MATLAB 执行。**
+**当前云端 v1.1 未在 MATLAB 执行，未完成 main。** 这不代表没有真实MATLAB数据：用户已上传本地历史smoke输出，保存在evidence/imported_smoke/。当前云端无可用MATLAB，不能调用Communications Toolbox或完成三策略正式统计。
 
-当前云环境的可执行文件检查未找到 `matlab` 或 `octave`。因此，本次不能调用 Communications Toolbox 的 `qammod/qamdemod`，不能验证 MATLAB 运行兼容性，也不能完成真实 smoke 或 3 × 100000 符号/方案的正式 Monte Carlo 统计。
+## 已有真实结果：仅历史 smoke
 
-仓库提供实现与运行说明。基础链路测试、正式 BER、Wilson 区间、实际 profile、实际能量、载荷速率、PNG/PDF/FIG 结果图和数据驱动英文结果段，必须由真实 MATLAB 运行产生。任何静态检查或独立公式核对只证明其各自检查的内容，不是 MATLAB 实验已执行的证据。
+配置及完成日志为smoke，每方案2000载荷DMT符号。旧CSV的seed=0与pooled是同一批数据，不重复累计：
 
-## 已完成的非 MATLAB 检查
+| 策略 | B，bits/DMT symbol | R_payload，Mbit/s | 观察误码 / 测试比特 | 观察 BER |
+| --- | ---: | ---: | ---: | ---: |
+| Uniform | 48 | 42.6667 | 0 / 96000 | 0 observed |
+| Loaded | 120 | 106.6667 | 10 / 240000 | 4.1667e-5 |
+| Fixed16 | 定义为96 | 计数速率85.3333 | 尚未运行 | 尚无结果 |
 
-- MISS_HIT 0.9.44 对全部 16 个 `.m` 文件的语法/静态检查通过，退出码 0。
-- `python3 tools/verify_implementation.py` 的 75 项独立公式及源码约定诊断通过，退出码 0。
-- 独立 Python 诊断中的线性 FIR/CP/FFT 恒等式最大残差约 `7.02e-16`，单位酉 Parseval 残差约 `5.68e-14`；这些不是 MATLAB 收发机的实测误差。
-- 项目新增文本的尾随空格、结尾换行及 `git diff --check` 检查通过。
+Fixed16的B/速率是由策略定义推得的量，不是测量。历史Loaded为64-QAM k1:15、16-QAM k16:21、QPSK k22:24；k21约17.5554dB，在边界附近，120而非解析诊断118不代表错误。120/48比率2.5，不能据smoke宣称正式性能优势。
 
-实际命令与范围见 [validation/commands_and_scope.md](validation/commands_and_scope.md)，完整诊断值与容差见 [validation/python_diagnostics.txt](validation/python_diagnostics.txt)。没有用这些检查替代 MATLAB smoke 或正式 Monte Carlo。
+上传数据一致性复核见validation/uploaded_smoke_audit.md及.json：211项检查通过，包括14个原文件的字节哈希、配置/profile、统计层级及计数。这是读取已有真实MATLAB输出的Python检查，不执行MATLAB，不生成新正式BER。evidence/imported_smoke/import_manifest.csv记录原上传ID、字节数和SHA-256。
 
-当前没有可以据此声称“Loaded 在目标 BER 内优于 Uniform”的测量结论。README 中的 118/48 bits、理论速率、SNR 与能量参考均为明确标记的解析诊断，不是实验数据；实际加载规则可能在靠近边界的子载波上给出不同结果。
+## 本次代码与证据范围
+
+协议v1.1保留物理规格v1.0，增加Fixed16诊断、历史校准验证/复用、独立seed/pooled文件、design/nominal预测区分、代码SHA-256与冻结标识、显式白底论文图和main-only英文结果段。源码有限审计见docs/AUDIT_v1_1.md。
+
+validation/保存实际静态/独立Python检查及命令。它们不等于新MATLAB链路自检通过，不验证当前QAM许可、运行时API、图导出或正式BER。没有为v1.1预制虚构CSV、MATLAB PASS日志、main图、执行时间或英文结果数字。
+
+本次实际检查退出码均为0：21个MATLAB文件通过MISS_HIT静态检查，75项独立公式/源码诊断通过，211项上传历史smoke一致性检查通过。`validation/source_manifest_v1_1.csv`记录23个交付源码文件的实际SHA-256和字节数；这是文件检查，不是MATLAB运行记录。完整命令见`validation/commands_and_scope.md`。
+
+停在的步骤：**完成代码与可执行说明，但缺少MATLAB，尚未运行v1.1基础自检、三策略smoke及main**。历史文件保持原字节；新三策略正式汇总仍待执行。
 
 ## 在有 MATLAB 的机器继续
 
-1. 确认安装 MATLAB（目标 R2026a）与 Communications Toolbox，并有可用许可。
-2. 在项目目录运行 `run_dmt_experiment('smoke')`，检查新结果目录中的逐项自检、计数、表格和图；失败时保留原目录并诊断。
-3. 运行 `run_dmt_experiment('main')`。入口再次进行校准、自检和 smoke，冻结 profile 后执行两方案各 3 个固定 seed 的正式测试。不要根据初步 BER 更换种子、参数或样本数。
-4. 依据该次目录的 `summary.csv` 与 pooled 子载波 Wilson 区间给出结论，并使用该次自动生成的图和说明；将这份状态说明与实际运行目录的日志一并保留，以免混淆本次云端未执行和后续本地执行。
+1. 安装并许可MATLAB（目标R2026a）及Communications Toolbox，正常JVM模式启动。
+2. 在项目目录运行 `run_dmt_experiment('smoke')`，默认验证并复用evidence/imported_smoke/的冻结校准，检查三策略程序和输出。
+3. 执行 `run_dmt_experiment('main')`：先自检与冻结校准核对，再三策略各3个固定种子×100000符号；内部smoke计数独立。
+4. 如需重算核对，执行 `run_dmt_experiment('main','CalibrationMode','recompute','CalibrationDirectory','C:/path/to/old_smoke')`；保持旧种子，保存值须在容差内一致，profile完全一致，不匹配停止诊断。
+5. 用该次per_subcarrier_pooled.csv及summary.csv判断U/L证据和Fixed16状态；仅完整main后使用当次正式图、英文段落和图注，不复用历史smoke数字。
 
-完整命令、模型边界、随机流映射及输出说明见 [README.md](README.md)。未执行前，不创建含虚构数字的结果表、图或论文结果段。
+完整命令和模型边界见README.md。本状态说明保留以区分交付时云端未执行、历史本地smoke和后续真实main。

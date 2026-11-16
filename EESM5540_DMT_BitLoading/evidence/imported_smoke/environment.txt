@@ -1,0 +1,11 @@
+Command: run_dmt_experiment('smoke')
+UTC start: 2026-11-16 09:12:34 +0000
+MATLAB: 26.1.0.3346908 (R2026a) Update 5 (2026a)
+Computer: PCWIN64
+Toolbox: Communications Toolbox | 26.1
+Toolbox: DSP System Toolbox | 26.1
+Toolbox: Deep Learning Toolbox | 26.1
+Toolbox: MATLAB | 26.1
+Toolbox: Phased Array System Toolbox | 26.1
+Toolbox: Signal Processing Toolbox | 26.1
+Stream: mt19937ar; see seed_mapping.csv for independent stream mapping.

@@ -1,6 +1,7 @@
 function cfg = dmt_default_config()
-%DMT_DEFAULT_CONFIG Frozen teaching experiment v1.0; no fitted parameters.
+%DMT_DEFAULT_CONFIG Physical spec v1.0; execution protocol v1.1.
 cfg.specVersion = '1.0';
+cfg.protocolVersion = '1.1';
 cfg.NFFT = 64;
 cfg.NCP = 8;
 cfg.Fs = 64e6;

@@ -10,7 +10,7 @@ diagnostics.gamma_eff = gammaEff;
 diagnostics.predictedBER = predictedBER;
 diagnostics.infeasible_k = cfg.k(~allowed(:,1));
 feasible = isempty(diagnostics.infeasible_k);
-profiles = struct('name',{},'M',{},'bits_per_symbol',{},'B',{},'R_payload',{});
+profiles = struct('name',{},'M',{},'bits_per_symbol',{},'B',{},'R_payload',{},'role',{});
 if ~feasible
     return; % Never silently deactivate tones or redistribute energy.
 end
@@ -19,13 +19,17 @@ for c = 1:numel(cfg.k)
     loaded(c) = max(cfg.Mset(allowed(c,:)));
 end
 uniformM = max(cfg.Mset(all(allowed,1)));
-names = {'Uniform','Loaded'};
-orders = {uniformM*ones(numel(cfg.k),1),loaded};
-for j = 1:2
+names = {'Uniform','Loaded','Fixed16'};
+roles = {'formal_baseline','formal_loaded','diagnostic'};
+orders = {uniformM*ones(numel(cfg.k),1),loaded,16*ones(numel(cfg.k),1)};
+for j = 1:numel(names)
     profiles(j).name = names{j};
     profiles(j).M = orders{j};
     profiles(j).bits_per_symbol = log2(orders{j});
     profiles(j).B = sum(profiles(j).bits_per_symbol);
     profiles(j).R_payload = profiles(j).B/cfg.Ts;
+    profiles(j).role = roles{j};
 end
+diagnostics.BER_design = predictedBER;
+diagnostics.Mset = cfg.Mset;
 end

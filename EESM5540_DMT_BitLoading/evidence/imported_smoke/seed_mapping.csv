@@ -1,0 +1,16 @@
+stage,scheme,label,dataSeed,noiseSeed
+self_train,initialization,NaN,1601,NaN
+self_QPSK,initialization,NaN,1611,NaN
+self_16QAM,initialization,NaN,1612,NaN
+self_64QAM,initialization,NaN,1613,NaN
+self_noise_variance,initialization,NaN,NaN,1609
+calibration_A,initialization,NaN,1701,2701
+probe_B,initialization,NaN,1702,2702
+smoke,Uniform,0,301001,301002
+smoke,Loaded,0,302001,302002
+main,Uniform,11,101111,101112
+main,Uniform,22,101221,101222
+main,Uniform,33,101331,101332
+main,Loaded,11,102111,102112
+main,Loaded,22,102221,102222
+main,Loaded,33,102331,102332

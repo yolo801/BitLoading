@@ -17,8 +17,8 @@ for phase = 1:2
         labels = cfg.seeds;
         phaseName = "main";
     end
-    for s = 1:2
-        names = ["Uniform" "Loaded"];
+    names = ["Uniform" "Loaded" "Fixed16"];
+    for s = 1:numel(names)
         for tag = labels
             stage(end+1,1) = phaseName; %#ok<AGROW>
             scheme(end+1,1) = names(s); %#ok<AGROW>

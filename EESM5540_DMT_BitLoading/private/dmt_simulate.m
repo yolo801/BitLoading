@@ -8,6 +8,8 @@ else
     nSymbols = cfg.smokeSymbols;
 end
 run.scheme = profile.name;
+run.started_utc = char(datetime('now','TimeZone','UTC','Format','yyyy-MM-dd HH:mm:ss Z'));
+runTimer = tic;
 run.seed = seedLabel;
 run.phase = phase;
 run.data_seed = base+1000*schemeIndex+10*seedLabel+1;
@@ -34,10 +36,13 @@ while run.symbols < nSymbols
     run.cp_energy_sum = run.cp_energy_sum+stats.cp_energy_sum;
     run.total_energy_sum = run.total_energy_sum+stats.total_energy_sum;
     if mod(run.symbols,20000) == 0 || run.symbols == nSymbols
-        fprintf('%s %s seed=%d: %d/%d DMT symbols\n', ...
-            phase,profile.name,seedLabel,run.symbols,nSymbols);
+        fprintf('%s | %s %s seed=%d: %d/%d DMT symbols; elapsed %.3f s\n', ...
+            char(datetime('now','TimeZone','UTC','Format','yyyy-MM-dd HH:mm:ss Z')), ...
+            phase,profile.name,seedLabel,run.symbols,nSymbols,toc(runTimer));
     end
 end
 assert(all(run.tested_bits == nSymbols*profile.bits_per_symbol));
 assert(all(run.error_bits >= 0 & run.error_bits <= run.tested_bits));
+run.elapsed_seconds = toc(runTimer);
+run.signal_duration_s = run.symbols*cfg.Ts;
 end
