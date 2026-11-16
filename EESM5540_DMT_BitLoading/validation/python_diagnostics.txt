@@ -1,0 +1,80 @@
+Python diagnostic only; NOT MATLAB execution or experiment results.
+未在 MATLAB 执行。No MATLAB qammod/qamdemod, estimated profile or BER was tested.
+Independent RNG: NumPy default_rng seed 5540001 (not MATLAB streams).
+PASS | source frozen cfg.NFFT | observed=1 | expected=1 | tolerance=0
+PASS | source frozen cfg.NCP | observed=1 | expected=1 | tolerance=0
+PASS | source frozen cfg.Fs | observed=1 | expected=1 | tolerance=0
+PASS | source frozen cfg.Es | observed=1 | expected=1 | tolerance=0
+PASS | source frozen cfg.Mset | observed=1 | expected=1 | tolerance=0
+PASS | source frozen cfg.h | observed=1 | expected=1 | tolerance=0
+PASS | source frozen cfg.sigma_w2 | observed=1 | expected=1 | tolerance=0
+PASS | source frozen cfg.targetBER | observed=1 | expected=1 | tolerance=0
+PASS | source frozen cfg.margin_dB | observed=1 | expected=1 | tolerance=0
+PASS | source frozen cfg.trainSymbols | observed=1 | expected=1 | tolerance=0
+PASS | source frozen cfg.probeSymbols | observed=1 | expected=1 | tolerance=0
+PASS | source frozen cfg.mainSymbols | observed=1 | expected=1 | tolerance=0
+PASS | source frozen cfg.smokeSymbols | observed=1 | expected=1 | tolerance=0
+PASS | source frozen cfg.chunkSize | observed=1 | expected=1 | tolerance=0
+PASS | source frozen cfg.seeds | observed=1 | expected=1 | tolerance=0
+PASS | source frozen cfg.trainDataSeed | observed=1 | expected=1 | tolerance=0
+PASS | source frozen cfg.probeDataSeed | observed=1 | expected=1 | tolerance=0
+PASS | source frozen cfg.trainNoiseSeed | observed=1 | expected=1 | tolerance=0
+PASS | source frozen cfg.probeNoiseSeed | observed=1 | expected=1 | tolerance=0
+PASS | source frozen independent k1:24 | observed=1 | expected=1 | tolerance=0
+PASS | source unitary IFFT | observed=1 | expected=1 | tolerance=0
+PASS | source unitary FFT | observed=1 | expected=1 | tolerance=0
+PASS | source serial FIR with state | observed=1 | expected=1 | tolerance=0
+PASS | source real receiver noise | observed=1 | expected=1 | tolerance=0
+PASS | source imaginary-part check precedes real | observed=1 | expected=1 | tolerance=0
+PASS | source conjugate MATLAB negative row | observed=1 | expected=1 | tolerance=0
+PASS | source Gray QAM bit input | observed=1 | expected=1 | tolerance=0
+PASS | source Gray QAM bit output | observed=1 | expected=1 | tolerance=0
+PASS | source unit average constellation energy | observed=1 | expected=1 | tolerance=0
+PASS | source independent calibration data streams | observed=1 | expected=1 | tolerance=0
+PASS | source independent calibration noise streams | observed=1 | expected=1 | tolerance=0
+PASS | source probe residual uses estimated H | observed=1 | expected=1 | tolerance=0
+PASS | source loader uses gamma_hat | observed=1 | expected=1 | tolerance=0
+PASS | source payload ZF uses estimated H | observed=1 | expected=1 | tolerance=0
+PASS | source formal receiver/loader do not use H_true | observed=1 | expected=1 | tolerance=0
+PASS | source chunked payload preserves FIR state | observed=1 | expected=1 | tolerance=0
+PASS | source excludes \bawgn\s*\( | observed=1 | expected=1 | tolerance=0
+PASS | source excludes \bparpool\s*\( | observed=1 | expected=1 | tolerance=0
+PASS | source excludes \bparfor\b | observed=1 | expected=1 | tolerance=0
+PASS | source excludes \bgpuArray\s*\( | observed=1 | expected=1 | tolerance=0
+PASS | Hermitian relationship | observed=0 | expected=0 | tolerance=1e-13
+PASS | IFFT imaginary part before real() | observed=3.512982751777799e-16 | expected=0 | tolerance=1e-13
+PASS | unitary Parseval maximum symbol error | observed=5.684341886080801e-14 | expected=0 | tolerance=1e-12
+PASS | CP sample count | observed=8 | expected=8 | tolerance=0
+PASS | CP memory coverage | observed=1 | expected=1 | tolerance=0
+PASS | linear FIR + CP: Y=H_true*X | observed=7.021666937153402e-16 | expected=0 | tolerance=1e-12
+PASS | FIR chunk-state continuity | observed=0 | expected=0 | tolerance=1e-13
+PASS | FIR FFT vs closed-form response | observed=2.001483021243361e-16 | expected=0 | tolerance=1e-14
+PASS | positive complex FFT-noise variance: max relative error over 24 bins | observed=0.01808483761412505 | expected=0 | tolerance=0.04
+PASS | positive real FFT-noise variance: max relative error over 24 bins | observed=0.0309746950511034 | expected=0 | tolerance=0.04
+PASS | positive imaginary FFT-noise variance: max relative error over 24 bins | observed=0.01939521763914676 | expected=0 | tolerance=0.04
+PASS | analytic SNR minimum dB (not measured) | observed=12.3135864233233 | expected=12.3135864 | tolerance=1e-07
+PASS | analytic SNR maximum dB (not measured) | observed=28.97906231835746 | expected=28.9790623 | tolerance=1e-07
+PASS | analytic-only profile diagnostic (not estimated profile) | observed=1 | expected=1 | tolerance=0
+PASS | analytic loaded bits/DMT symbol | observed=118 | expected=118 | tolerance=0
+PASS | analytic uniform bits/DMT symbol | observed=48 | expected=48 | tolerance=0
+DIAGNOSTIC ONLY | analytic payload rates Mbit/s: 104.8888889, 42.66666667
+PASS | expected useful electrical energy | observed=48 | expected=48 | tolerance=0
+PASS | expected CP electrical energy | observed=6 | expected=6 | tolerance=0
+PASS | expected total electrical energy | observed=54 | expected=54 | tolerance=0
+PASS | expected sample power | observed=0.75 | expected=0.75 | tolerance=0
+PASS | symbol time seconds | observed=1.125e-06 | expected=1.125e-06 | tolerance=9.999999999999999e-21
+PASS | one-time initialization duration seconds | observed=0.003456 | expected=0.003456 | tolerance=1e-15
+PASS | Wilson zero-error lower bound n=4000 | observed=0 | expected=0 | tolerance=1e-15
+PASS | Wilson zero-error upper bound n=4000 | observed=0.000959478516832434 | expected=0.000959478516832434 | tolerance=1e-15
+PASS | Wilson count complement low n=4000 | observed=0.9990405214831674 | expected=0.9990405214831676 | tolerance=1e-15
+PASS | Wilson count complement high n=4000 | observed=0.9999999999999999 | expected=1 | tolerance=1e-15
+PASS | Wilson zero-error lower bound n=600000 | observed=0 | expected=0 | tolerance=1e-15
+PASS | Wilson zero-error upper bound n=600000 | observed=6.402625672788692e-06 | expected=6.402625672788691e-06 | tolerance=1e-15
+PASS | Wilson count complement low n=600000 | observed=0.9999935973743272 | expected=0.9999935973743272 | tolerance=1e-15
+PASS | Wilson count complement high n=600000 | observed=1 | expected=1 | tolerance=1e-15
+PASS | Wilson zero-error lower bound n=1800000 | observed=0 | expected=0 | tolerance=1e-15
+PASS | Wilson zero-error upper bound n=1800000 | observed=2.134217667327449e-06 | expected=2.134217667327449e-06 | tolerance=1e-15
+PASS | Wilson count complement low n=1800000 | observed=0.9999978657823325 | expected=0.9999978657823326 | tolerance=1e-15
+PASS | Wilson count complement high n=1800000 | observed=0.9999999999999998 | expected=1 | tolerance=1e-15
+PASS | Wilson nonzero count covers observed fraction | observed=1 | expected=1 | tolerance=0
+PASS: all independent checks completed. MATLAB readiness and experiment results remain UNVERIFIED.
