@@ -1,0 +1,11 @@
+Working directory: /workspace/BitLoading/EESM5540_DMT_BitLoading
+Calibration directory: /workspace/BitLoading/EESM5540_DMT_BitLoading/evidence/imported_smoke
+Source commit: 5b54d589fe86d5a024fa4061520a2f4d6c903586
+Started UTC: 2026-11-16T11:27:24.486203+00:00
+Started Asia/Shanghai: 2026-11-16T19:27:24.486203+08:00
+Actual launch command: matlab -batch 'calDir = fullfile(pwd,'"'"'evidence'"'"','"'"'imported_smoke'"'"'); run_dmt_experiment('"'"'main'"'"', '"'"'CalibrationDirectory'"'"', calDir, '"'"'CalibrationMode'"'"', '"'"'reuse'"'"');'
+Launcher exit code: 127
+STDOUT:
+
+STDERR:
+bash: line 1: exec: matlab: not found

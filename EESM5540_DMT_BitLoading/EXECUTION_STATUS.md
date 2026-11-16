@@ -2,6 +2,14 @@
 
 **当前云端 v1.1 未在 MATLAB 执行，未完成 main。** 这不代表没有真实MATLAB数据：用户已上传本地历史smoke输出，保存在evidence/imported_smoke/。当前云端无可用MATLAB，不能调用Communications Toolbox或完成三策略正式统计。
 
+## 最新实际启动尝试
+
+北京时间2026年11月16日19:27，在项目目录实际调用了`matlab -batch`，执行用户指定的`CalibrationDirectory=evidence/imported_smoke`与`CalibrationMode='reuse'`命令。启动器返回127：`exec: matlab: not found`，错误发生在MATLAB启动前。
+
+完整记录位于[execution_attempts/20261116_192724_486203_main_launch/](execution_attempts/20261116_192724_486203_main_launch/)。其中`launcher.log`保存命令、工作目录、校准位置和原错误；`attempt_status.json`列出0/9完成及九个剩余组。此目录是启动诊断，不是正式结果目录。
+
+Uniform、Loaded、Fixed16均为0/3正式组；没有可继续跟踪的MATLAB进程，没有生成正式汇总、Fixed16实测BER、主实验图或新英文结果段。已检查环境配置和变量名称，未发现现有MathWorks执行绑定；未读取或导出凭据值。下一步必须为本任务接入可用的MATLAB与Communications Toolbox执行环境，许可状态需在该环境中验证。
+
 ## 已有真实结果：仅历史 smoke
 
 配置及完成日志为smoke，每方案2000载荷DMT符号。旧CSV的seed=0与pooled是同一批数据，不重复累计：

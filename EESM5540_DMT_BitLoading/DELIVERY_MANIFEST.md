@@ -8,6 +8,7 @@
 | --- | --- |
 | README.md | 参数、三策略、校准复用、Windows/批处理命令、统计及结果口径 |
 | EXECUTION_STATUS.md | 云端未执行、历史本地smoke与未来main的边界 |
+| execution_attempts/20261116_192724_486203_main_launch/ | 本次真实batch启动记录：退出127、MATLAB未启动、正式0/9组，不是实验结果 |
 | report_notes_zh.md | 方法、历史观察、Fixed16意义及答辩问题，不是正式结果段 |
 | docs/AUDIT_v1_1.md | 有限源码审计，不替代MATLAB运行检查 |
 | run_dmt_experiment.m | 分阶段入口、一次冻结校准、三策略九次正式测试、独立目录和异常留痕 |

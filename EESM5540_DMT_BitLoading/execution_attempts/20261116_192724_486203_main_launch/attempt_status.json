@@ -1,0 +1,76 @@
+{
+  "record_type": "launcher_attempt_not_experiment_results",
+  "working_directory": "/workspace/BitLoading/EESM5540_DMT_BitLoading",
+  "calibration_directory": "/workspace/BitLoading/EESM5540_DMT_BitLoading/evidence/imported_smoke",
+  "source_commit": "5b54d589fe86d5a024fa4061520a2f4d6c903586",
+  "command": "matlab -batch 'calDir = fullfile(pwd,'\"'\"'evidence'\"'\"','\"'\"'imported_smoke'\"'\"'); run_dmt_experiment('\"'\"'main'\"'\"', '\"'\"'CalibrationDirectory'\"'\"', calDir, '\"'\"'CalibrationMode'\"'\"', '\"'\"'reuse'\"'\"');'",
+  "launcher_exit_code": 127,
+  "started_utc": "2026-11-16T11:27:24.486203+00:00",
+  "finished_utc": "2026-11-16T11:27:24.494042+00:00",
+  "matlab_executable_found": false,
+  "matlab_main_executed": false,
+  "main_completed": false,
+  "completed_formal_groups": 0,
+  "remaining_formal_groups": 9,
+  "remaining_groups": [
+    {
+      "scheme": "Uniform",
+      "seed": 11,
+      "required_payload_symbols": 100000
+    },
+    {
+      "scheme": "Uniform",
+      "seed": 22,
+      "required_payload_symbols": 100000
+    },
+    {
+      "scheme": "Uniform",
+      "seed": 33,
+      "required_payload_symbols": 100000
+    },
+    {
+      "scheme": "Loaded",
+      "seed": 11,
+      "required_payload_symbols": 100000
+    },
+    {
+      "scheme": "Loaded",
+      "seed": 22,
+      "required_payload_symbols": 100000
+    },
+    {
+      "scheme": "Loaded",
+      "seed": 33,
+      "required_payload_symbols": 100000
+    },
+    {
+      "scheme": "Fixed16",
+      "seed": 11,
+      "required_payload_symbols": 100000
+    },
+    {
+      "scheme": "Fixed16",
+      "seed": 22,
+      "required_payload_symbols": 100000
+    },
+    {
+      "scheme": "Fixed16",
+      "seed": 33,
+      "required_payload_symbols": 100000
+    }
+  ],
+  "blocker": "MATLAB executable unavailable; batch launch failed before MATLAB started.",
+  "calibration_file_sha256": {
+    "config_snapshot.mat": "030cf11fc64f8ce575f425ec3585dd6ae292703493c5e973f7d632fec2657d01",
+    "initialization.mat": "b7b4273d29d047f11b170452cbf9eea9c24bec22b3b3e3269ec751dbcc43d078"
+  },
+  "not_generated": [
+    "formal summary.csv",
+    "formal per_subcarrier_seed.csv",
+    "formal per_subcarrier_pooled.csv",
+    "formal nominal_vs_measured.csv",
+    "formal final_results.mat",
+    "formal PNG/PDF/FIG",
+    "formal English result paragraph"
+  ]
+}
