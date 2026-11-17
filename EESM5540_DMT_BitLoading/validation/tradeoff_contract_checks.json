@@ -1,0 +1,392 @@
+{
+  "scope": "Independent arithmetic/model identities and synthetic counterexamples only",
+  "MATLAB_executed": false,
+  "preflight_executed": false,
+  "formal_payload_groups_completed": 0,
+  "experiment_data_generated": false,
+  "check_count": 88,
+  "checks": [
+    {
+      "name": "condition/calibration/strategy/repeat dimensions derive all budgets",
+      "status": "PASS",
+      "observed": {
+        "conditions": 15,
+        "shared": 75,
+        "cases": 150,
+        "slots": 300
+      }
+    },
+    {
+      "name": "formal roles have unique seeds including unused planned rounds",
+      "status": "PASS",
+      "observed": 3975
+    },
+    {
+      "name": "preflight roles have unique independent seeds",
+      "status": "PASS",
+      "observed": 795
+    },
+    {
+      "name": "preflight and formal namespaces are disjoint",
+      "status": "PASS"
+    },
+    {
+      "name": "diagnostic namespace is separate from every planned stream",
+      "status": "PASS"
+    },
+    {
+      "name": "all planned seeds fit MATLAB uint32",
+      "status": "PASS"
+    },
+    {
+      "name": "one noise-free TX-cal seed, four A/B seeds and per-case roles are counted",
+      "status": "PASS",
+      "observed": 3975,
+      "expected": 3975
+    },
+    {
+      "name": "plan row count derives from configured roles",
+      "status": "PASS"
+    },
+    {
+      "name": "preflight uses one full calibration per condition",
+      "status": "PASS"
+    },
+    {
+      "name": "formal maximum DMT symbols derive from slots and L",
+      "status": "PASS"
+    },
+    {
+      "name": "each complete payload sample denominator includes CP",
+      "status": "PASS"
+    },
+    {
+      "name": "raw integer counters fit exact double arithmetic",
+      "status": "PASS"
+    },
+    {
+      "name": "DMT duration includes CP once",
+      "status": "PASS",
+      "observed": 1.125e-06,
+      "expected": {
+        "value": 1.125e-06,
+        "absolute_tolerance": 1e-21
+      }
+    },
+    {
+      "name": "ADC 4: every midpoint is a fixed point",
+      "status": "PASS"
+    },
+    {
+      "name": "ADC 4: exactly 2^q distinct midpoint levels",
+      "status": "PASS"
+    },
+    {
+      "name": "ADC 4: saturation returns terminal mid-rise levels",
+      "status": "PASS"
+    },
+    {
+      "name": "ADC 4: monotone fixed-range transfer",
+      "status": "PASS"
+    },
+    {
+      "name": "ADC 4: unsaturated quantization error is at most half a step",
+      "status": "PASS"
+    },
+    {
+      "name": "ADC 6: every midpoint is a fixed point",
+      "status": "PASS"
+    },
+    {
+      "name": "ADC 6: exactly 2^q distinct midpoint levels",
+      "status": "PASS"
+    },
+    {
+      "name": "ADC 6: saturation returns terminal mid-rise levels",
+      "status": "PASS"
+    },
+    {
+      "name": "ADC 6: monotone fixed-range transfer",
+      "status": "PASS"
+    },
+    {
+      "name": "ADC 6: unsaturated quantization error is at most half a step",
+      "status": "PASS"
+    },
+    {
+      "name": "ADC 8: every midpoint is a fixed point",
+      "status": "PASS"
+    },
+    {
+      "name": "ADC 8: exactly 2^q distinct midpoint levels",
+      "status": "PASS"
+    },
+    {
+      "name": "ADC 8: saturation returns terminal mid-rise levels",
+      "status": "PASS"
+    },
+    {
+      "name": "ADC 8: monotone fixed-range transfer",
+      "status": "PASS"
+    },
+    {
+      "name": "ADC 8: unsaturated quantization error is at most half a step",
+      "status": "PASS"
+    },
+    {
+      "name": "strict ADC input out-of-range counts exclude exact interval endpoints",
+      "status": "PASS"
+    },
+    {
+      "name": "thermal noise is a fixed declared variance, no signal-power normalization",
+      "status": "PASS"
+    },
+    {
+      "name": "declared waveform reference variance",
+      "status": "PASS",
+      "observed": 0.7499999999999999,
+      "expected": {
+        "value": 0.75,
+        "absolute_tolerance": 2e-16
+      }
+    },
+    {
+      "name": "nonnegative-b clipping mean is nondecreasing on a fixed sample set",
+      "status": "PASS"
+    },
+    {
+      "name": "declared five targets are reachable on this arbitrary calibration example",
+      "status": "PASS"
+    },
+    {
+      "name": "fixed-waveform bisection reaches relative target tolerance 0.6",
+      "status": "PASS"
+    },
+    {
+      "name": "optical mean/square/range distinctions 0.6",
+      "status": "PASS"
+    },
+    {
+      "name": "fixed-waveform bisection reaches relative target tolerance 0.8",
+      "status": "PASS"
+    },
+    {
+      "name": "optical mean/square/range distinctions 0.8",
+      "status": "PASS"
+    },
+    {
+      "name": "fixed-waveform bisection reaches relative target tolerance 1",
+      "status": "PASS"
+    },
+    {
+      "name": "optical mean/square/range distinctions 1",
+      "status": "PASS"
+    },
+    {
+      "name": "fixed-waveform bisection reaches relative target tolerance 1.2",
+      "status": "PASS"
+    },
+    {
+      "name": "optical mean/square/range distinctions 1.2",
+      "status": "PASS"
+    },
+    {
+      "name": "fixed-waveform bisection reaches relative target tolerance 1.4",
+      "status": "PASS"
+    },
+    {
+      "name": "optical mean/square/range distinctions 1.4",
+      "status": "PASS"
+    },
+    {
+      "name": "bias control is not generally the clipped actual average",
+      "status": "PASS"
+    },
+    {
+      "name": "optical E[p] and squared-signal E[p^2] are distinct quantities",
+      "status": "PASS"
+    },
+    {
+      "name": "relative optical-power dB uses 10log10 with P_ref=1",
+      "status": "PASS"
+    },
+    {
+      "name": "Hermitian arbitrary input yields real useful samples",
+      "status": "PASS"
+    },
+    {
+      "name": "unitary IFFT preserves arbitrary frequency-domain energy",
+      "status": "PASS"
+    },
+    {
+      "name": "CP covers causal FIR memory",
+      "status": "PASS"
+    },
+    {
+      "name": "physical DC and prior AC paths differ only by DC on useful samples",
+      "status": "PASS"
+    },
+    {
+      "name": "ADC-bypass DC regression preserves positive data bins",
+      "status": "PASS"
+    },
+    {
+      "name": "quantizing before/after DC removal is not interchangeable",
+      "status": "PASS"
+    },
+    {
+      "name": "zero observed errors still have a positive Wilson upper endpoint",
+      "status": "PASS",
+      "observed": 0.00023441769171115247,
+      "expected": {
+        "value": 0.00023441769171115247,
+        "absolute_tolerance": 1e-18
+      }
+    },
+    {
+      "name": "zero-count Wilson lower endpoint",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": {
+        "value": 0.0,
+        "absolute_tolerance": 1e-18
+      }
+    },
+    {
+      "name": "upper endpoint equal to BER target is inconclusive",
+      "status": "PASS"
+    },
+    {
+      "name": "lower endpoint equal to target is not automatically failed",
+      "status": "PASS"
+    },
+    {
+      "name": "any lower endpoint above target is failed",
+      "status": "PASS"
+    },
+    {
+      "name": "all upper endpoints strictly below target is supported",
+      "status": "PASS"
+    },
+    {
+      "name": "pooled BER is a count ratio, not an unweighted mean of BERs",
+      "status": "PASS"
+    },
+    {
+      "name": "cycle overhead reduces nominal rate (r1,B48)",
+      "status": "PASS"
+    },
+    {
+      "name": "two statistical repeats cannot silently become one 2L session (r1,B48)",
+      "status": "PASS"
+    },
+    {
+      "name": "cycle overhead reduces nominal rate (r1,B96)",
+      "status": "PASS"
+    },
+    {
+      "name": "two statistical repeats cannot silently become one 2L session (r1,B96)",
+      "status": "PASS"
+    },
+    {
+      "name": "cycle overhead reduces nominal rate (r1,B144)",
+      "status": "PASS"
+    },
+    {
+      "name": "two statistical repeats cannot silently become one 2L session (r1,B144)",
+      "status": "PASS"
+    },
+    {
+      "name": "cycle overhead reduces nominal rate (r2,B48)",
+      "status": "PASS"
+    },
+    {
+      "name": "two statistical repeats cannot silently become one 2L session (r2,B48)",
+      "status": "PASS"
+    },
+    {
+      "name": "cycle overhead reduces nominal rate (r2,B96)",
+      "status": "PASS"
+    },
+    {
+      "name": "two statistical repeats cannot silently become one 2L session (r2,B96)",
+      "status": "PASS"
+    },
+    {
+      "name": "cycle overhead reduces nominal rate (r2,B144)",
+      "status": "PASS"
+    },
+    {
+      "name": "two statistical repeats cannot silently become one 2L session (r2,B144)",
+      "status": "PASS"
+    },
+    {
+      "name": "cycle overhead reduces nominal rate (r3,B48)",
+      "status": "PASS"
+    },
+    {
+      "name": "two statistical repeats cannot silently become one 2L session (r3,B48)",
+      "status": "PASS"
+    },
+    {
+      "name": "cycle overhead reduces nominal rate (r3,B96)",
+      "status": "PASS"
+    },
+    {
+      "name": "two statistical repeats cannot silently become one 2L session (r3,B96)",
+      "status": "PASS"
+    },
+    {
+      "name": "cycle overhead reduces nominal rate (r3,B144)",
+      "status": "PASS"
+    },
+    {
+      "name": "two statistical repeats cannot silently become one 2L session (r3,B144)",
+      "status": "PASS"
+    },
+    {
+      "name": "cycle overhead reduces nominal rate (r4,B48)",
+      "status": "PASS"
+    },
+    {
+      "name": "two statistical repeats cannot silently become one 2L session (r4,B48)",
+      "status": "PASS"
+    },
+    {
+      "name": "cycle overhead reduces nominal rate (r4,B96)",
+      "status": "PASS"
+    },
+    {
+      "name": "two statistical repeats cannot silently become one 2L session (r4,B96)",
+      "status": "PASS"
+    },
+    {
+      "name": "cycle overhead reduces nominal rate (r4,B144)",
+      "status": "PASS"
+    },
+    {
+      "name": "two statistical repeats cannot silently become one 2L session (r4,B144)",
+      "status": "PASS"
+    },
+    {
+      "name": "pure TX calibration does not add optical-link training symbols",
+      "status": "PASS"
+    },
+    {
+      "name": "ADC bits are capability proxies, not money or watts",
+      "status": "PASS"
+    },
+    {
+      "name": "five-round all-supported criterion differs from successful-only median",
+      "status": "PASS"
+    },
+    {
+      "name": "business rate requirement uses minimum across all five rounds",
+      "status": "PASS"
+    },
+    {
+      "name": "same-power budget envelope uses largest actual repeated power",
+      "status": "PASS"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "delivery_scope": "User runs MATLAB; this is implementation/static/independent arithmetic code delivery.",
+  "matlab_executed": false,
+  "mechanical_checks_executed_in_MATLAB": false,
+  "preflight_executed": false,
+  "protocol_frozen": false,
+  "formal_payload_groups_completed": 0,
+  "formal_payload_groups_planned": 300,
+  "MATLAB_source_files": 91,
+  "Python_source_files": 5,
+  "source_files": 96,
+  "historical_v13_source_files_unchanged": 66,
+  "checks": [
+    {
+      "command": "PYTHONPATH=/tmp/eesm5540_lint python3 -m miss_hit.mh_lint --input-encoding utf-8 --brief --single .",
+      "exit_code": 0,
+      "scope": "MATLAB syntax/static only, not MATLAB execution"
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python3 tools/verify_tradeoff_contracts.py",
+      "exit_code": 0,
+      "checks_passed": 88,
+      "scope": "Independent arithmetic/protocol identities; not simulated BER"
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0,
+      "scope": "Text whitespace"
+    }
+  ]
+}

@@ -1,5 +1,7 @@
 # 本地 MATLAB 运行入口
 
+**tradeoff_v1任务请看[TRADEOFF_START_HERE.md](TRADEOFF_START_HERE.md)，完整入口为`result = run_dmt_tradeoff('all');`。** 本轮代码由你在本地运行，新增预检及正式实验尚未执行。
+
 **v1.3任务请看[V1_3_README.md](V1_3_README.md)，入口为`run_dmt_v13('all')`。** 旧入口保留以便复核历史；它们不会执行新增IM/DD与显式反馈路径。
 
 **v1.2的新任务请先看[V1_2_README.md](V1_2_README.md)，使用`run_v1_2(referenceDir)`。** 下文是保留的v1.1单校准main入口，不会执行新增十轮研究。

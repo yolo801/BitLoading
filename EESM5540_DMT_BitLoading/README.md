@@ -1,6 +1,10 @@
-# EESM5540 — DMT Bit Loading，v1.3显式反馈与IM/DD扩展
+# EESM5540 — DMT Bit Loading 与 tradeoff_v1 权衡实验
 
-最新入口为`run_dmt_v13('all')`，独立核对为`verify_dmt_v13('all','ResultDirectory',outDir)`。新增显式SNR反馈、Tx/Rx配置副本与ACK、独立C探测和四场景固定预算，完整说明见[V1_3_README.md](V1_3_README.md)。原线性物理规格1.0及旧v1.1/v1.2入口、结果均保留。当前执行量及原始错误见`EXECUTION_STATUS.md`；代码和计划不代表360组已经运行。
+最新新增功率／ADC／速率／协议代价研究入口为 `run_dmt_tradeoff('all')`，详见 [TRADEOFF_START_HERE.md](TRADEOFF_START_HERE.md)。本轮交付代码，由用户本地运行MATLAB；新增代码未在MATLAB执行。真实机械预检和独立预检通过后，入口才冻结Protocol并继续正式矩阵。所有新结果进入独立目录。代码交付状态见 [CODE_DELIVERY_STATUS.md](docs/tradeoff_v1/CODE_DELIVERY_STATUS.md)。
+
+以下保留v1.3及更早版本说明，用于历史复核。
+
+v1.3入口为`run_dmt_v13('all')`，独立核对为`verify_dmt_v13('all','ResultDirectory',outDir)`。该版含显式SNR反馈、Tx/Rx配置副本与ACK、独立C探测和四场景固定预算，完整说明见[V1_3_README.md](V1_3_README.md)。原线性物理规格1.0及旧v1.1/v1.2入口、结果均保留。该版执行量及原始错误见`EXECUTION_STATUS.md`；代码和计划不代表360组已经运行。
 
 以下保留v1.2及v1.1说明，不能当成新v1.3运行证据。
 
