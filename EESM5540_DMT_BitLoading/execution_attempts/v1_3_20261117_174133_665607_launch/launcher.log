@@ -1,0 +1,11 @@
+Actual launcher diagnostic only; NOT MATLAB experimental results.
+UTC launch: 2026-11-17T09:41:33.665607+00:00
+Asia/Shanghai launch: 2026-11-17T17:41:33.665607+08:00
+Working directory: /workspace/BitLoading/EESM5540_DMT_BitLoading
+MATLAB statement: run_dmt_v13('all','ReferenceDirectory','C:\Users\Lenovo\Documents\MATLAB\BitLoading-07082cb7bdb034357bc80da358a5f3ec5d411c48\EESM5540_DMT_BitLoading\results\20261116_194846_246_main_tp96b36639_d14e_4dbc_8956_3651acfb6fa8');
+Actual shell command: matlab -batch 'run_dmt_v13('"'"'all'"'"','"'"'ReferenceDirectory'"'"','"'"'C:\Users\Lenovo\Documents\MATLAB\BitLoading-07082cb7bdb034357bc80da358a5f3ec5d411c48\EESM5540_DMT_BitLoading\results\20261116_194846_246_main_tp96b36639_d14e_4dbc_8956_3651acfb6fa8'"'"');'
+Launcher exit code: 127
+STDOUT:
+
+STDERR:
+bash: line 1: exec: matlab: not found

@@ -1,0 +1,37 @@
+{
+  "scope": "static/independent arithmetic/old artifact consistency only",
+  "matlab_executed": false,
+  "preflight_groups_completed": 0,
+  "formal_groups_completed": 0,
+  "formal_groups_planned": 360,
+  "reference0_verified": false,
+  "source_files": 66,
+  "MATLAB_files": 62,
+  "checks": [
+    {
+      "name": "MATLAB_static",
+      "exit_code": 0,
+      "scope": "not MATLAB execution or new experimental data"
+    },
+    {
+      "name": "original_formula_source",
+      "exit_code": 0,
+      "scope": "not MATLAB execution or new experimental data"
+    },
+    {
+      "name": "old_smoke_consistency",
+      "exit_code": 0,
+      "scope": "not MATLAB execution or new experimental data"
+    },
+    {
+      "name": "v12_independent_arithmetic",
+      "exit_code": 0,
+      "scope": "not MATLAB execution or new experimental data"
+    },
+    {
+      "name": "v13_independent_model_arithmetic",
+      "exit_code": 0,
+      "scope": "not MATLAB execution or new experimental data"
+    }
+  ]
+}

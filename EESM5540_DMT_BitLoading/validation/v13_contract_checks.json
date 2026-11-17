@@ -1,0 +1,357 @@
+{
+  "scope": "Independent Python arithmetic/model identities only; NOT MATLAB execution or DMT experiment results.",
+  "matlab_executed": false,
+  "new_formal_groups_completed_by_this_script": 0,
+  "experimental_ber_generated": false,
+  "arbitrary_vectors_and_synthetic_statistics_not_experimental_data": true,
+  "numpy_rng_for_model_identities_only": 554013,
+  "checks": [
+    {
+      "name": "formal has 1120 unique A/B/C/payload seeds",
+      "status": "PASS",
+      "observed": 1120,
+      "expected": 1120
+    },
+    {
+      "name": "preflight has 112 unique seeds",
+      "status": "PASS",
+      "observed": 112,
+      "expected": 112
+    },
+    {
+      "name": "formal and preflight namespaces disjoint",
+      "status": "PASS"
+    },
+    {
+      "name": "all used seeds fit MATLAB uint32 range",
+      "status": "PASS"
+    },
+    {
+      "name": "360 planned formal groups",
+      "status": "PASS",
+      "observed": 360,
+      "expected": 360
+    },
+    {
+      "name": "36 planned short preflight groups",
+      "status": "PASS",
+      "observed": 36,
+      "expected": 36
+    },
+    {
+      "name": "formal labels and slots are separate",
+      "status": "PASS"
+    },
+    {
+      "name": "linear/cal1/Uniform/label11 exact mapping",
+      "status": "PASS",
+      "observed": [
+        2101011,
+        2101012
+      ],
+      "expected": [
+        2101011,
+        2101012
+      ]
+    },
+    {
+      "name": "scenario3/cal10/Fixed16/label33 exact mapping",
+      "status": "PASS",
+      "observed": [
+        33003031,
+        33003032
+      ],
+      "expected": [
+        33003031,
+        33003032
+      ]
+    },
+    {
+      "name": "scenario 0 has ninety planned groups",
+      "status": "PASS"
+    },
+    {
+      "name": "scenario 0 has ten calibration IDs",
+      "status": "PASS"
+    },
+    {
+      "name": "scenario 1 has ninety planned groups",
+      "status": "PASS"
+    },
+    {
+      "name": "scenario 1 has ten calibration IDs",
+      "status": "PASS"
+    },
+    {
+      "name": "scenario 2 has ninety planned groups",
+      "status": "PASS"
+    },
+    {
+      "name": "scenario 2 has ten calibration IDs",
+      "status": "PASS"
+    },
+    {
+      "name": "scenario 3 has ninety planned groups",
+      "status": "PASS"
+    },
+    {
+      "name": "scenario 3 has ten calibration IDs",
+      "status": "PASS"
+    },
+    {
+      "name": "diagnostic namespace separate",
+      "status": "PASS"
+    },
+    {
+      "name": "v1.1 reference/self streams separate from formal v1.3",
+      "status": "PASS"
+    },
+    {
+      "name": "v1.3 linear deliberately shares 220 v1.2 seed numbers; no cross-version independence claim",
+      "status": "PASS",
+      "observed": 220,
+      "expected": 220
+    },
+    {
+      "name": "expected useful real sample variance",
+      "status": "PASS",
+      "observed": 0.75,
+      "expected": {
+        "value": 0.75,
+        "absolute_tolerance": 0
+      }
+    },
+    {
+      "name": "rho4 noise scaling equals g4 squared",
+      "status": "PASS",
+      "observed": 0.0001049104509828473,
+      "expected": {
+        "value": 0.00010491045098284732,
+        "absolute_tolerance": 1e-18
+      }
+    },
+    {
+      "name": "arbitrary-vector Hermitian IFFT imaginary residual",
+      "status": "PASS",
+      "observed": 3.352436973787562e-16,
+      "expected": {
+        "value": 0.0,
+        "absolute_tolerance": 1e-13
+      }
+    },
+    {
+      "name": "rho4 bypass regression, identical raw noise: relative residual",
+      "status": "PASS",
+      "observed": 2.1630818515519e-16,
+      "expected": {
+        "value": 0.0,
+        "absolute_tolerance": 1e-11
+      }
+    },
+    {
+      "name": "steady-state known DC subtraction equals AC filter",
+      "status": "PASS",
+      "observed": 2.220446049250313e-16,
+      "expected": {
+        "value": 0.0,
+        "absolute_tolerance": 1e-13
+      }
+    },
+    {
+      "name": "arbitrary-chunk causal FIR state continuity",
+      "status": "PASS",
+      "observed": 0.0,
+      "expected": {
+        "value": 0.0,
+        "absolute_tolerance": 1e-13
+      }
+    },
+    {
+      "name": "unitary Parseval arbitrary-vector residual",
+      "status": "PASS",
+      "observed": 2.842170943040401e-14,
+      "expected": {
+        "value": 0.0,
+        "absolute_tolerance": 1e-11
+      }
+    },
+    {
+      "name": "rho=4 fixed normalized intensity limits",
+      "status": "PASS"
+    },
+    {
+      "name": "rho=4 paired-input symmetry yields mean P0, no renormalization",
+      "status": "PASS",
+      "observed": 1.0,
+      "expected": {
+        "value": 1.0,
+        "absolute_tolerance": 1e-14
+      }
+    },
+    {
+      "name": "rho=4 mean optical power differs from electrical second moment",
+      "status": "PASS"
+    },
+    {
+      "name": "rho=4 intensity signal must not be squared again",
+      "status": "PASS"
+    },
+    {
+      "name": "rho=4 clipping error power is nonnegative",
+      "status": "PASS"
+    },
+    {
+      "name": "rho=2.5 fixed normalized intensity limits",
+      "status": "PASS"
+    },
+    {
+      "name": "rho=2.5 paired-input symmetry yields mean P0, no renormalization",
+      "status": "PASS",
+      "observed": 1.0,
+      "expected": {
+        "value": 1.0,
+        "absolute_tolerance": 1e-14
+      }
+    },
+    {
+      "name": "rho=2.5 mean optical power differs from electrical second moment",
+      "status": "PASS"
+    },
+    {
+      "name": "rho=2.5 intensity signal must not be squared again",
+      "status": "PASS"
+    },
+    {
+      "name": "rho=2.5 clipping error power is nonnegative",
+      "status": "PASS"
+    },
+    {
+      "name": "rho=1.5 fixed normalized intensity limits",
+      "status": "PASS"
+    },
+    {
+      "name": "rho=1.5 paired-input symmetry yields mean P0, no renormalization",
+      "status": "PASS",
+      "observed": 1.0,
+      "expected": {
+        "value": 1.0,
+        "absolute_tolerance": 1e-14
+      }
+    },
+    {
+      "name": "rho=1.5 mean optical power differs from electrical second moment",
+      "status": "PASS"
+    },
+    {
+      "name": "rho=1.5 intensity signal must not be squared again",
+      "status": "PASS"
+    },
+    {
+      "name": "rho=1.5 clipping error power is nonnegative",
+      "status": "PASS"
+    },
+    {
+      "name": "clipping can regenerate inactive-frequency energy, retained by model",
+      "status": "PASS"
+    },
+    {
+      "name": "AC PAPR is invariant to uniform gain, not a rho improvement",
+      "status": "PASS",
+      "observed": 5.329070518200751e-15,
+      "expected": {
+        "value": 0.0,
+        "absolute_tolerance": 1e-12
+      }
+    },
+    {
+      "name": "sampled AC PAPR exceedance counters are integer bounded",
+      "status": "PASS"
+    },
+    {
+      "name": "zero PAPR exceedance remains exactly 0/N",
+      "status": "PASS",
+      "observed": 0,
+      "expected": 0
+    },
+    {
+      "name": "symbol-first bit layout preserves data under chunk partition",
+      "status": "PASS"
+    },
+    {
+      "name": "PAPR computation did not rescale transmitted input",
+      "status": "PASS"
+    },
+    {
+      "name": "infeasible precedes incomplete",
+      "status": "PASS"
+    },
+    {
+      "name": "missing payload is incomplete, not zero BER",
+      "status": "PASS"
+    },
+    {
+      "name": "upper equality is inconclusive",
+      "status": "PASS"
+    },
+    {
+      "name": "lower equality is inconclusive",
+      "status": "PASS"
+    },
+    {
+      "name": "u above one is not by itself failed",
+      "status": "PASS"
+    },
+    {
+      "name": "any lower exceeding target yields failure",
+      "status": "PASS"
+    },
+    {
+      "name": "Fixed16 valid but failed target is scientific data",
+      "status": "PASS"
+    },
+    {
+      "name": "all configured seed-table row budget",
+      "status": "PASS",
+      "observed": 8640,
+      "expected": 8640
+    },
+    {
+      "name": "all configured pooled-table row budget",
+      "status": "PASS",
+      "observed": 2880,
+      "expected": 2880
+    },
+    {
+      "name": "all planned per-calibration strategy rows",
+      "status": "PASS",
+      "observed": 120,
+      "expected": 120
+    },
+    {
+      "name": "scenario-strategy robustness rows",
+      "status": "PASS",
+      "observed": 12,
+      "expected": 12
+    },
+    {
+      "name": "formal symbol budget excludes initialization and preflight",
+      "status": "PASS",
+      "observed": 36000000,
+      "expected": 36000000
+    },
+    {
+      "name": "independent C planned symbol budget separate from payload",
+      "status": "PASS"
+    },
+    {
+      "name": "profile selections denominator is ten, not thirty",
+      "status": "PASS"
+    },
+    {
+      "name": "supported gain needs both U/L, not just a nominal allocation ratio",
+      "status": "PASS"
+    }
+  ],
+  "check_count": 63,
+  "all_passed": true
+}

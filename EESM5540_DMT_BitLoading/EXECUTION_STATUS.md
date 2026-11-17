@@ -1,41 +1,39 @@
-# v1.2 实际状态：尚未执行MATLAB
+# v1.3实际执行状态
 
-## 实际启动结果
+**本次未在MATLAB执行。正式载荷0/360组，独立preflight0/36组，正式校准0/40。**
 
-本次实际调用`matlab -batch`运行`run_v1_2(referenceDir)`，启动器返回127：`exec: matlab: not found`。当前聊天没有暴露可调用的MATLAB MCP工具，错误发生在MATLAB进程启动之前。
-
-精确命令、用户参考路径、时间与原始错误保存在：
-
-`execution_attempts/v1_2_20261117_154357_255883_launch/launcher.log`
-
-机器可读记录：同目录`attempt_status.json`。这只是启动诊断，不是实验结果目录。没有MATLAB进程需要继续等待，没有重复启动90组。
-
-## 已完成与剩余
-
-| 内容 | 实际完成 | 剩余或原因 |
-| --- | ---: | --- |
-| reference 0 正式数据核对 | 未执行 | Windows本机目录当前不可访问 |
-| Figure 2 同源重绘 | 0张 | 未读取参考计数、未调用MATLAB绘图 |
-| 新独立校准 | 0/10轮 | MATLAB未启动 |
-| 新正式载荷 | 0/90组 | 10轮×3策略×3种子全部待运行 |
-| 新逐轮统计/合规轮数/英文正式结果段 | 未生成 | 不用提示词数值、smoke或独立Python诊断冒充结果 |
-
-用户提供的参考目录是：
+实际batch调用了`run_dmt_v13('all','ReferenceDirectory',...)`，启动器在MATLAB进程创建前返回127：
 
 ```text
-C:\Users\Lenovo\Documents\MATLAB\BitLoading-07082cb7bdb034357bc80da358a5f3ec5d411c48\EESM5540_DMT_BitLoading\results\20261116_194846_246_main_tp96b36639_d14e_4dbc_8956_3651acfb6fa8
+bash: line 1: exec: matlab: not found
 ```
 
-目前只记录了路径，未声称验证该目录及提示词中的参考数值。旧imported_smoke保持原字节，不能替代reference 0。
+当前会话没有暴露可调用MATLAB MCP工具。没有运行中的MATLAB实验需要继续等待，没有重复启动另一份360组任务。
+
+原始命令、北京时间2026年11月17日17:41的启动时间、路径、输出和退出码见：
+
+`execution_attempts/v1_3_20261117_174133_665607_launch/launcher.log`
+
+机器可读实际状态为同目录`attempt_status.json`。这是启动诊断，不是MATLAB实验结果。
+
+| 场景 | 正式计划 | 实际完成 | 仍待执行 |
+| --- | ---: | ---: | ---: |
+| linear | 90 | 0 | 90 |
+| imdd_rho4 | 90 | 0 | 90 |
+| imdd_rho2p5 | 90 | 0 | 90 |
+| imdd_rho1p5 | 90 | 0 | 90 |
+
+旧reference0位于用户Windows目录，当前云文件系统无法读取；本次没有核实其主实验文件、哈希或提示词给出的核对数值。只发现原imported_smoke，保持原字节，未用它替代正式reference0。
 
 ## 已完成的独立工作
 
-- 实现任务A、十轮/90组入口、精确新种子映射、校准冻结、完整检查点和恢复校验、逐轮统计及只读完成核对。
-- 文献映射与访问记录已保存；8次DOI/原文/元数据访问均在代理隧道阶段被403阻断，0篇PDF取得或阅读，指定原文段落尚未独立核实。
-- 静态检查、独立算术/公式诊断及旧smoke一致性核对的实际命令和当前计数见`validation/commands_and_scope.md`。这些都不是MATLAB实验通过记录。
+- 已实现显式Rx估计、理想SNR反馈、Tx选阶、配置交换／ACK、独立C和按本端配置处理载荷。
+- 已实现固定四场景、归一化采样点IM/DD前端、功率／削波／PAPR计数、完整检查点及恢复、分层统计与真实数据导出／独立验收代码。
+- 实际代码检查计数、退出码及源码SHA-256见`validation/commands_and_scope.md`与`validation/v1_3_code_check_status.json`；这些不等于MATLAB运行验收。
+- 13次文献HTTPS访问全部在代理CONNECT阶段被403阻断，未取得PDF、摘要或元数据。边界见`docs/literature_mapping_v1_3.md`及实际请求JSON，没有声称阅读原文。
 
-## 继续执行的前提
+## 尚未得到的实验材料
 
-需要让当前会话能调用已连接Windows机器的MATLAB MCP，并访问上述reference 0，或在可访问该目录的授权MATLAB+Communications Toolbox环境运行`run_v1_2(referenceDir)`。本次代码不更改物理参数、固定种子或选阶规则来换取通过。
+新的实现回归、A/B/C真实测量、360组正式BER、逐场景合规轮数、加载表变化、光功率／削波／PAPR统计、正式图和结果段均尚未运行或生成。不能用代码、提示词数值、独立Python算术或旧smoke替代这些结果。
 
-完整入口、恢复命令、预期输出及统计边界见`V1_2_README.md`。旧v1.1代码和历史记录保留，前一次交付状态归档于`docs/HISTORICAL_EXECUTION_STATUS_before_v1_2.md`。
+继续需要可调用MATLAB+Communications Toolbox（或将Windows MATLAB MCP暴露到当前聊天），并能访问真实reference0目录。参数、预算、种子和选阶规则不为通过而调整。实际入口、恢复及输出结构见`V1_3_README.md`。

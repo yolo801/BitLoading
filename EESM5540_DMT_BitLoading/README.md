@@ -1,6 +1,10 @@
-# EESM5540 — DMT Bit Loading，v1.2独立校准研究
+# EESM5540 — DMT Bit Loading，v1.3显式反馈与IM/DD扩展
 
-新增v1.2入口为`run_v1_2(referenceDir)`：固定reference 0同源重绘`CI_high/targetBER`，再执行十轮全新校准、90组固定载荷。详细规则、恢复及输出见[V1_2_README.md](V1_2_README.md)。原v1.1主实验接口和历史结果保留，物理规格始终为1.0。当前会话尚未执行v1.2，真实执行状态见`EXECUTION_STATUS.md`。
+最新入口为`run_dmt_v13('all')`，独立核对为`verify_dmt_v13('all','ResultDirectory',outDir)`。新增显式SNR反馈、Tx/Rx配置副本与ACK、独立C探测和四场景固定预算，完整说明见[V1_3_README.md](V1_3_README.md)。原线性物理规格1.0及旧v1.1/v1.2入口、结果均保留。当前执行量及原始错误见`EXECUTION_STATUS.md`；代码和计划不代表360组已经运行。
+
+以下保留v1.2及v1.1说明，不能当成新v1.3运行证据。
+
+新增v1.2入口为`run_v1_2(referenceDir)`：固定reference 0同源重绘`CI_high/targetBER`，再执行十轮全新校准、90组固定载荷。详细规则、恢复及输出见[V1_2_README.md](V1_2_README.md)。原v1.1主实验接口和历史结果保留，物理规格始终为1.0。云端尚未执行v1.2，当时执行状态保留于`docs/HISTORICAL_EXECUTION_STATUS_before_v1_3.md`。
 
 下文保留原v1.1单校准主实验说明，便于复核reference 0；新增研究不复用旧profile作为十轮新校准。
 

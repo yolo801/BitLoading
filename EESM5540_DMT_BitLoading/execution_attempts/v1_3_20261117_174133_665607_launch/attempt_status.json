@@ -1,0 +1,51 @@
+{
+  "scope": "v1.3 actual launcher diagnostic, not experimental counts",
+  "started_utc": "2026-11-17T09:41:33.665607+00:00",
+  "command": "matlab -batch 'run_dmt_v13('\"'\"'all'\"'\"','\"'\"'ReferenceDirectory'\"'\"','\"'\"'C:\\Users\\Lenovo\\Documents\\MATLAB\\BitLoading-07082cb7bdb034357bc80da358a5f3ec5d411c48\\EESM5540_DMT_BitLoading\\results\\20261116_194846_246_main_tp96b36639_d14e_4dbc_8956_3651acfb6fa8'\"'\"');'",
+  "matlab_statement": "run_dmt_v13('all','ReferenceDirectory','C:\\Users\\Lenovo\\Documents\\MATLAB\\BitLoading-07082cb7bdb034357bc80da358a5f3ec5d411c48\\EESM5540_DMT_BitLoading\\results\\20261116_194846_246_main_tp96b36639_d14e_4dbc_8956_3651acfb6fa8');",
+  "launcher_exit_code": 127,
+  "matlab_started": false,
+  "matlab_mcp_tool_exposed": false,
+  "matlab_executable_found": false,
+  "reference0_directory_hint": "C:\\Users\\Lenovo\\Documents\\MATLAB\\BitLoading-07082cb7bdb034357bc80da358a5f3ec5d411c48\\EESM5540_DMT_BitLoading\\results\\20261116_194846_246_main_tp96b36639_d14e_4dbc_8956_3651acfb6fa8",
+  "reference0_accessible_here": false,
+  "reference0_formal_data_verified": false,
+  "planned_preflight_groups": 36,
+  "completed_preflight_groups": 0,
+  "planned_formal_groups": 360,
+  "completed_formal_groups": 0,
+  "remaining_formal_groups": 360,
+  "planned_linear_groups": 90,
+  "completed_linear_groups": 0,
+  "planned_imdd_groups": 270,
+  "completed_imdd_groups": 0,
+  "planned_new_formal_calibrations": 40,
+  "completed_new_formal_calibrations": 0,
+  "scenario_status": {
+    "linear": {
+      "completed_groups": 0,
+      "planned_groups": 90,
+      "state": "not_executed"
+    },
+    "imdd_rho4": {
+      "completed_groups": 0,
+      "planned_groups": 90,
+      "state": "not_executed"
+    },
+    "imdd_rho2p5": {
+      "completed_groups": 0,
+      "planned_groups": 90,
+      "state": "not_executed"
+    },
+    "imdd_rho1p5": {
+      "completed_groups": 0,
+      "planned_groups": 90,
+      "state": "not_executed"
+    }
+  },
+  "performance_results_generated": false,
+  "power_clipping_statistics_measured": false,
+  "figures_generated": false,
+  "blocker": "No MATLAB executable or exposed MATLAB MCP tool; reference0 Windows directory inaccessible.",
+  "primary_literature_status": "13 HTTPS requests blocked by proxy CONNECT403; no PDF/abstract/metadata obtained."
+}
