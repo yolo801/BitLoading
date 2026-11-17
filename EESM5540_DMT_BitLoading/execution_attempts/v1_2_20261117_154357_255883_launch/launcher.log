@@ -1,0 +1,12 @@
+V1.2 launcher attempt only; NOT MATLAB execution or experiment results.
+UTC launch: 2026-11-17T07:43:57.255883+00:00
+Asia/Shanghai launch: 2026-11-17T15:43:57.255883+08:00
+Working directory: /workspace/BitLoading/EESM5540_DMT_BitLoading
+User reference path: C:\Users\Lenovo\Documents\MATLAB\BitLoading-07082cb7bdb034357bc80da358a5f3ec5d411c48\EESM5540_DMT_BitLoading\results\20261116_194846_246_main_tp96b36639_d14e_4dbc_8956_3651acfb6fa8
+MATLAB statement: referenceDir = 'C:\Users\Lenovo\Documents\MATLAB\BitLoading-07082cb7bdb034357bc80da358a5f3ec5d411c48\EESM5540_DMT_BitLoading\results\20261116_194846_246_main_tp96b36639_d14e_4dbc_8956_3651acfb6fa8'; run_v1_2(referenceDir);
+Actual batch command: matlab -batch 'referenceDir = '"'"'C:\Users\Lenovo\Documents\MATLAB\BitLoading-07082cb7bdb034357bc80da358a5f3ec5d411c48\EESM5540_DMT_BitLoading\results\20261116_194846_246_main_tp96b36639_d14e_4dbc_8956_3651acfb6fa8'"'"'; run_v1_2(referenceDir);'
+Launcher exit: 127
+STDOUT:
+
+STDERR:
+bash: line 1: exec: matlab: not found

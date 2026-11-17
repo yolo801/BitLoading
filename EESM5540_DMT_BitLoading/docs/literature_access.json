@@ -1,0 +1,93 @@
+{
+  "record_type": "actual_primary_source_access_attempts_not_fulltext_review",
+  "full_text_pdfs_obtained": 0,
+  "full_text_pdfs_read": 0,
+  "bibliographic_metadata_independently_verified": false,
+  "project_pdf_search_scope": "/workspace/BitLoading/**/*.pdf",
+  "project_pdfs_found": [
+    "EESM5540_DMT_BitLoading/evidence/imported_smoke/dmt_comparison.pdf"
+  ],
+  "proxy_error_interpretation": "HTTPS CONNECT tunnel failed with 403 before publisher/DOI/Crossref response; this is not evidence of a publisher paywall rejection.",
+  "attempts": [
+    {
+      "reference": "1",
+      "kind": "DOI landing",
+      "requested_url": "https://doi.org/10.1109/JLT.2018.2793881",
+      "accessed_utc": "2026-11-17T07:21:37.071154+00:00",
+      "tls_verification": "enabled/default",
+      "status": null,
+      "error_type": "URLError",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "reference": "3",
+      "kind": "DOI landing",
+      "requested_url": "https://doi.org/10.1109/26.380108",
+      "accessed_utc": "2026-11-17T07:21:37.072181+00:00",
+      "tls_verification": "enabled/default",
+      "status": null,
+      "error_type": "URLError",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "reference": "4",
+      "kind": "DOI landing",
+      "requested_url": "https://doi.org/10.1364/OE.23.001176",
+      "accessed_utc": "2026-11-17T07:21:37.072674+00:00",
+      "tls_verification": "enabled/default",
+      "status": null,
+      "error_type": "URLError",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "reference": "4",
+      "kind": "publisher full text candidate",
+      "requested_url": "https://opg.optica.org/oe/fulltext.cfm?uri=oe-23-2-1176",
+      "accessed_utc": "2026-11-17T07:21:37.073136+00:00",
+      "tls_verification": "enabled/default",
+      "status": null,
+      "error_type": "URLError",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "reference": "4",
+      "kind": "publisher PDF candidate",
+      "requested_url": "https://opg.optica.org/oe/viewmedia.cfm?uri=oe-23-2-1176&seq=0",
+      "accessed_utc": "2026-11-17T07:21:37.073743+00:00",
+      "tls_verification": "enabled/default",
+      "status": null,
+      "error_type": "URLError",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "reference": "1",
+      "kind": "Crossref metadata",
+      "requested_url": "https://api.crossref.org/works/10.1109%2FJLT.2018.2793881",
+      "accessed_utc": "2026-11-17T07:21:37.077274+00:00",
+      "tls_verification": "enabled/default",
+      "status": null,
+      "error_type": "URLError",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "reference": "3",
+      "kind": "Crossref metadata",
+      "requested_url": "https://api.crossref.org/works/10.1109%2F26.380108",
+      "accessed_utc": "2026-11-17T07:21:37.078095+00:00",
+      "tls_verification": "enabled/default",
+      "status": null,
+      "error_type": "URLError",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "reference": "4",
+      "kind": "Crossref metadata",
+      "requested_url": "https://api.crossref.org/works/10.1364%2FOE.23.001176",
+      "accessed_utc": "2026-11-17T07:21:37.078603+00:00",
+      "tls_verification": "enabled/default",
+      "status": null,
+      "error_type": "URLError",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    }
+  ]
+}

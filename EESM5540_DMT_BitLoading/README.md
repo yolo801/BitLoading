@@ -1,4 +1,8 @@
-# EESM5540 — DMT Bit Loading，协议 v1.1
+# EESM5540 — DMT Bit Loading，v1.2独立校准研究
+
+新增v1.2入口为`run_v1_2(referenceDir)`：固定reference 0同源重绘`CI_high/targetBER`，再执行十轮全新校准、90组固定载荷。详细规则、恢复及输出见[V1_2_README.md](V1_2_README.md)。原v1.1主实验接口和历史结果保留，物理规格始终为1.0。当前会话尚未执行v1.2，真实执行状态见`EXECUTION_STATUS.md`。
+
+下文保留原v1.1单校准主实验说明，便于复核reference 0；新增研究不复用旧profile作为十轮新校准。
 
 这是作者的**简化 DMT 数字基带 Monte Carlo 仿真**：检验在相同独立子载波、平均电符号能量、采样率、符号时间和接收噪声条件下，按估计质量加载 QAM 阶数，能否在逐子载波 BER 目标内承载更多比特。协议为 **1.1**，物理参数规格仍为 **1.0**。
 
@@ -187,7 +191,7 @@ B=sum(log2(M_k))只计24个独立载波；Tu=1us、TCP=0.125us、Ts=1.125us。R_
 
 validation/记录实际静态与独立Python检查；它们不运行MATLAB、不测qammod BER。可选命令 `python3 tools/verify_implementation.py` 需要Python+NumPy，仅作公式/源码诊断。命令与范围以validation/commands_and_scope.md及EXECUTION_STATUS.md为准。
 
-静态检查、独立公式诊断及历史上传结果一致性核对的当前结果见`validation/commands_and_scope.md`。可选历史证据复核命令`python3 tools/audit_uploaded_smoke.py`另需NumPy+SciPy；这些Python依赖不是MATLAB仿真依赖。当前源码文件的SHA-256见`validation/source_manifest_v1_1.csv`。
+静态检查、独立公式诊断及历史上传结果一致性核对的当前结果见`validation/commands_and_scope.md`。可选历史证据复核命令`python3 tools/audit_uploaded_smoke.py`另需NumPy+SciPy；这些Python依赖不是MATLAB仿真依赖。历史v1.1源码清单为`validation/source_manifest_v1_1.csv`，当前v1.2清单为`validation/source_manifest_v1_2.csv`。
 
 背景/方法参考，不代表本参数来自这些文献：
 

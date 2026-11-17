@@ -1,0 +1,31 @@
+{
+  "scope": "code/static/independent arithmetic and old artifact consistency only",
+  "matlab_executed": false,
+  "reference0_verified": false,
+  "new_calibrations_completed": 0,
+  "new_formal_groups_completed": 0,
+  "planned_new_formal_groups": 90,
+  "source_file_count": 43,
+  "checks": [
+    {
+      "name": "matlab_static_lint",
+      "exit_code": 0,
+      "scope": "not MATLAB execution"
+    },
+    {
+      "name": "original_formula_and_source_audit",
+      "exit_code": 0,
+      "scope": "not MATLAB execution"
+    },
+    {
+      "name": "historical_smoke_consistency",
+      "exit_code": 0,
+      "scope": "not MATLAB execution"
+    },
+    {
+      "name": "v12_independent_contract_arithmetic",
+      "exit_code": 0,
+      "scope": "not MATLAB execution"
+    }
+  ]
+}

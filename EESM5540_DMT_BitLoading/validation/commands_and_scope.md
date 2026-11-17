@@ -1,45 +1,47 @@
-# 本地代码交付：实际检查命令与范围
+# v1.2 实际命令与证据范围
 
-本次提供代码文件，由用户本地运行MATLAB实验。没有执行新增MATLAB入口，也没有生成新的实验计数、正式结果图或结果段。
+**未在MATLAB执行：Task A未开始，新独立校准0/10，正式载荷0/90，剩余90组。**
 
-## 实际完成的检查
+## 实际启动
 
-在项目目录执行并逐一核对退出码：
+在项目目录实际调用`matlab -batch`，MATLAB语句为：
+
+```matlab
+referenceDir = 'C:\Users\Lenovo\Documents\MATLAB\BitLoading-07082cb7bdb034357bc80da358a5f3ec5d411c48\EESM5540_DMT_BitLoading\results\20261116_194846_246_main_tp96b36639_d14e_4dbc_8956_3651acfb6fa8';
+run_v1_2(referenceDir);
+```
+
+启动器退出127，原始错误`bash: line 1: exec: matlab: not found`。当前工具发现也没有MATLAB/MathWorks MCP匹配；没有MATLAB服务端返回，因为没有可调用工具。Windows参考目录当前不能由云文件系统读取，不能核实提示词给出的参考数值。
+
+完整shell命令、实际时间和状态见`execution_attempts/v1_2_20261117_154357_255883_launch/launcher.log`及`attempt_status.json`。此目录不是正式结果目录；没有在results/创建伪造的实验表、图或MATLAB PASS记录。
+
+## 实际完成的代码与独立检查
+
+下列命令分别捕获并核对退出码，均为0：
 
 ```sh
 PYTHONPATH=/tmp/eesm5540_lint python3 -m miss_hit.mh_lint --input-encoding utf-8 --brief --single .
 python3 tools/verify_implementation.py
 python3 tools/audit_uploaded_smoke.py
+python3 tools/verify_v12_contracts.py
 git diff --check
 ```
 
-各命令退出码均为0：
+- MISS_HIT 0.9.44：40个MATLAB文件语法/静态检查通过，见`matlab_static_lint.txt`。不验证MATLAB运行时或工具箱调用。
+- 75项独立公式/原源码约定诊断通过，见`python_diagnostics.txt`。任意复输入FFT/CP/FIR及解析量不是MATLAB实验结果。
+- 211项旧上传smoke一致性检查通过，见`uploaded_smoke_audit.md/.json`。只读取既有真实smoke文件，不能替代未提供的正式reference 0。
+- 43项v1.2独立协议算术检查通过，见`v12_contract_checks.json`：220流不冲突、标签到槽位映射、严格区间边界、禁止混合profile的统计反例。合成计数只用于数学反例，不是DMT测试数据。
 
-- MISS_HIT 0.9.44：24个MATLAB文件通过语法/静态检查。见`matlab_static_lint.txt`。
-- 75项独立公式与源码约定诊断通过。见`python_diagnostics.txt`。这些Python检查不调用MATLAB或qammod，不测本实验BER。
-- 211项用户上传历史smoke一致性检查通过，包括14个原文件SHA-256、配置、profile、计数与统计口径。见`uploaded_smoke_audit.md/.json`。这是读取原有结果，不是生成新的MATLAB实验结果。
-- 新增文本的尾随空格和结尾换行检查通过。原始历史证据按字节保留，.gitattributes防止Git换行转换；未更改原14文件内容。
+`v1_2_code_check_status.json`记录上述各命令退出码及未执行标志。`source_manifest_v1_2.csv`为当前43个代码文件（40.m、3.py）的实际SHA-256及字节数。`source_manifest_v1_1.csv`保留原v1.1交付清单，不将其标为当前版本。
 
-`source_manifest_v1_1.csv`记录当前26个代码文件（24个MATLAB文件及2个可选Python诊断脚本）的SHA-256与字节数。真正本地运行时，MATLAB仍会为当次运行保存实际源码清单与初始化标识。
+新增文本换行/尾随空格检查通过；历史14个原文件按字节保留，.gitattributes阻止Git换行转换。没有更改既有校准、smoke、原报告或摘要。
 
-## 新增代码的核对范围
+## 文献访问
 
-新增`run_main.m`、`run_smoke.m`和`verify_main_results.m`经过源码审查及静态检查。主入口使用包内校准并自动做独立验收；验收函数不改动结果或重跑载荷，并将实际计数、统计状态与文件完整性分开。
+8次DOI、Optica原文候选及Crossref元数据请求在代理CONNECT阶段返回403；没有取得或阅读三篇原文。真实URL、时间与原错误见`docs/literature_access.json`，映射见`docs/literature_mapping.md`。不将用户给出的页码/段落位置声称为独立核实。
 
-main新增导出前`payload_counts.mat`保护九组计数；状态为待导出，不能单独当作完成证明。只有实际完整main及全部结果文件、结束日志经核对，run_main才输出完成报告。
+## 未完成的实际工作
 
-本次未在MATLAB执行，因此Communications Toolbox调用、Java哈希的MATLAB运行时、图导出以及新验收函数的运行仍由本地实验验证。旧云端启动记录保存在execution_attempts/，不再是本次代码交付的前提。
+reference 0核对与Figure 2重绘；十轮新A/B训练/探测、90组载荷、逐轮统计/真实合规轮数、正式图和英文结果段均未执行或生成。Java文件锁、原子MAT恢复、MATLAB新绘图API和工具箱代码只有源码/静态核对，仍需实际MATLAB运行验证。
 
-## 用户本地命令
-
-```matlab
-result = run_main;
-```
-
-可选预检为`run_smoke`。复核已有正式目录而不重跑：
-
-```matlab
-check = verify_main_results('C:/work/your_main_result_directory');
-```
-
-详细操作见START_HERE.md。数据完整性核对成功不预设Uniform/Loaded必须达标，也不因Fixed16性能失败判定数据无效。
+要继续真实执行，需将可访问用户Windows参考目录的MATLAB MCP暴露到当前会话，或在可访问该目录的授权MATLAB+Communications Toolbox环境调用`run_v1_2(referenceDir)`。精确命令、恢复规则及统计边界见`V1_2_README.md`。

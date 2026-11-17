@@ -1,37 +1,41 @@
-# 代码交付状态：本地 MATLAB 运行
+# v1.2 实际状态：尚未执行MATLAB
 
-本次职责已调整：提供代码文件、入口、自动核对与运行说明；实验由你在本地 MATLAB 执行。不需要为此聊天配置 MATLAB 执行环境。
+## 实际启动结果
 
-## 本次新增与整理
+本次实际调用`matlab -batch`运行`run_v1_2(referenceDir)`，启动器返回127：`exec: matlab: not found`。当前聊天没有暴露可调用的MATLAB MCP工具，错误发生在MATLAB进程启动之前。
 
-- `run_main.m`：固定使用包内校准，调用main，随后独立检查真实完成计数。
-- `run_smoke.m`：可选程序预检；main本身会先做预检。
-- `verify_main_results.m`：独立核对九组、216/72行、MAT/CSV一致性、Wilson区间、标识、图和结束日志，不重新发送载荷。
-- `START_HERE.md`：本地最短运行步骤。
-- `payload_counts.mat`：main在九组完成、正式导出前保存的计数快照；它不单独代表完整main。
+精确命令、用户参考路径、时间与原始错误保存在：
 
-物理规格1.0、协议1.1、三策略、校准和随机流规则保持不变。历史smoke、旧源码提交及启动记录保留。
+`execution_attempts/v1_2_20261117_154357_255883_launch/launcher.log`
 
-## 代码检查与实验运行的区分
+机器可读记录：同目录`attempt_status.json`。这只是启动诊断，不是实验结果目录。没有MATLAB进程需要继续等待，没有重复启动90组。
 
-新增代码未在MATLAB执行。语法/静态检查与独立公式、历史文件一致性检查的实际命令和结果保存在`validation/`；它们不能代替本地MATLAB运行验证。
+## 已完成与剩余
 
-包内`evidence/imported_smoke/`是用户原先的真实本地smoke（每方案2000符号），不是新main。没有预制本次正式BER、正式图或带虚构结果的英文段落。正式性能结论由你运行后的真实计数产生。
+| 内容 | 实际完成 | 剩余或原因 |
+| --- | ---: | --- |
+| reference 0 正式数据核对 | 未执行 | Windows本机目录当前不可访问 |
+| Figure 2 同源重绘 | 0张 | 未读取参考计数、未调用MATLAB绘图 |
+| 新独立校准 | 0/10轮 | MATLAB未启动 |
+| 新正式载荷 | 0/90组 | 10轮×3策略×3种子全部待运行 |
+| 新逐轮统计/合规轮数/英文正式结果段 | 未生成 | 不用提示词数值、smoke或独立Python诊断冒充结果 |
 
-## 本地继续
+用户提供的参考目录是：
 
-在项目目录输入：
-
-```matlab
-result = run_main;
+```text
+C:\Users\Lenovo\Documents\MATLAB\BitLoading-07082cb7bdb034357bc80da358a5f3ec5d411c48\EESM5540_DMT_BitLoading\results\20261116_194846_246_main_tp96b36639_d14e_4dbc_8956_3651acfb6fa8
 ```
 
-成功后读取`result.output_dir`中的正式输出与`main_completion_check.mat`。独立复核已有目录：
+目前只记录了路径，未声称验证该目录及提示词中的参考数值。旧imported_smoke保持原字节，不能替代reference 0。
 
-```matlab
-check = verify_main_results('C:/work/your_main_result_directory');
-```
+## 已完成的独立工作
 
-Fixed16超过BER目标属于诊断性能结果，不是数据完整性失败；Uniform/Loaded的可靠性证据和承载量优势仍按真实区间分别判断。
+- 实现任务A、十轮/90组入口、精确新种子映射、校准冻结、完整检查点和恢复校验、逐轮统计及只读完成核对。
+- 文献映射与访问记录已保存；8次DOI/原文/元数据访问均在代理隧道阶段被403阻断，0篇PDF取得或阅读，指定原文段落尚未独立核实。
+- 静态检查、独立算术/公式诊断及旧smoke一致性核对的实际命令和当前计数见`validation/commands_and_scope.md`。这些都不是MATLAB实验通过记录。
 
-此前云端启动尝试仅属历史记录，见`docs/HISTORICAL_EXECUTION_STATUS_before_handoff.md`及`execution_attempts/`，不再作为本次代码交付的前提。
+## 继续执行的前提
+
+需要让当前会话能调用已连接Windows机器的MATLAB MCP，并访问上述reference 0，或在可访问该目录的授权MATLAB+Communications Toolbox环境运行`run_v1_2(referenceDir)`。本次代码不更改物理参数、固定种子或选阶规则来换取通过。
+
+完整入口、恢复命令、预期输出及统计边界见`V1_2_README.md`。旧v1.1代码和历史记录保留，前一次交付状态归档于`docs/HISTORICAL_EXECUTION_STATUS_before_v1_2.md`。

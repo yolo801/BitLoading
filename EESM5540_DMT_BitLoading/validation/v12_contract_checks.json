@@ -1,0 +1,220 @@
+{
+  "scope": "Independent Python protocol arithmetic only; NOT MATLAB execution or experiment results.",
+  "matlab_executed": false,
+  "experimental_ber_generated": false,
+  "synthetic_statistics_examples_not_experiment": true,
+  "checks": [
+    {
+      "name": "ten rounds contain forty independent initialization seeds",
+      "status": "PASS",
+      "observed": 40,
+      "expected": 40
+    },
+    {
+      "name": "ninety payload groups planned",
+      "status": "PASS",
+      "observed": 90,
+      "expected": 90
+    },
+    {
+      "name": "all 220 new stream seeds distinct",
+      "status": "PASS",
+      "observed": 220,
+      "expected": 220
+    },
+    {
+      "name": "new seeds disjoint from historical and self-check seeds",
+      "status": "PASS"
+    },
+    {
+      "name": "MATLAB uint32 seed range",
+      "status": "PASS"
+    },
+    {
+      "name": "round1 Uniform label11 uses slot1",
+      "status": "PASS",
+      "observed": [
+        2101011,
+        2101012
+      ],
+      "expected": [
+        2101011,
+        2101012
+      ]
+    },
+    {
+      "name": "round10 Fixed16 label33 uses slot3",
+      "status": "PASS",
+      "observed": [
+        3003031,
+        3003032
+      ],
+      "expected": [
+        3003031,
+        3003032
+      ]
+    },
+    {
+      "name": "payload uses slot instead of literal label",
+      "status": "PASS"
+    },
+    {
+      "name": "round 1: nine unique scheme-label groups",
+      "status": "PASS"
+    },
+    {
+      "name": "round 2: nine unique scheme-label groups",
+      "status": "PASS"
+    },
+    {
+      "name": "round 3: nine unique scheme-label groups",
+      "status": "PASS"
+    },
+    {
+      "name": "round 4: nine unique scheme-label groups",
+      "status": "PASS"
+    },
+    {
+      "name": "round 5: nine unique scheme-label groups",
+      "status": "PASS"
+    },
+    {
+      "name": "round 6: nine unique scheme-label groups",
+      "status": "PASS"
+    },
+    {
+      "name": "round 7: nine unique scheme-label groups",
+      "status": "PASS"
+    },
+    {
+      "name": "round 8: nine unique scheme-label groups",
+      "status": "PASS"
+    },
+    {
+      "name": "round 9: nine unique scheme-label groups",
+      "status": "PASS"
+    },
+    {
+      "name": "round 10: nine unique scheme-label groups",
+      "status": "PASS"
+    },
+    {
+      "name": "status priority: infeasible before incomplete",
+      "status": "PASS"
+    },
+    {
+      "name": "status: incomplete is not BER zero",
+      "status": "PASS"
+    },
+    {
+      "name": "strict upper equality remains inconclusive",
+      "status": "PASS"
+    },
+    {
+      "name": "strict lower equality remains inconclusive",
+      "status": "PASS"
+    },
+    {
+      "name": "any lower beyond target dominates support elsewhere",
+      "status": "PASS"
+    },
+    {
+      "name": "u above one alone cannot imply target failure",
+      "status": "PASS"
+    },
+    {
+      "name": "synthetic zero-count upper remains positive n=600000",
+      "status": "PASS"
+    },
+    {
+      "name": "synthetic zero-count Wilson identity n=600000",
+      "status": "PASS",
+      "observed": 6.402625672788692e-06,
+      "expected": 6.402625672788691e-06
+    },
+    {
+      "name": "u is Wilson upper divided by target n=600000",
+      "status": "PASS"
+    },
+    {
+      "name": "synthetic zero-count upper remains positive n=1200000",
+      "status": "PASS"
+    },
+    {
+      "name": "synthetic zero-count Wilson identity n=1200000",
+      "status": "PASS",
+      "observed": 3.201323084831031e-06,
+      "expected": 3.201323084831031e-06
+    },
+    {
+      "name": "u is Wilson upper divided by target n=1200000",
+      "status": "PASS"
+    },
+    {
+      "name": "synthetic zero-count upper remains positive n=1800000",
+      "status": "PASS"
+    },
+    {
+      "name": "synthetic zero-count Wilson identity n=1800000",
+      "status": "PASS",
+      "observed": 2.1342176673274495e-06,
+      "expected": 2.1342176673274495e-06
+    },
+    {
+      "name": "u is Wilson upper divided by target n=1800000",
+      "status": "PASS"
+    },
+    {
+      "name": "synthetic round A passes",
+      "status": "PASS"
+    },
+    {
+      "name": "synthetic round B fails",
+      "status": "PASS"
+    },
+    {
+      "name": "synthetic mixed pool passes despite failed B: do not pool profiles",
+      "status": "PASS"
+    },
+    {
+      "name": "planned seed table rows",
+      "status": "PASS",
+      "observed": 2160,
+      "expected": 2160
+    },
+    {
+      "name": "planned per-round pooled rows",
+      "status": "PASS",
+      "observed": 720,
+      "expected": 720
+    },
+    {
+      "name": "planned per-round scheme rows",
+      "status": "PASS",
+      "observed": 30,
+      "expected": 30
+    },
+    {
+      "name": "planned per-strategy symbols",
+      "status": "PASS",
+      "observed": 3000000,
+      "expected": 3000000
+    },
+    {
+      "name": "planned all-strategy symbols",
+      "status": "PASS",
+      "observed": 9000000,
+      "expected": 9000000
+    },
+    {
+      "name": "synthetic per-tone frequency denominator is ten calibrations",
+      "status": "PASS"
+    },
+    {
+      "name": "three payload seeds must not triple selection frequency",
+      "status": "PASS"
+    }
+  ],
+  "check_count": 43,
+  "all_passed": true
+}

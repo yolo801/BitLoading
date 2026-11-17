@@ -1,2 +1,2 @@
 Static analysis only; NOT MATLAB execution.
-MISS_HIT Lint Summary: 24 file(s) analysed, everything seems fine
+MISS_HIT Lint Summary: 40 file(s) analysed, everything seems fine

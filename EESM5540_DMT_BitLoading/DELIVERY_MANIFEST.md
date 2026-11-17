@@ -1,4 +1,14 @@
-# v1.1 交付与结果路径
+# 交付与结果路径：v1.2增量，保留v1.1
+
+## 新增v1.2
+
+完整说明见`V1_2_README.md`。新增公开入口：`run_v1_2.m`、`redraw_dmt_constraint_check.m`、`run_dmt_calibration_study.m`及只读`verify_dmt_calibration_study.m`。新增私有模块负责同源归一化图、十轮种子/配置标识、OS文件锁、完整检查点和逐轮统计；原收发链路仅增加显式随机流接口，原映射不变。
+
+`docs/literature_mapping.md`和`docs/literature_access.json`记录文献映射与真实访问限制，`docs/AUDIT_v1_2.md`记录源码审计；独立协议算术诊断为`tools/verify_v12_contracts.py`及`validation/v12_contract_checks.json`。v1.2生成图表路径与完整2160/720/30行结构见新说明，不能把尚未运行的输出称为已交付实验结果。
+
+实际启动诊断为`execution_attempts/v1_2_20261117_154357_255883_launch/`：MATLAB未启动，新正式0/90组。当前代码清单`validation/source_manifest_v1_2.csv`含40个MATLAB文件及3个可选Python诊断脚本。
+
+以下保留v1.1清单。
 
 项目 `/workspace/BitLoading/EESM5540_DMT_BitLoading/`，入口run_dmt_experiment.m。协议1.1、冻结物理规格1.0，不改原报告、abstract、ISAC和历史结果。
 
