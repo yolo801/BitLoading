@@ -1,0 +1,7 @@
+$ matlab -batch 'cd('"'"'/workspace/BitLoading/EESM5540_DMT_BitLoading/tradeoff_v2/literature_fig7/ber_tradeoff'"'"'); run_dmt_fig7_ber_tradeoff('"'"'all'"'"','"'"'HistoricalDirectory'"'"','"'"'/workspace/scratch/fig7_ber_readonly_reference/tradeoff_v2_fig7_tpd97045dd_7fd0_49c4_a57a_55543337fd41'"'"');'
+/bin/bash: line 1: matlab: command not found
+Shell exit status: 127
+MATLAB process started: no
+New MATLAB preflight: not executed
+Experiment 2: 0 sent, 0 normal rejections, 20 unfinished
+Experiment 1: 0 sent, 0 reused, 0 normal rejections, 240 unfinished

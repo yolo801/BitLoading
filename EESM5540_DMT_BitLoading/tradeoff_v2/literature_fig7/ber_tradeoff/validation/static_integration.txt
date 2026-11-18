@@ -1,0 +1,6 @@
+Unchanged Fig. 7 source manifest: 45 files, 57fa231c55f2d7683fe1bc09cff206eb8bae7502d70f83692a6a2e22eaadde20
+Byte-identical frozen upstream helpers: 37 (separate reporting-only table delta).
+Nominated historical archive: exact FIR, Protocol and verification receipt SHA-256, 50 checkpoint files, original valid 30/30.
+Frozen v2 scan IDs: 5, 6, 8, 9, 11, 12, 14, 15. 240 planned slots; all 125 condition 9 role-plan rows match the archive.
+Named private dependencies resolved statically across 63 MATLAB files.
+Scope: static/read-only checks only. No new MATLAB preflight or formal study executed.
