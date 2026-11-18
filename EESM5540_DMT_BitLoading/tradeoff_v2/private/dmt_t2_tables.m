@@ -179,15 +179,16 @@ tables.pair_gains=pairTable(cfg,identity,tables.summary,tables.status,tables.sce
     end
 
     function addPowerCalibration(key,round,role,p,reused)
-        row=makeRow(templates.power_cal,key);
-        row.round=round;row.role=role;row.reused=reused;
-        row.data_seed=p.seed;row.symbols=p.symbols;row.samples=p.sample_count;
-        row.b=p.b;row.P_actual=p.actual_mean;row.relative_error=p.relative_error;
-        row.waveform_hash=string(p.waveform_hash);
-        row.lower_clip_count=p.lower_clip_count;row.upper_clip_count=p.upper_clip_count;
-        row.optical_second_moment=p.mean_square;
-        if reused,row.compute_seconds=0;else,row.compute_seconds=p.compute_seconds;end
-        add('power_cal',row);
+        % A nested assignment to row would replace the parent summary row.
+        powerRecord=makeRow(templates.power_cal,key);
+        powerRecord.round=round;powerRecord.role=role;powerRecord.reused=reused;
+        powerRecord.data_seed=p.seed;powerRecord.symbols=p.symbols;powerRecord.samples=p.sample_count;
+        powerRecord.b=p.b;powerRecord.P_actual=p.actual_mean;powerRecord.relative_error=p.relative_error;
+        powerRecord.waveform_hash=string(p.waveform_hash);
+        powerRecord.lower_clip_count=p.lower_clip_count;powerRecord.upper_clip_count=p.upper_clip_count;
+        powerRecord.optical_second_moment=p.mean_square;
+        if reused,powerRecord.compute_seconds=0;else,powerRecord.compute_seconds=p.compute_seconds;end
+        add('power_cal',powerRecord);
     end
 end
 

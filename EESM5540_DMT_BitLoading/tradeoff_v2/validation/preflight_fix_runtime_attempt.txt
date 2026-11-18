@@ -1,0 +1,10 @@
+UTC: 2026-11-18T05:44:56.455667+00:00
+Working directory: /workspace/BitLoading/EESM5540_DMT_BitLoading/tradeoff_v2
+Command: exec matlab -batch 'pre = run_dmt_tradeoff_v2('"'"'preflight'"'"'); disp(pre);'
+
+bash: line 1: exec: matlab: not found
+
+Exit code: 127
+Status: RUNTIME_PENDING
+MATLAB preflight did not start.
+Executed: 0/12; design rejected: 0/12; incomplete: 12/12.
