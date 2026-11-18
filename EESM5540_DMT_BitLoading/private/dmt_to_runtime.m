@@ -1,14 +1,18 @@
 function environment=dmt_to_runtime(root)
 %DMT_TO_RUNTIME Record actual MATLAB/toolbox and private resolution at runtime.
 environment=struct('version',version,'release',version('-release'),'matlabroot',matlabroot, ...
-    'pwd',pwd,'toolboxes',ver,'computer',computer,'resolved_functions',struct([]));
+    'pwd',pwd,'toolboxes',ver,'computer',computer);
 names={'dmt_to_config','dmt_to_initial','dmt_to_design','dmt_to_link','dmt_to_measure', ...
     'dmt_to_power_cal','dmt_to_payload','dmt_to_validate','dmt_to_tables', ...
     'dmt_v13_make_frame','dmt_v13_stream','dmt_demod_errors','dmt_qam_ber','dmt_wilson','qammod','qamdemod'};
+template=struct('name','','first','','all',{{}});
+environment.resolved_functions=repmat(template,1,numel(names));
 for j=1:numel(names)
     first=which(names{j});allPaths=which(names{j},'-all');
     if ischar(allPaths),allPaths={allPaths};end
-    environment.resolved_functions(j)=struct('name',names{j},'first',first,'all',{allPaths});
+    environment.resolved_functions(j).name=names{j};
+    environment.resolved_functions(j).first=first;
+    environment.resolved_functions(j).all=allPaths;
     assert(~isempty(first),'DMT:TradeoffUnresolvedFunction','MATLAB cannot resolve %s.',names{j});
     if startsWith(names{j},'dmt_')
         expected=fullfile(root,'private',[names{j} '.m']);

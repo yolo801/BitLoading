@@ -25,6 +25,16 @@ result = run_dmt_tradeoff('formal', 'ResultDirectory', pre.output_dir);
 
 `formal`必须使用同一份已通过实际预检并冻结协议的新研究目录。单独完成preflight不是正式测试完成。
 
+若从出现 `dmt_to_runtime` 结构体下标赋值错误的版本升级，先在修订版工程根目录逐条执行：
+
+```matlab
+verify_dmt_tradeoff_startup();
+pre = run_dmt_tradeoff('preflight');
+result = run_dmt_tradeoff('formal', 'ResultDirectory', pre.output_dir);
+```
+
+第一条核对主入口和私有环境记录函数的解析路径，调用实际环境记录函数，并用工程已有的原子保存函数在临时目录验证 MAT 写入及回读。第一条成功后执行预检，预检结束后使用它返回的新目录启动正式测试。原启动失败发生在首次保存 `study_state.mat` 之前。旧源码生成的其他检查点也须通过现有源码身份校验，原失败目录可留作诊断记录。
+
 从Windows批处理启动（请改项目路径）：
 
 ```powershell

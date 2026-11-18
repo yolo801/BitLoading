@@ -1,14 +1,14 @@
 {
-  "delivery_scope": "User runs MATLAB; this is implementation/static/independent arithmetic code delivery.",
+  "delivery_scope": "Startup fix with static and independent arithmetic checks. MATLAB launch attempted but unavailable.",
   "matlab_executed": false,
   "mechanical_checks_executed_in_MATLAB": false,
   "preflight_executed": false,
   "protocol_frozen": false,
   "formal_payload_groups_completed": 0,
   "formal_payload_groups_planned": 300,
-  "MATLAB_source_files": 91,
+  "MATLAB_source_files": 92,
   "Python_source_files": 5,
-  "source_files": 96,
+  "source_files": 97,
   "historical_v13_source_files_unchanged": 66,
   "checks": [
     {
@@ -27,5 +27,15 @@
       "exit_code": 0,
       "scope": "Text whitespace"
     }
-  ]
+  ],
+  "startup_verification": {
+    "entry": "verify_dmt_tradeoff_startup",
+    "MAT_round_trip_executed": false,
+    "attempted": true,
+    "exit_code": 127,
+    "stderr": "bash: line 1: exec: matlab: not found",
+    "attempt_log": "validation/tradeoff_startup_matlab_attempt.txt",
+    "preflight_design_cases_completed": 0,
+    "formal_payload_groups_completed": 0
+  }
 }
