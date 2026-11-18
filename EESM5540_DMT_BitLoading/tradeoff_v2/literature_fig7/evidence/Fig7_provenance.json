@@ -1,0 +1,137 @@
+{
+  "citation": "K. Zhong et al., Experimental study of PAM-4, CAP-16, and DMT for 100 Gb/s short reach optical transmission systems, Optics Express 23(2), 1176–1189 (2015)",
+  "DOI": "10.1364/OE.23.001176",
+  "figure": "Fig. 7",
+  "printed_page": 1183,
+  "pdf_page": 8,
+  "pdf_sha256": "93d0dab6fbcf77a79ebc5e0d01f9f92faa2931e69947b8ff67d0bce243410382",
+  "pdf_raster_xref": 248,
+  "pdf_raster_bounding_box_points": [
+    187.3800048828125,
+    172.44000244140625,
+    424.32000732421875,
+    323.760009765625
+  ],
+  "native_raster_pixels_width_height": [
+    671,
+    426
+  ],
+  "native_raster_rgb_sha256": "b761d127fb4666554eac308bdf41fae6911329a26db33ba0f06d168f229d9053",
+  "digitized_csv_sha256": "f7af1eaf43cce517f106d90219e7b3b228ad1e3fc57d4fdd40010724cea65f3e",
+  "method": "Direct native raster extraction with PyMuPDF and labeled-grid calibration. The blue response has no vector path. PDF vector and bitmap annotations overlay the native plot, which retains the response under the 17 GHz dot and dash line.",
+  "frequency_mapping": {
+    "rule": "f_sim / Fs_sim = f_paper / Fs_paper",
+    "paper_transmitter_AWG_GSa_per_s": 63.0,
+    "simulation_Fs_MHz": 64.0,
+    "paper_AWG_source": "Section 2.3, printed page 1180, reports the 63 GSa/s DMT transmitter AWG",
+    "paper_measurement_source": "Section 3, printed page 1182, describes the discrete AWG sweep, 80 GSa/s receiver scope and reported channel bandwidth of 17 GHz",
+    "reported_bandwidth_GHz": 17.0,
+    "reported_bandwidth_mapped_MHz": 17.26984126984127
+  },
+  "horizontal_axis": {
+    "label": "Frequency (GHz)",
+    "labeled_ticks_x_pixel_GHz": [
+      [
+        172,
+        5
+      ],
+      [
+        259,
+        10
+      ],
+      [
+        346,
+        15
+      ],
+      [
+        432,
+        20
+      ],
+      [
+        519,
+        25
+      ],
+      [
+        607,
+        30
+      ]
+    ],
+    "pixel_per_GHz": 17.37714285714286,
+    "origin_x_pixel": 85.06666666666669,
+    "max_anchor_residual_pixel": 0.6190476190474783,
+    "estimated_coordinate_error_GHz": 0.06439767620299529
+  },
+  "vertical_axis": {
+    "label": "S21 (dB)",
+    "labeled_ticks_y_pixel_dB": [
+      [
+        32,
+        0
+      ],
+      [
+        89,
+        -3
+      ],
+      [
+        146,
+        -6
+      ],
+      [
+        203,
+        -9
+      ],
+      [
+        260,
+        -12
+      ],
+      [
+        317,
+        -15
+      ]
+    ],
+    "pixel_per_dB": -19.0,
+    "origin_y_pixel": 31.999999999999975,
+    "max_anchor_residual_pixel": 2.842170943040401e-14,
+    "definition": "End-to-end channel transmission magnitude in dB. After subtracting the low-frequency reference, amplitude ratio is 10^(normalized_dB/20)."
+  },
+  "low_frequency_reference": {
+    "frequency_GHz": 0.11125726186561294,
+    "S21_dB": -0.02631578947368552,
+    "assumption": "Treat the first visible near-DC sample as the unity reference. Assume a flat normalized response between DC and this sample when modeling DC. The flat extension to DC belongs to the model. The CSV starts at the first visible plotted sample."
+  },
+  "trace_reading": {
+    "native_pixel_origin": "Zero-based pixel-center coordinates from the top left",
+    "inclusive_plot_bounds_xyxy": [
+      87,
+      32,
+      607,
+      374
+    ],
+    "mask": "B > 220, R < 40, G < 40",
+    "center": "Median blue row in each native column, with both occupied row endpoints retained",
+    "columns_without_blue": [
+      92,
+      93,
+      103
+    ],
+    "read_error_basis": "The blue-column half thickness plus a half-pixel axis allowance describes raster reading precision. The original measurement uncertainty is unspecified. The low-frequency reference adds its own reading error to normalized values.",
+    "reference_read_error_dB": 0.07894736842105263,
+    "active_median_read_error_dB": 0.21052631578947367,
+    "active_max_read_error_dB": 0.4736842105263158,
+    "full_median_read_error_dB": 0.23684210526315788,
+    "full_max_read_error_dB": 1.6842105263157896
+  },
+  "native_column_count": 518,
+  "digitized_coverage_GHz": [
+    0.11125726186561294,
+    30.035624246410162
+  ],
+  "mapped_coverage_MHz": [
+    0.1130232501491941,
+    30.512380186829372
+  ],
+  "active_frequency_GHz": [
+    0.984375,
+    23.625
+  ]
+}

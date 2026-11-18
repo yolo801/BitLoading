@@ -1,0 +1,22 @@
+{
+  "engine": "Independent NumPy and SciPy indexing check",
+  "scope": "Mathematical analogue. No MATLAB code, MATLAB preflight, or formal payload ran.",
+  "fit_summary_sha256": "d48bb685187a5aea67dca339f7510e45df2e57fcc188ae0fb60ca7aaf111361e",
+  "group_sizes_symbols": [
+    7,
+    1024,
+    13
+  ],
+  "CP_samples": 8,
+  "fft": 64,
+  "one_based_first_fft_sample": 9,
+  "total_tested_fixture_bits": 49776,
+  "fixture_bit_errors": 0,
+  "max_tx_sample": 1.2477617167655461,
+  "min_tx_sample": 0.7461883226126231,
+  "max_streamed_sample_difference": 2.220446049250313e-16,
+  "max_tail_carried_state_vs_reset_difference": 1.0254435322995337,
+  "max_training_complex_gain_error": 2.6454361052988265e-16,
+  "max_observed_complex_gain_error": 1.0478791226238075e-15,
+  "max_equalized_symbol_error": 2.2350529484359107e-14
+}

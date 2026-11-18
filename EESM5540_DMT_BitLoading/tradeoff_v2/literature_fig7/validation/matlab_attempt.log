@@ -1,0 +1,9 @@
+$ matlab -batch 'cd('"'"'/workspace/BitLoading/EESM5540_DMT_BitLoading/tradeoff_v2/literature_fig7'"'"'); run_dmt_tradeoff_v2_fig7;'
+/bin/bash: line 1: matlab: command not found
+Shell exit status: 127
+MATLAB process started: no
+MATLAB link preflight complete: no
+Planned formal payload slots: 30
+Completed slots: 0
+Normal design-rejected slots: 0
+Unfinished slots: 30

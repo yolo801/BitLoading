@@ -1,0 +1,95 @@
+{
+  "digitized_file": "Fig7_digitized.csv",
+  "provenance_file": "Fig7_provenance.json",
+  "digitized_sha256": "f7af1eaf43cce517f106d90219e7b3b228ad1e3fc57d4fdd40010724cea65f3e",
+  "provenance_sha256": "2dc74cc00c04776d22a2b74fec1f5382fd482ae096d927264b4f7e9ff6024257",
+  "coverage_GHz": [
+    0.111257261866,
+    30.0356242464
+  ],
+  "coverage_sim_MHz": [
+    0.1130232501495873,
+    30.512380186819048
+  ],
+  "predicted_paper_17GHz_sim_MHz": 17.26984126984127,
+  "active_frequency_GHz": [
+    0.984375,
+    1.96875,
+    2.953125,
+    3.9375,
+    4.921875,
+    5.90625,
+    6.890625,
+    7.875,
+    8.859375,
+    9.84375,
+    10.828125,
+    11.8125,
+    12.796875,
+    13.78125,
+    14.765625,
+    15.75,
+    16.734375,
+    17.71875,
+    18.703125,
+    19.6875,
+    20.671875,
+    21.65625,
+    22.640625,
+    23.625
+  ],
+  "active_rms_limit_dB": 1.0,
+  "active_max_abs_limit_dB": 2.0,
+  "tap_count": 9,
+  "taps": [
+    0.004700958067114265,
+    0.030040622005264816,
+    -0.05212246841533287,
+    0.17357546904437243,
+    0.6876108385971627,
+    0.17357546904437243,
+    -0.05212246841533287,
+    0.030040622005264816,
+    0.004700958067114265
+  ],
+  "passed": true,
+  "constrained_solver_success": true,
+  "constrained_solver_message": "Optimization terminated successfully",
+  "active_rms_error_dB": 0.32960983085348583,
+  "active_max_abs_error_dB": 0.6213999538192243,
+  "covered_rms_error_dB": 0.5111133412854113,
+  "covered_max_abs_error_dB": 2.1722728430456204,
+  "active_band_min_zero_phase_amplitude": 0.4752199951070804,
+  "active_band_min_frequency_GHz": 23.625,
+  "active_band_min_gain_dB": -6.462105889915172,
+  "dc_to_coverage_end_min_zero_phase_amplitude": 0.19776278332874386,
+  "fs_sim_MHz": 64.0,
+  "fs_paper_GSa_per_s": 63.0,
+  "cp_samples": 8,
+  "dc_gain": 1.0,
+  "group_delay_samples": 4,
+  "fit_method": "Symmetric real FIR with unity DC. Minimize covered sample squared dB error subject to the active dB gates; choose the lowest covered RMS passing order. Use linear interpolation in digitized relative dB for active targets.",
+  "phase_assumption": "The symmetric causal FIR assumes linear phase; Fig. 7 supplies no phase.",
+  "band_edge": {
+    "frequency_GHz": 23.625,
+    "frequency_sim_MHz": 24,
+    "fig7_dB": -5.963421052648855,
+    "original_FIR_dB": -16.686413576676696,
+    "new_FIR_dB": -6.462105889915168
+  },
+  "bandwidth": {
+    "definition": "First downward crossing of -3 dB relative to low-frequency/DC reference",
+    "fig7": {
+      "frequency_GHz": 17.697577551259123,
+      "frequency_sim_MHz": 17.978491480644188
+    },
+    "original_FIR": {
+      "frequency_GHz": 11.449291810245052,
+      "frequency_sim_MHz": 11.631026600883862
+    },
+    "fig7_FIR": {
+      "frequency_GHz": 19.111765278377028,
+      "frequency_sim_MHz": 19.41512663200206
+    }
+  }
+}
