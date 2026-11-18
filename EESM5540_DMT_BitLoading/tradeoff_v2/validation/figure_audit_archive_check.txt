@@ -1,0 +1,17 @@
+Independent read-only archive inspection (Python/SciPy, no MATLAB execution).
+Original archive SHA-256: f5e7d3b0a543d29e2b1caa81ab2a6dffd2022a278ec35c71cf1d0b9156592aa5
+Extracted absolute figure CSV path: /workspace/scratch/tradeoff_v2_figure_audit_evidence/tradeoff_v2_preflight_tp6d978958_5a38_427d_9b67_a3e449eeb7a7/figure_manifest.csv
+CSV first line bytes: b'phase,figure,status,reason,data_hash,png_sha256,pdf_sha256,svg_sha256\r\n'
+Original verifier import: TextType=string, VariableNamingRule=preserve; header/delimiter/data lines auto-detected.
+CSV dimensions under explicit Python parsing: 3 x 8. MATLAB size and VariableNames not observed.
+CSV columns: phase, figure, status, reason, data_hash, png_sha256, pdf_sha256, svg_sha256
+Original source_id: 495c7f30c294c27f383e02df0885b5fedbd6c55276c71d41b0d220c70c211320 (52 source files matched to 80a5fb7).
+Revised source_id: c68ae10ae98ce6d78b94fda5b18cb7bbb601ddc6ff4cebbd4a777c6c00580fc8 (54 source files).
+Original Protocol, manifests, receipt, and archive bytes preserved.
+The full verifier rejects a different source_id. The original failure_status.txt is also an independent full-audit gate.
+subcarrier_snr_bit_allocation_ber_margin: written, 3 matching file hashes
+supported_calibrations_power_adc: written, 3 matching file hashes
+qualified_cycle_rate_measured_power: not_available, 0 matching file hashes
+Original status CSV: 12 completed, 2000 symbols per slot.
+Original receipt: acquisition_complete=true, data_integrity_valid=true, valid=false.
+Current MATLAB verification and preflight did not start; see figure_audit_matlab_attempt.txt.

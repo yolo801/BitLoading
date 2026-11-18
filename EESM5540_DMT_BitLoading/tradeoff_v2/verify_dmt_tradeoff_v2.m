@@ -52,7 +52,7 @@ try
     for j=1:numel(names)
         compareCSV(fullfile(folder,[names{j} '.csv']),tables.(names{j}));
     end
-    auditFigures(folder,p.phase,cfg,tables);
+    dmt_t2_audit_figures(folder,p.phase,cfg,tables);
     assert(contains(fileread(fullfile(folder,'run.log')),'TRADEOFF V2 ACQUISITION COMPLETE'));
     report.valid=true;report.detail='Checkpoint, counts, phase, tables, and figure identities verified.';
 catch ME
@@ -163,45 +163,5 @@ for j=1:width(expected)
         equal=isequal(observed,wanted);
     end
     assert(equal,'DMT:V2CSV','CSV column %s differs in %s.',name,path);
-end
-end
-
-function auditFigures(folder,phase,cfg,tables)
-manifest=readtable(fullfile(folder,'figure_manifest.csv'),'TextType','string','VariableNamingRule','preserve');
-stems=["subcarrier_snr_bit_allocation_ber_margin";"supported_calibrations_power_adc"; ...
-    "qualified_cycle_rate_measured_power"];
-assert(isequal(sort(string(manifest.figure)),sort(stems)) && ...
-    all(string(manifest.phase)==string(phase)) && ...
-    all(string(manifest.data_hash)==string(dmt_v13_hash(tables))), ...
-    'DMT:V2Plots','Figure plan or table identity differs.');
-point=cfg.representative;
-referenceRows=@(t)t.P_target==point.P_target & t.q==point.q & t.calibration_id==point.calibration_id;
-hasReference=any(referenceRows(tables.snr)) || any(referenceRows(tables.profiles)) || ...
-    any(referenceRows(tables.pool)) || any(referenceRows(tables.summary) & tables.summary.state~="incomplete");
-hasRecords=~isempty(tables.profiles) || ~isempty(tables.seed) || ~isempty(tables.snr) || ...
-    any(tables.summary.state~="incomplete");
-planned=[hasReference;hasRecords;any(tables.scenario.qualified)];
-for j=1:height(manifest)
-    stem=char(manifest.figure(j));
-    status=string(manifest.status(j));
-    assert(planned(stems==string(stem))==(status=="written"), ...
-        'DMT:V2PlotAvailability','Figure status differs from its saved data: %s.',stem);
-    if status=="written"
-        for format={'png','pdf','svg'}
-            ext=format{1}; name=[ext '_sha256'];
-            path=fullfile(folder,[stem '.' ext]);
-            fid=fopen(path,'rb');assert(fid>=0,'DMT:V2MissingFigure','Missing %s.',path);
-            closer=onCleanup(@()fclose(fid));
-            raw=fread(fid,Inf,'*uint8');clear closer;
-            assert(~isempty(raw) && strcmp(dmt_sha256(raw),char(manifest.(name)(j))), ...
-                'DMT:V2FigureHash','Figure file differs: %s.',path);
-        end
-    else
-        assert(status=="not_available" && ~ismissing(manifest.reason(j)) && ...
-            strlength(string(manifest.reason(j)))>0,'DMT:V2FigureStatus','Invalid plot status.');
-        for format={'png','pdf','svg'}
-            assert(~isfile(fullfile(folder,[stem '.' format{1}])));
-        end
-    end
 end
 end

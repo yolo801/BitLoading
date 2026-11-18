@@ -1,0 +1,15 @@
+Actual command: exec matlab -batch 'p = '"'"'/workspace/scratch/tradeoff_v2_figure_audit_evidence/tradeoff_v2_preflight_tp6d978958_5a38_427d_9b67_a3e449eeb7a7/figure_manifest.csv'"'"'; disp(p); f = fopen(p,'"'"'r'"'"','"'"'n'"'"','"'"'UTF-8'"'"'); disp(fgetl(f)); fclose(f); disp('"'"'TextType=string, VariableNamingRule=preserve (original auto-detection)'"'"'); manifest = readtable(p,'"'"'TextType'"'"','"'"'string'"'"','"'"'VariableNamingRule'"'"','"'"'preserve'"'"'); disp(size(manifest)); disp(manifest.Properties.VariableNames); assert(ismember('"'"'figure'"'"',manifest.Properties.VariableNames));'
+Exit code: 127
+bash: line 1: exec: matlab: not found
+
+existing data read-only attempt
+Working directory: /workspace/BitLoading/EESM5540_DMT_BitLoading/tradeoff_v2
+Actual command: exec matlab -batch 'folder = '"'"'/workspace/scratch/tradeoff_v2_figure_audit_evidence/tradeoff_v2_preflight_tp6d978958_5a38_427d_9b67_a3e449eeb7a7'"'"'; figures = verify_dmt_tradeoff_v2_figures(folder); disp(figures.figure_audit_passed); check = verify_dmt_tradeoff_v2(folder); disp(check);'
+Exit code: 127
+bash: line 1: exec: matlab: not found
+
+new preflight attempt after the strict source-identity conflict
+Working directory: /workspace/BitLoading/EESM5540_DMT_BitLoading/tradeoff_v2
+Actual command: exec matlab -batch 'pre = run_dmt_tradeoff_v2('"'"'preflight'"'"'); disp(pre); assert(pre.valid);'
+Exit code: 127
+bash: line 1: exec: matlab: not found
