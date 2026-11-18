@@ -1,0 +1,9 @@
+$ matlab -batch 'cd('"'"'/workspace/BitLoading-vcsel-2025/EESM5540_DMT_BitLoading/dmt_vcsel_mmf_2025'"'"'); run_dmt_vcsel_mmf_2025('"'"'channel-fit'"'"');'
+/bin/bash: line 1: matlab: command not found
+
+Shell exit status: 127
+
+$ matlab -batch 'cd('"'"'/workspace/BitLoading-vcsel-2025/EESM5540_DMT_BitLoading/dmt_vcsel_mmf_2025'"'"'); run_dmt_vcsel_mmf_2025('"'"'all'"'"');'
+/bin/bash: line 1: matlab: command not found
+
+Shell exit status: 127

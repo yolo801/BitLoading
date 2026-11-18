@@ -1,0 +1,7 @@
+Case 1: vectors=121, taps=9, active RMS 0.116785030 dB, maximum 0.318788785 dB
+Case 2: vectors=471, taps=17, active RMS 0.129186436 dB, maximum 0.438724609 dB
+Case 2 observed and fitted first notch 24.2125 GHz and 24.3625 GHz, modeled rise 3.484795 dB.
+17 copied upstream helpers match byte-for-byte. 48 MATLAB sources have full named static dependency closure.
+Both digitization and fit evidence reproduced byte-for-byte; independent response calculations match all 480 active rows.
+Independent noiseless NumPy/SciPy fixtures: six Case/QAM combinations; max streamed FIR difference 5.55e-16; max ZF symbol difference 1.11e-13.
+Python evidence only. No MATLAB mechanical preflight, pilot or formal payload was acquired.

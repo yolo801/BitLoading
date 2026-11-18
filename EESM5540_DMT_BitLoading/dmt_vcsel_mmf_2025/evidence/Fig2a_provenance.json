@@ -1,0 +1,325 @@
+{
+  "paper": {
+    "title": "Comparing PAM and DMT for VCSELs-modulated Links over MMF",
+    "authors": "A. M. Rosa Brusin et al.",
+    "conference": "SPPCom 2025",
+    "doi": "10.1364/SPPCOM.2025.SpTh3E.4",
+    "public_pdf": "https://iris.polito.it/retrieve/38f0bac4-b804-4762-b4e3-ebb980760c8b/2025_SPPCOM_DMTvsPAM.pdf",
+    "pdf_sha256": "9678b6d4484de950756ee52dee3ed32dc91d9a8d8fae511286a564607c2dc99d",
+    "pdf_page": 3,
+    "figure": "Fig. 2(a)",
+    "caption_excerpt": "Normalized transfer functions at 50 m of the analyzed VCSEL-MMF links",
+    "scope": "Normalized 50 m link-model transfer functions for selected VCSEL\u2013MMF dataset cases."
+  },
+  "axes": {
+    "x_label": "Frequency [GHz]",
+    "y_label": "Normalized link transfer function [dB]",
+    "pdf_coordinate_origin": "Physical page top-left; x rightward, y downward; PDF points.",
+    "frequency_anchors_pt_GHz": [
+      [
+        114.68172454833984,
+        0
+      ],
+      [
+        132.602294921875,
+        20
+      ],
+      [
+        150.52288818359375,
+        40
+      ],
+      [
+        168.44345092773438,
+        60
+      ],
+      [
+        186.36404418945312,
+        80
+      ],
+      [
+        204.28460693359375,
+        100
+      ],
+      [
+        222.2052001953125,
+        120
+      ]
+    ],
+    "gain_anchors_pt_dB": [
+      [
+        68.24903869628906,
+        0
+      ],
+      [
+        82.30525207519531,
+        -3
+      ],
+      [
+        96.35783386230469,
+        -6
+      ],
+      [
+        110.41259765625,
+        -9
+      ],
+      [
+        124.46699523925781,
+        -12
+      ]
+    ],
+    "frequency_max_anchor_residual_GHz": 1.5610235678309436e-05,
+    "gain_max_anchor_residual_dB": 0.000368048204543836,
+    "panel_range_GHz": [
+      0,
+      120
+    ],
+    "panel_range_dB": [
+      -12,
+      0
+    ]
+  },
+  "extraction": {
+    "library": "PyMuPDF",
+    "vector_method": "Read native PDF line operators. Case 1 is its solid stroke centerline. Case 2 is flattened into dashed filled polygons. Recover cap midpoints using edges of nominal stroke width, then take the midpoint of vertical outline intersections between the caps. No samples are inserted across dash gaps.",
+    "case_1": {
+      "drawing_sequence": 185,
+      "legend": "Case 1",
+      "style": "solid blue"
+    },
+    "case_2": {
+      "drawing_sequence": 186,
+      "legend": "Case 2",
+      "style": "dashed orange"
+    },
+    "trace_width_pdf_points": 0.72774,
+    "reader_gain_error_floor_dB": 0.07766984551746602,
+    "reader_frequency_error_floor_GHz": 0.40609178355954106,
+    "precision_scope": "Conservative half-stroke coordinate scale, not original model uncertainty. An extremum inside a dash gap can be less certain. The CSV retains native PDF coordinates to audit the mapping.",
+    "occlusion": "Case 2 passes behind the white legend around its high-frequency notch near 100 GHz. The drawing operators retain the orange polygons before the legend draws over them. No raster extrapolation was needed.",
+    "legend_rectangle_pdf_points": [
+      115.50042724609375,
+      116.00706481933594,
+      206.37686157226562,
+      123.64830017089844
+    ],
+    "plot_clipping": "Samples are limited to the 0\u2013120 GHz axes. The deep lobes stay above the displayed \u221212 dB floor.",
+    "interpolation": "Digitized CSV gives samples and dash IDs. Any interpolation across dashes is a separate fitting operation."
+  },
+  "coverage": {
+    "common_range_GHz": [
+      0,
+      120
+    ],
+    "samples_by_case": {
+      "1": 121,
+      "2": 471
+    },
+    "segment_ranges_GHz_by_case": {
+      "1": [
+        [
+          0.0,
+          120.00000000000001
+        ]
+      ],
+      "2": [
+        [
+          0.0,
+          2.413394944568408
+        ],
+        [
+          4.712684742704646,
+          6.828423713168448
+        ],
+        [
+          8.737051752969156,
+          10.454819117458296
+        ],
+        [
+          12.012178538239082,
+          13.409134272648519
+        ],
+        [
+          14.69238505030434,
+          15.874102597706418
+        ],
+        [
+          16.976642191472738,
+          18.014206307854995
+        ],
+        [
+          19.01319895096378,
+          19.999998580887667
+        ],
+        [
+          21.05177368819562,
+          22.302528212485395
+        ],
+        [
+          24.215222009126737,
+          26.050755829873125
+        ],
+        [
+          27.311676874932992,
+          28.46699893289848
+        ],
+        [
+          29.455825055237177,
+          30.82436306513222
+        ],
+        [
+          32.125873561206355,
+          33.571563032322345
+        ],
+        [
+          35.18578344615395,
+          36.99898327696738
+        ],
+        [
+          39.10049848449446,
+          41.411159629773465
+        ],
+        [
+          43.83552573180608,
+          46.20303935546189
+        ],
+        [
+          48.381731568231956,
+          50.32891830929511
+        ],
+        [
+          52.05887868696915,
+          53.583754626394914
+        ],
+        [
+          54.95431061403075,
+          56.17461666405432
+        ],
+        [
+          57.273094758317015,
+          58.2720874014258
+        ],
+        [
+          59.17968353369189,
+          60.01623322600351
+        ],
+        [
+          60.7674999434129,
+          61.46599271129714
+        ],
+        [
+          62.1279234689747,
+          62.73705473310506
+        ],
+        [
+          63.32181700021365,
+          63.88832380624093
+        ],
+        [
+          64.45886656774981,
+          65.03755787228798
+        ],
+        [
+          65.76446410734961,
+          67.13704658740026
+        ],
+        [
+          68.23146318215932,
+          68.96039590963575
+        ],
+        [
+          69.62435315972812,
+          70.3005034230054
+        ],
+        [
+          71.00101416863043,
+          71.77664136838759
+        ],
+        [
+          72.63349855821735,
+          73.59796419820827
+        ],
+        [
+          74.70049527730059,
+          75.9796973274638
+        ],
+        [
+          77.52487224973369,
+          79.36649406239852
+        ],
+        [
+          81.55734522965744,
+          83.96750034076436
+        ],
+        [
+          86.282231500221,
+          88.30658673185313
+        ],
+        [
+          90.0406086090308,
+          91.50658854831691
+        ],
+        [
+          92.79389656813936,
+          93.92485814375708
+        ],
+        [
+          94.92182429445106,
+          95.81522646513947
+        ],
+        [
+          96.62740716042931,
+          97.37663035607586
+        ],
+        [
+          98.08527261538218,
+          98.74922986547455
+        ],
+        [
+          99.41522212265573,
+          100.10151336268106
+        ],
+        [
+          100.91573757973372,
+          102.45277247364834
+        ],
+        [
+          103.52892509265207,
+          104.27816531764667
+        ],
+        [
+          104.94821055965747,
+          105.61623782392748
+        ],
+        [
+          106.30861705587124,
+          107.03146179142924
+        ],
+        [
+          107.82740500337856,
+          108.69847318413402
+        ],
+        [
+          109.6568508322065,
+          110.72081043802535
+        ],
+        [
+          111.91673046167911,
+          113.28120697207054
+        ],
+        [
+          114.82639892368844,
+          116.60101025188038
+        ],
+        [
+          118.61522450676446,
+          120.00000000000001
+        ]
+      ]
+    },
+    "maximum_case_2_dash_gap_GHz": 2.4243661020326144
+  },
+  "data_file": {
+    "filename": "Fig2a_digitized.csv",
+    "sha256": "4524b2bfb5c39ea929d11434ebd94868ebec49cc17a1f9dc9b733c33b191b398"
+  }
+}
