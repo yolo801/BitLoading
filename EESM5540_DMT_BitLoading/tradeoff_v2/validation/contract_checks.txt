@@ -1,0 +1,56 @@
+PASS formal: expected slots per strategy
+PASS formal: unique logical rows
+PASS formal data: all intended pairings share one stream
+PASS formal data: all repeats are intentional
+PASS formal noise: all intended pairings share one stream
+PASS formal noise: all repeats are intentional
+PASS formal: data and noise separated
+PASS formal: noise omitted only on TX calibration
+PASS preflight: expected slots per strategy
+PASS preflight: unique logical rows
+PASS preflight data: all intended pairings share one stream
+PASS preflight data: all repeats are intentional
+PASS preflight noise: all intended pairings share one stream
+PASS preflight noise: all repeats are intentional
+PASS preflight: data and noise separated
+PASS preflight: noise omitted only on TX calibration
+PASS formal, preflight and diagnostic namespaces separated
+PASS q4: ideal step and midpoint count
+PASS q4: saturated levels and strict out-of-range count
+PASS q6: ideal step and midpoint count
+PASS q6: saturated levels and strict out-of-range count
+PASS q8: ideal step and midpoint count
+PASS q8: saturated levels and strict out-of-range count
+PASS zero error retains positive upper bound
+PASS strict equality cannot support a configuration
+PASS bit counters pool as integers before the rule
+PASS individual power matches do not imply pair match
+PASS single-cycle fixed overhead and nominal symbol duration
+PASS main and diagnostic designs have separate slot budgets
+PASS v1 source still matches its recorded manifest
+PASS dmt_to_seed.m: matches the documented v1 baseline or adaptation
+PASS dmt_v13_atomic_save.m: matches the documented v1 baseline or adaptation
+PASS dmt_demod_errors.m: matches the documented v1 baseline or adaptation
+PASS dmt_default_config.m: matches the documented v1 baseline or adaptation
+PASS dmt_v13_hash.m: matches the documented v1 baseline or adaptation
+PASS dmt_to_reduce.m: matches the documented v1 baseline or adaptation
+PASS dmt_to_power_cal.m: matches the documented v1 baseline or adaptation
+PASS dmt_wilson.m: matches the documented v1 baseline or adaptation
+PASS dmt_study_lock.m: matches the documented v1 baseline or adaptation
+PASS dmt_v13_link.m: matches the documented v1 baseline or adaptation
+PASS dmt_to_config.m: matches the documented v1 baseline or adaptation
+PASS dmt_source_manifest.m: matches the documented v1 baseline or adaptation
+PASS dmt_to_agree.m: matches the documented v1 baseline or adaptation
+PASS dmt_sha256.m: matches the documented v1 baseline or adaptation
+PASS dmt_to_quantize.m: matches the documented v1 baseline or adaptation
+PASS dmt_to_count_valid.m: matches the documented v1 baseline or adaptation
+PASS dmt_to_initial.m: matches the documented v1 baseline or adaptation
+PASS dmt_to_link.m: matches the documented v1 baseline or adaptation
+PASS dmt_to_measure.m: matches the documented v1 baseline or adaptation
+PASS dmt_to_payload.m: matches the documented v1 baseline or adaptation
+PASS dmt_v13_stream.m: matches the documented v1 baseline or adaptation
+PASS dmt_qam_ber.m: matches the documented v1 baseline or adaptation
+PASS dmt_to_decide.m: matches the documented v1 baseline or adaptation
+PASS dmt_v13_make_frame.m: matches the documented v1 baseline or adaptation
+PASS dmt_to_design.m: matches the documented v1 baseline or adaptation
+55 checks passed. MATLAB and experiment payloads were not run by this script.

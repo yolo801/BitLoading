@@ -1,0 +1,12 @@
+Working directory: /workspace/BitLoading/EESM5540_DMT_BitLoading/tradeoff_v2
+Actual command: exec matlab -batch 'disp(version); assert(~isempty(which('"'"'run_dmt_tradeoff_v2'"'"'))); pre = run_dmt_tradeoff_v2('"'"'preflight'"'"');'
+Exit code: 127
+STDOUT:
+
+STDERR:
+bash: line 1: exec: matlab: not found
+
+Status: RUNTIME_PENDING
+Preflight experiment launched: no
+Formal slots completed: 0/450
+Diagnostic slots completed: 0/40
