@@ -1,0 +1,3 @@
+$ matlab -batch 'cd('"'"'/workspace/BitLoading/EESM5540_DMT_BitLoading/tradeoff_v2/literature_fig7/ber_tradeoff'"'"'); run_dmt_fig7_ber_tradeoff('"'"'preflight'"'"');'
+/bin/bash: line 1: matlab: command not found
+Shell exit status: 127
