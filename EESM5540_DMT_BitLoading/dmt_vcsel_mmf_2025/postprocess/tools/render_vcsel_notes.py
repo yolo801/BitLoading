@@ -2,6 +2,7 @@
 
 import argparse
 import csv
+import hashlib
 import json
 import math
 from collections import Counter, defaultdict
@@ -45,12 +46,12 @@ def span(values, decimals, suffix=""):
     return center
 
 
-def collect(archive):
+def collect(archive, read_table):
     fit = json.loads((archive / "channel_evidence/channel_fit.json").read_text(encoding="utf-8"))
     assert fit["passed"] and (fit["NFFT"], fit["NCP"], fit["Fs_Hz"]) == (512, 16, 128_000_000_000)
     occupied = set(fit["active_k"])
     Ts = (fit["NFFT"] + fit["NCP"]) / fit["Fs_Hz"]
-    slots, power = table(archive, "status"), table(archive, "power_adc")
+    slots, power = read_table(archive, "status"), read_table(archive, "power_adc")
     tallies = Counter(row["status"] for row in slots)
     assert len(slots) == len({slot_key(row) for row in slots}) == 120
     assert {int(row["planned_symbols"]) for row in slots} == {25000}
@@ -75,14 +76,14 @@ def collect(archive):
         clips += low + high
         samples += n
     assert (clips, samples) == (47, 1_320_000_000)
-    summary = table(archive, "summary")
+    summary = read_table(archive, "summary")
     assert len(summary) == len({design_key(row) for row in summary}) == 60
     assert Counter(row["state"] for row in summary) == Counter(supported=50, design_rejected=10)
     assert all(point(row) == (2, .25) for row in summary if row["state"] == "design_rejected")
-    overhead = {design_key(row): row for row in table(archive, "overhead")}
+    overhead = {design_key(row): row for row in read_table(archive, "overhead")}
     assert set(overhead) == {design_key(row) for row in summary}
     profiles = defaultdict(list)
-    for row in table(archive, "profiles"):
+    for row in read_table(archive, "profiles"):
         profiles[design_key(row)].append(row)
     derived = {}
     for row in summary:
@@ -111,7 +112,7 @@ def collect(archive):
         cycle = 25_000 * bits / (25_000 * Ts + setup)
         assert close(nominal, row["R_nominal"]) and close(cycle, row["R_cycle"])
         derived[key] = (bits, nominal, cycle, setup, attempts)
-    pairs = table(archive, "pair_gains")
+    pairs = read_table(archive, "pair_gains")
     assert len(pairs) == 30
     qualified_pairs = [row for row in pairs if row["pair_qualified"] == "1"]
     assert len(qualified_pairs) == 25
@@ -131,11 +132,14 @@ def collect(archive):
     return fit, Ts, tallies, samples, clips, mean_powers, summary, profiles, derived, qualified_pairs
 
 
-def render(archive):
-    fit, Ts, tallies, samples, clips, p, summary, profiles, values, pairs = collect(archive)
+def render(archive, mat_tables=None):
+    def read_table(folder, name):
+        return table(folder, name) if mat_tables is None else mat_tables[name]
+    source = "正式归档" if mat_tables is None else "本批正式归档的 tables.mat "
+    fit, Ts, tallies, samples, clips, p, summary, profiles, values, pairs = collect(archive, read_table)
     sections = [
         "# VCSEL–MMF DMT 正式结果",
-        f"本说明由 Python 从正式归档只读重建。120 个计划槽中实发 {tallies['completed']} 槽，"
+        f"本说明由 Python 从{source}只读重建。120 个计划槽中实发 {tallies['completed']} 槽，"
         f"正常设计拒绝 {tallies['design_rejected']} 槽，功率错误、执行错误和未完成载荷槽均为 0。"
         "50 个实发校准轮满足逐子载波 BER 判据。Case 2、摆幅 0.25 的两策略各有 5 个校准轮在设计阶段拒绝。"
         "这些轮未经正式载荷检验。原批次在生成中文报告时退出，未写出 MATLAB 最终整体验证回执。",
@@ -200,9 +204,9 @@ def render(archive):
         nearest = min(tones, key=lambda tone: abs(float(tone["frequency_GHz"])-notch))
         mix = "、".join(f"{m}-QAM×{n}" for m,n in sorted(Counter(int(tone["M"]) for tone in tones).items()))
         notes.append(f"{strategy} 的冻结表为 {mix}，最接近陷波的 {float(nearest['frequency_GHz']):.2f} GHz 活跃载波使用 {nearest['M']}-QAM。")
-    sensitivity = table(archive, "length_sensitivity")
+    sensitivity = read_table(archive, "length_sensitivity")
     assert all(row["pair_qualified"] == "1" and row["cross_over_status"] == "no_positive_crossover" for row in sensitivity)
-    scenarios = table(archive, "scenario")
+    scenarios = read_table(archive, "scenario")
     assert len(scenarios) == 12
     all_rows = [
         "| Case | 摆幅 | 策略 | 达标轮数 | 设计拒绝轮数 | 其余轮次 |",
@@ -265,11 +269,17 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("archive", type=Path)
     parser.add_argument("output", type=Path)
+    parser.add_argument("--tables-mat", action="store_true",
+                        help="Verify and read the archived v7 tables.mat before rendering")
     args = parser.parse_args()
     src, out = args.archive.resolve(strict=True), args.output.resolve()
     if out == src or src in out.parents:
         parser.error("Choose an output directory outside the formal archive.")
-    zh, en = render(src)
+    mat_tables = proof = None
+    if args.tables_mat:
+        from read_vcsel_tables_mat import inspect_tables
+        mat_tables, proof = inspect_tables(src)
+    zh, en = render(src, mat_tables)
     out.mkdir(parents=True, exist_ok=True)
     texts = {"results_zh.md": zh, "figure_captions_en.txt": en}
     for name, text in texts.items():
@@ -280,6 +290,17 @@ def main():
             with path.open("x", encoding="utf-8", newline="\n") as file:
                 file.write(text)
     check(*( (out / name).read_text(encoding="utf-8", errors="strict") for name in texts))
+    if proof is not None:
+        proof["report_generated_from"] = "tables.mat"
+        proof["complete_utf8_report"] = True
+        proof["results_zh_sha256"] = hashlib.sha256((out / "results_zh.md").read_bytes()).hexdigest()
+        proof_file = out / "tables_mat_export_check.json"
+        proof_text = (json.dumps(proof, indent=2, ensure_ascii=False) + "\n").encode("utf-8")
+        if proof_file.exists():
+            assert proof_file.read_bytes() == proof_text, f"Refusing to replace {proof_file}."
+        else:
+            with proof_file.open("xb") as stream:
+                stream.write(proof_text)
     print("Python report reconstruction completed from archive; no simulation was run.")
 
 

@@ -1,0 +1,3 @@
+$ matlab -batch 'cd('"'"'/workspace/BitLoading-vcsel-2025/EESM5540_DMT_BitLoading/dmt_vcsel_mmf_2025/postprocess'"'"'); which -all postprocess_dmt_vcsel_mmf_2025; diagnose_vcsel_fprintf('"'"'/workspace/scratch/vcsel_repair_tp1c1a10a4/unpacked/dmt_vcsel_mmf_2025_formal_tp1c1a10a4_8837_4503_a85b_3ffcbf52f5cf'"'"','"'"'OutputDirectory'"'"','"'"'/workspace/scratch/vcsel_tp1_native_diagnosis'"'"');'
+/bin/bash: line 1: matlab: command not found
+Exit status: 127

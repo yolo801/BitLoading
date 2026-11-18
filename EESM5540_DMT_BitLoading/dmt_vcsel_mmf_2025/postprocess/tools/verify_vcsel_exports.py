@@ -87,7 +87,7 @@ def table_bytes(rows):
     return content.getvalue().encode("utf-8")
 
 
-def verify_outputs(source, output, verify):
+def verify_outputs(source, output, verify, require_tables_mat=False):
     source = source.resolve()
     output = output.resolve()
     require(source != output and source not in output.parents,
@@ -103,6 +103,24 @@ def verify_outputs(source, output, verify):
     require(audit["original_artifact_manifest_id"] == identity(source_hashes),
             "Original files differ from the independently audited archive")
     check_notes(output)
+    report_files = list(TEXT_REPORTS)
+    mat_proof_path = output / "tables_mat_export_check.json"
+    has_mat_proof = mat_proof_path.is_file()
+    require(has_mat_proof or not require_tables_mat, "Missing tables.mat export check")
+    if has_mat_proof:
+        proof = json.loads(mat_proof_path.read_text(encoding="utf-8"))
+        require(proof["valid"] and proof["complete_utf8_report"] and
+                proof["report_generated_from"] == "tables.mat" and
+                proof["tables_mat_sha256"] == source_hashes["tables.mat"] and
+                proof["source_id"] == audit["source_id"] and proof["seed_id"] == audit["seed_id"] and
+                proof["config_id"] == audit["config_id"] and
+                proof["results_zh_sha256"] == digest(output / "results_zh.md"),
+                "tables.mat export proof does not match the audited batch and report")
+        for name, info in proof["tables_csv_parity"].items():
+            require(info["rows"] == audit["csv_row_counts"][name], f"{name}: MAT audit row count differs")
+        expected_tables = {name.removesuffix(".csv") for name in AUDITED_TABLES} - {"source_manifest", "seed_plan"}
+        require(set(proof["tables_csv_parity"]) == expected_tables, "Incomplete tables.mat comparison")
+        report_files.append(mat_proof_path.name)
 
     provenance = json.loads((output / "fig_A_render_provenance.json").read_text(encoding="utf-8"))
     for name, sha in provenance["source_csv_sha256"].items():
@@ -118,7 +136,7 @@ def verify_outputs(source, output, verify):
             "png_sha256": digest(png), "pdf_sha256": digest(pdf),
         })
     write_or_compare(output / "figure_manifest.csv", table_bytes(manifest), verify)
-    report_manifest = [{"report_file": name, "sha256": digest(output / name)} for name in TEXT_REPORTS]
+    report_manifest = [{"report_file": name, "sha256": digest(output / name)} for name in report_files]
     write_or_compare(output / "report_manifest.csv", table_bytes(report_manifest), verify)
     input_rows = [{"relative_path": name, "sha256": sha} for name, sha in sorted(source_hashes.items())]
     write_or_compare(output / "original_input_manifest.csv", table_bytes(input_rows), verify)
@@ -133,6 +151,7 @@ def verify_outputs(source, output, verify):
         "native_matlab_verifier_executed": False,
         "acquisition_raw_checkpoint_audit_valid": True,
         "python_exports_valid": True,
+        "tables_mat_report_validated": has_mat_proof,
         "new_payload_runs": 0,
         "postprocess_version": "vcsel_mmf_2025_postprocess_v1",
         "postprocess_source_id": identity(postprocessor_source()),
@@ -156,8 +175,10 @@ def main():
     parser.add_argument("formal_folder", type=Path)
     parser.add_argument("output_folder", type=Path)
     parser.add_argument("--verify", action="store_true", help="Check a written attestation without modifying any files")
+    parser.add_argument("--require-tables-mat", action="store_true",
+                        help="Require the UTF-8 report to come directly from the archived tables.mat")
     args = parser.parse_args()
-    print(json.dumps(verify_outputs(args.formal_folder, args.output_folder, args.verify), indent=2))
+    print(json.dumps(verify_outputs(args.formal_folder, args.output_folder, args.verify, args.require_tables_mat), indent=2))
 
 
 if __name__ == "__main__":
