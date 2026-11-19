@@ -1,5 +1,5 @@
-function dmt_vm_graphics_notes(path,cfg,tables)
-%DMT_VM_GRAPHICS_NOTES Write the Chinese interpretation of audited formal tables.
+function dmt_vm_postprocess_notes(path,cfg,tables)
+%DMT_VM_POSTPROCESS_NOTES Write the Chinese interpretation of audited formal tables.
 % This postprocessor never touches waveform generation or frozen decisions.
 tables=normalize(tables);
 assert(cfg.payload_symbols==25000 && cfg.payload_repeats==2 && ...

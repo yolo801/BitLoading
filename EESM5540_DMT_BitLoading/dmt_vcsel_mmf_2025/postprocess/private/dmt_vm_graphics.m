@@ -16,7 +16,7 @@ if strcmp(action,'draw')
     exportFigure(folder,png(1),pdf(1),@dmt_vm_graphics_rate,rate,[11.2 7.4]);
     exportFigure(folder,png(2),pdf(2),@dmt_vm_graphics_subcarrier,subcarrier,[9.5 7.4]);
     writeCaptions(fullfile(folder,paths(1)),cfg);
-    dmt_vm_graphics_notes(fullfile(folder,paths(2)),cfg,tables);
+    dmt_vm_postprocess_notes(fullfile(folder,paths(2)),cfg,tables);
 end
 manifest=table(stems,png,pdf,dataHash,pathHashes(folder,png),pathHashes(folder,pdf), ...
     'VariableNames',{'figure','png_file','pdf_file','data_sha256','png_sha256','pdf_sha256'});

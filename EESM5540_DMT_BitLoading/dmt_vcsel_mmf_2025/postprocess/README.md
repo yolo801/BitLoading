@@ -10,12 +10,14 @@
 
 从 GitHub 下载完整源码 ZIP 并解压，进入本目录。使用能通过原版源码哈希检查的 MATLAB 环境。下面的目标目录应当是独立且尚不存在的目录。
 
-若要单独核对函数路径、重现旧格式调用并直接测试已保存的 `tables.mat`，使用只读诊断入口。它在独立目录记录 `which -all`、旧调用的参数类、完整的新中文报告和检查结果。
+若要单独核对函数路径、重现旧格式调用并直接测试已保存的 `tables.mat`，使用只读诊断入口。旧报告函数在本次诊断目录的独立 MATLAB 包中执行。日志记录原文件和副本路径、字节一致性校验、实际异常堆栈、`which -all` 和旧调用的参数类。修复后的说明由独立命名的 `dmt_vm_postprocess_notes` 导出，诊断会检查中文报告的完整性。
 
 ```matlab
 formal = '含原始 Protocol.mat 的正式目录完整路径';
 diag = diagnose_vcsel_fprintf(formal, ...
     'OutputDirectory','尚未创建的诊断目录完整路径');
+disp(diag.patched_notes_complete)
+disp(diag.log)
 ```
 
 ```matlab

@@ -30,15 +30,17 @@ assert(fid>=0,'DMT:VMFprintfLog','Cannot open the UTF-8 diagnostic log.');
 closeLog=onCleanup(@()fclose(fid)); %#ok<NASGU>
 previous=pwd;
 restore=onCleanup(@()cd(previous)); %#ok<NASGU>
+previousPath=path;
+restorePath=onCleanup(@()path(previousPath)); %#ok<NASGU>
 fprintf(fid,'MATLAB %s\nArchive %s\n',version,sourceFolder);
 protocolFile=fullfile(sourceFolder,'Protocol.mat');
 tableFile=fullfile(sourceFolder,'tables.mat');
 identity={dmt_fb_filehash(protocolFile),dmt_fb_filehash(tableFile)};
 
 cd(original);
-fprintf(fid,'\nBase resolution with acquisition root as current folder: %s\n',pwd);
-acquisition=baseResolution('run_dmt_vcsel_mmf_2025');
-verifier=baseResolution('verify_dmt_vcsel_mmf_2025');
+fprintf(fid,'\nResolution with acquisition root as current folder: %s\n',pwd);
+acquisition=paths(which('run_dmt_vcsel_mmf_2025','-all'));
+verifier=paths(which('verify_dmt_vcsel_mmf_2025','-all'));
 writeResolution(fid,'run_dmt_vcsel_mmf_2025',acquisition);
 writeResolution(fid,'verify_dmt_vcsel_mmf_2025',verifier);
 expectPath(acquisition,fullfile(original,'run_dmt_vcsel_mmf_2025.m'));
@@ -51,27 +53,24 @@ assert(verified.valid && verified.data_integrity_valid && verified.acquisition_c
     'DMT:VMFprintfAudit','Original read-only acquisition audit did not pass. %s',verified.detail);
 fprintf(fid,'Original read-only acquisition verification: valid=true, source ID %s\n',verified.source_id);
 
-cd(fullfile(original,'private'));
-fprintf(fid,'\nBase resolution with original private directory as current folder: %s\n',pwd);
-legacy=baseResolution('dmt_vm_graphics_notes');
-writeResolution(fid,'dmt_vm_graphics_notes',legacy);
 legacyFile=fullfile(original,'private','dmt_vm_graphics_notes.m');
-expectPath(legacy,legacyFile);
-legacyNotes=evalin('base','@dmt_vm_graphics_notes');
-legacyBinding=functions(legacyNotes);
-if ~isempty(legacyBinding.file),expectPath(string(legacyBinding.file),legacyFile);end
+legacyHash=dmt_fb_filehash(legacyFile);
+fprintf(fid,'Verified original notes path: %s\n',legacyFile);
+% A package-qualified name resolves independently of the caller's private
+% scope. Keep the old bytes and line numbers in the new diagnostic folder.
+[legacyNotes,probeFile]=bindOriginalProbe(fid,output,legacyFile,legacyHash);
 
 cd(root);
 fprintf(fid,'\nPostprocess caller resolution with patched parent as current folder: %s\n',pwd);
 patchedEntry=paths(which('postprocess_dmt_vcsel_mmf_2025','-all'));
-patchedNotes=paths(which('dmt_vm_graphics_notes','-all'));
+patchedNotes=paths(which('dmt_vm_postprocess_notes','-all'));
 writeResolution(fid,'postprocess_dmt_vcsel_mmf_2025',patchedEntry);
-writeResolution(fid,'dmt_vm_graphics_notes',patchedNotes);
+writeResolution(fid,'dmt_vm_postprocess_notes',patchedNotes);
 expectPath(patchedEntry,fullfile(root,'postprocess_dmt_vcsel_mmf_2025.m'));
-patchedFile=fullfile(root,'private','dmt_vm_graphics_notes.m');
+patchedFile=fullfile(root,'private','dmt_vm_postprocess_notes.m');
 expectPath(patchedNotes,patchedFile);
 fprintf(fid,'Original helper SHA-256: %s\nPatched helper SHA-256: %s\n', ...
-    dmt_fb_filehash(legacyFile),dmt_fb_filehash(patchedFile));
+    legacyHash,dmt_fb_filehash(patchedFile));
 
 p=load(protocolFile,'checkpoint');
 p=p.checkpoint;
@@ -83,7 +82,7 @@ assert(strcmp(m.checkpoint.source_id,p.source_id) && ...
     'DMT:VMFprintfTableIdentity','Saved formal tables differ from the independently rebuilt tables.');
 cfg=p.cfg;
 t=m.checkpoint.tables;
-legacyStackPath=runOriginalNotes(fid,legacyNotes,legacyFile,fullfile(output,'legacy_notes_probe.md'),cfg,t);
+legacyStackPath=runOriginalNotes(fid,legacyNotes,probeFile,fullfile(output,'legacy_notes_probe.md'),cfg,t);
 
 % Rebuild the exact arguments used by the original writeSelectivity line 43.
 ref=cfg.representative;
@@ -125,7 +124,7 @@ if ~isempty(errorID)
 end
 
 notesPath=fullfile(output,'results_zh.md');
-dmt_vm_graphics_notes(notesPath,cfg,t);
+dmt_vm_postprocess_notes(notesPath,cfg,t);
 contents=readUTF8(notesPath);
 token='<!-- VCSEL_POSTPROCESS_COMPLETE -->';
 assert(endsWith(strtrim(contents),token) && numel(strfind(contents,token))==1 && ...
@@ -133,14 +132,36 @@ assert(endsWith(strtrim(contents),token) && numel(strfind(contents,token))==1 &&
     'DMT:VMFprintfNotes','The patched UTF-8 report is incomplete.');
 assert(isequal(identity,{dmt_fb_filehash(protocolFile),dmt_fb_filehash(tableFile)}), ...
     'DMT:VMFprintfArchiveChanged','Original MAT files changed during the read-only diagnosis.');
+assert(strcmp(legacyHash,dmt_fb_filehash(legacyFile)) && strcmp(legacyHash,dmt_fb_filehash(probeFile)), ...
+    'DMT:VMFprintfProbeSource','Original helper or diagnostic copy changed during the probe.');
 fprintf(fid,'Patched notes reached the terminal marker. Original MAT hashes are unchanged.\n');
 report=struct('original_data_audit_passed',true, ...
     'legacy_error_reproduced',strcmp(errorID,'MATLAB:printf:invalidInputType'), ...
     'legacy_error_identifier',errorID,'argument_names',{labels},'argument_classes',{types}, ...
-    'legacy_notes_path',legacy(1),'patched_notes_path',patchedNotes(1), ...
+    'legacy_notes_path',legacyFile,'legacy_probe_path',probeFile,'patched_notes_path',patchedNotes(1), ...
     'legacy_notes_path_at_error',legacyStackPath, ...
     'patched_notes_complete',true,'new_payload_runs',0,'output_dir',output, ...
     'log',logPath,'results_zh',notesPath);
+end
+
+function [notes,probeFile]=bindOriginalProbe(log,output,legacyFile,legacyHash)
+[~,tag]=fileparts(tempname(output));
+package=matlab.lang.makeValidName(['vcsel_legacy_' tag]);
+folder=fullfile(output,['+' package]);
+[ok,message]=mkdir(folder);
+assert(ok,'DMT:VMFprintfProbe','Cannot create the isolated probe package: %s',message);
+probeFile=fullfile(folder,'dmt_vm_graphics_notes.m');
+[ok,message]=copyfile(legacyFile,probeFile);
+assert(ok,'DMT:VMFprintfProbe','Cannot copy original notes into the probe package: %s',message);
+assert(strcmp(dmt_fb_filehash(probeFile),legacyHash), ...
+    'DMT:VMFprintfProbeSource','The probe must be byte-identical to the verified original notes.');
+addpath(output,'-begin');
+rehash
+qualified=[package '.dmt_vm_graphics_notes'];
+found=paths(which(qualified,'-all'));
+writeResolution(log,qualified,found);
+expectPath(found,probeFile);
+notes=str2func(qualified);
 end
 
 function path=runOriginalNotes(log,notes,expected,output,cfg,tables)
@@ -148,21 +169,15 @@ path='';
 try
     notes(output,cfg,tables);
 catch ME
-    fprintf(log,'\nOriginal report helper stack:\n%s\n',getReport(ME,'extended','hyperlinks','off'));
+    fprintf(log,'\nByte-identical legacy probe stack:\n%s\n',getReport(ME,'extended','hyperlinks','off'));
     match=contains(string({ME.stack.name}),'writeSelectivity') & [ME.stack.line]==43;
     assert(strcmp(ME.identifier,'MATLAB:printf:invalidInputType') && nnz(match)==1, ...
         'DMT:VMFprintfUnexpected','Original helper did not produce the archived line-43 failure.');
     path=ME.stack(match).file;
     expectPath(string(path),expected);
-    fprintf(log,'Path at the original fprintf exception: %s\n',path);
+    fprintf(log,'Execution path at the legacy probe fprintf exception: %s\n',path);
 end
 if isempty(path),fprintf(log,'Original report helper returned without the archived exception.\n');end
-end
-
-function found=baseResolution(name)
-% The caller supplies only literal MATLAB identifiers, never user input.
-assert(~isempty(regexp(name,'^[a-zA-Z]\w*$','once')));
-found=paths(evalin('base',sprintf('which(''%s'',''-all'')',name)));
 end
 
 function found=paths(raw)
